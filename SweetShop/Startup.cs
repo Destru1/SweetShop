@@ -8,10 +8,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SweetShop.Data;
+using SweetShop.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+
 
 namespace SweetShop
 {
@@ -35,6 +38,9 @@ namespace SweetShop
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<SweetShopDbContext>();
             services.AddControllersWithViews();
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddTransient<IAllergenService, AllergenService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
