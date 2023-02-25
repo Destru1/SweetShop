@@ -15,6 +15,10 @@ namespace SweetShop.Data
         }
 
         public DbSet<Allergen> Allergens { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductAllergen> ProductAllergens { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
