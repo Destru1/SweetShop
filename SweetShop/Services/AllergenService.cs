@@ -20,6 +20,7 @@ namespace SweetShop.Services
         public async Task CreateAsync(CreateAllergenBindingModel allergen)
         {
             var allergenToAdd = this.Mapper.Map<Allergen>(allergen);
+            allergenToAdd.CreatedOn = DateTime.UtcNow;
 
             await this.DbContext.Allergens.AddAsync(allergenToAdd);
             await this.DbContext.SaveChangesAsync();
@@ -77,7 +78,7 @@ namespace SweetShop.Services
             allergen.IsDeleted = true;
             allergen.DeletedOn= DateTime.UtcNow;
 
-            this.DbContext.Update(allergen);
+            this.DbContext.Remove(allergen);
             await this.DbContext.SaveChangesAsync();
             return true;
         }
