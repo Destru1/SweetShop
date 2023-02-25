@@ -1,8 +1,10 @@
-﻿using System;
+﻿using SweetShop.ViewModels.Product;
+using System;
+using System.Collections.Generic;
 
 namespace SweetShop.ViewModels
 {
-    public class DetailsAlergenView
+    public class DetailsAlergenViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -12,9 +14,8 @@ namespace SweetShop.ViewModels
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
-
-      
-
         public DateTime? DeletedOn { get; set; }
+
+        public IEnumerable<ProductIdNameViewModel> Products { get; set; }
     }
 }

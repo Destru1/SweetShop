@@ -12,7 +12,7 @@ namespace SweetShop.MappingConfiguration
 
             this.CreateMap<CreateAllergenBindingModel, Allergen>();
 
-            this.CreateMap<Allergen, DetailsAlergenView>();
+            this.CreateMap<Allergen, DetailsAlergenViewModel>();
             this.CreateMap<UpdateAllergenBindingModel, Allergen>().ReverseMap();
         }
     }

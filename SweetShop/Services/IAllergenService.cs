@@ -13,6 +13,8 @@ namespace SweetShop.Services
 
         TEntity GetById<TEntity>(int id);
 
+        DetailsAlergenViewModel GetDetails(int id);
+
         Task CreateAsync(CreateAllergenBindingModel allergen);
 
         Task<bool> UpdateAsync(UpdateAllergenBindingModel allergen);

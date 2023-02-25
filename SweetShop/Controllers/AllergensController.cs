@@ -80,10 +80,10 @@ namespace SweetShop.Controllers
 
         [HttpGet]
         public IActionResult Details(int id) {
-            var allergen = this.allergenService.GetById<DetailsAlergenView>(id);
+            var allergen = this.allergenService.GetDetails(id);
             if (allergen == null)
             {
-                return this.RedirectToAction("Index");
+                return this.RedirectToAction("Index","Home");
             }
 
             return this.View(allergen);

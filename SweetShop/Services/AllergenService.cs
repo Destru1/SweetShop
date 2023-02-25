@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using SweetShop.Data;
 using SweetShop.Models;
 using SweetShop.ViewModels;
+using SweetShop.ViewModels.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,28 @@ namespace SweetShop.Services
             var allergenToReturn = this.Mapper.Map<TEntity>(allergen);
 
             return allergenToReturn;
+        }
+
+
+        public DetailsAlergenViewModel GetDetails(int id)
+        {
+            var allergen = this.DbContext.Allergens
+                .Where(x => x.Id == id)
+                .Select(a => new DetailsAlergenViewModel
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Products = a.Products
+                    .Select(a => new ProductIdNameViewModel
+                    {
+                        Id = a.Id,
+                        Name = a.Name,
+                    })
+                    .ToList()
+                })
+                .FirstOrDefault();
+
+            return allergen;
         }
 
 
@@ -82,5 +105,7 @@ namespace SweetShop.Services
             await this.DbContext.SaveChangesAsync();
             return true;
         }
+
+       
     }
 }
