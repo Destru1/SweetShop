@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SweetShop.DTOs;
 using SweetShop.Models;
 using SweetShop.ViewModels;
 
@@ -10,10 +11,10 @@ namespace SweetShop.MappingConfiguration
         {
             this.CreateMap<Allergen, AllAllergensViewModel>();
 
-            this.CreateMap<CreateAllergenBindingModel, Allergen>();
+            this.CreateMap<CreateAllergenDTO, Allergen>();
 
             this.CreateMap<Allergen, DetailsAlergenViewModel>();
-            this.CreateMap<UpdateAllergenBindingModel, Allergen>().ReverseMap();
+            this.CreateMap<UpdateAllergenDTO, Allergen>().ReverseMap();
         }
     }
 }

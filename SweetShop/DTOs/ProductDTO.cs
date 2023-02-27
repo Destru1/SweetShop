@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using SweetShop.ViewModels;
 
-namespace SweetShop.ViewModels.Product
+namespace SweetShop.DTOs
 {
-    public class ProductFormServiceModel
+    public class ProductDTO
     {
         public string Name { get; set; }
 

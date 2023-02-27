@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SweetShop.Data;
+using SweetShop.DTOs;
 using SweetShop.Models;
 using SweetShop.Services;
-using SweetShop.ViewModels.Product;
 
 namespace SweetShop.Controllers
 {
@@ -56,7 +56,7 @@ namespace SweetShop.Controllers
         {
             var allergens = this.allergenService.GetAll().ToList();
 
-            var productsModel = new ProductFormServiceModel()
+            var productsModel = new ProductDTO()
             {
                 Allergens = allergens,
             };
@@ -66,7 +66,7 @@ namespace SweetShop.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Create(ProductFormServiceModel product)
+        public async Task<IActionResult> Create(ProductDTO product)
         {
             if (!this.ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace SweetShop.Controllers
 
         public  IActionResult Update(int id)
         {
-           var productToUpdate = this.productService.GetById<ProductFormServiceModel>(id);
+           var productToUpdate = this.productService.GetById<ProductDTO>(id);
 
             if (!this.ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace SweetShop.Controllers
 
         [HttpPost]
 
-       public async Task<IActionResult> Update(int id,ProductFormServiceModel updateProduct)
+       public async Task<IActionResult> Update(int id,ProductDTO updateProduct)
         {
             if (!this.ModelState.IsValid)
             {

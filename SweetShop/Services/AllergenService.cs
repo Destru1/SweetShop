@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using SweetShop.Data;
+using SweetShop.DTOs;
 using SweetShop.Models;
 using SweetShop.ViewModels;
 using SweetShop.ViewModels.Product;
@@ -18,7 +19,7 @@ namespace SweetShop.Services
         {
         }
 
-        public async Task CreateAsync(CreateAllergenBindingModel allergen)
+        public async Task CreateAsync(CreateAllergenDTO allergen)
         {
             var allergenToAdd = this.Mapper.Map<Allergen>(allergen);
             allergenToAdd.CreatedOn = DateTime.UtcNow;
@@ -71,7 +72,7 @@ namespace SweetShop.Services
        => DbContext.Allergens.ProjectTo<AllAllergensViewModel>(this.Mapper.ConfigurationProvider).ToList();
 
 
-        public async Task<bool> UpdateAsync(UpdateAllergenBindingModel allergen)
+        public async Task<bool> UpdateAsync(UpdateAllergenDTO allergen)
         {
             var allergenToUpdate = this.DbContext.Allergens.Find(allergen.Id);
 

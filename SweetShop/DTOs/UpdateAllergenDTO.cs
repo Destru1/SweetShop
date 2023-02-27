@@ -1,6 +1,6 @@
-﻿namespace SweetShop.ViewModels
+﻿namespace SweetShop.DTOs
 {
-    public class UpdateAllergenBindingModel
+    public class UpdateAllergenDTO
     {
         public int Id { get; set; }
 

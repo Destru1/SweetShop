@@ -6,6 +6,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using SweetShop.Data;
+using SweetShop.DTOs;
 using SweetShop.Models;
 using SweetShop.ViewModels.Product;
 
@@ -40,7 +41,7 @@ namespace SweetShop.Services
 
 
 
-        public async Task CreateAsync(ProductFormServiceModel product)
+        public async Task CreateAsync(ProductDTO product)
         {
             var productToCreate = this.Mapper.Map<Product>(product);
             productToCreate.CreatedOn = DateTime.UtcNow;
@@ -65,7 +66,7 @@ namespace SweetShop.Services
         }
       
 
-        public async Task<bool> UpdateAsync(int id,ProductFormServiceModel product)
+        public async Task<bool> UpdateAsync(int id,ProductDTO product)
         {
             var productToUpdate = await this.DbContext.Products
                 .Include(x => x.ProductAllergen)

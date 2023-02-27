@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SweetShop.Data;
+using SweetShop.DTOs;
 using SweetShop.Models;
 using SweetShop.Services;
-using SweetShop.ViewModels;
 
 namespace SweetShop.Controllers
 {
@@ -38,7 +38,7 @@ namespace SweetShop.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Create(CreateAllergenBindingModel alleren)
+        public async Task<IActionResult> Create(CreateAllergenDTO alleren)
         {
             if (!this.ModelState.IsValid)
             {
@@ -54,7 +54,7 @@ namespace SweetShop.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            var allergenToUpdate = this.allergenService.GetById<UpdateAllergenBindingModel>(id);
+            var allergenToUpdate = this.allergenService.GetById<UpdateAllergenDTO>(id);
             if (!this.ModelState.IsValid)
             {
                 return this.RedirectToAction(nameof(this.Index));
@@ -63,7 +63,7 @@ namespace SweetShop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(UpdateAllergenBindingModel updateAllergen)
+        public async Task<IActionResult> Update(UpdateAllergenDTO updateAllergen)
         {
             if (!this.ModelState.IsValid)
             {

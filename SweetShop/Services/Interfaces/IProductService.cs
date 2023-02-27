@@ -1,4 +1,5 @@
-﻿using SweetShop.Models;
+﻿using SweetShop.DTOs;
+using SweetShop.Models;
 using SweetShop.ViewModels.Product;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,8 +13,8 @@ namespace SweetShop.Services
         IEnumerable<DetailProductViewModel> GetAll();
         TEntity GetById<TEntity>(int id);
 
-        Task CreateAsync(ProductFormServiceModel product);
-        Task<bool> UpdateAsync(int id, ProductFormServiceModel product);
+        Task CreateAsync(ProductDTO product);
+        Task<bool> UpdateAsync(int id, ProductDTO product);
 
         Task<bool> DeleteAsync(int id);
     }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SweetShop.ViewModels
+namespace SweetShop.DTOs
 {
-    public class CreateAllergenBindingModel
+    public class CreateAllergenDTO
     {
         public int Id { get; set; }
 

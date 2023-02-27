@@ -1,4 +1,5 @@
-﻿using SweetShop.ViewModels;
+﻿using SweetShop.DTOs;
+using SweetShop.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace SweetShop.Services
 
         DetailsAlergenViewModel GetDetails(int id);
 
-        Task CreateAsync(CreateAllergenBindingModel allergen);
+        Task CreateAsync(CreateAllergenDTO allergen);
 
-        Task<bool> UpdateAsync(UpdateAllergenBindingModel allergen);
+        Task<bool> UpdateAsync(UpdateAllergenDTO allergen);
 
         Task<bool> DeleteAsync(int id);
     }
