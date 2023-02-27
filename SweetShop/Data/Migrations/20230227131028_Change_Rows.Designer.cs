@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SweetShop.Data;
 
 namespace SweetShop.Data.Migrations
 {
     [DbContext(typeof(SweetShopDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230227131028_Change_Rows")]
+    partial class Change_Rows
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -285,40 +287,6 @@ namespace SweetShop.Data.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("SweetShop.Models.ProductAllergen", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AllergenId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AllergenId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductAllergens");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -368,35 +336,6 @@ namespace SweetShop.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("SweetShop.Models.ProductAllergen", b =>
-                {
-                    b.HasOne("SweetShop.Models.Allergen", "Allergen")
-                        .WithMany("ProductAllergen")
-                        .HasForeignKey("AllergenId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SweetShop.Models.Product", "Product")
-                        .WithMany("ProductAllergen")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Allergen");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("SweetShop.Models.Allergen", b =>
-                {
-                    b.Navigation("ProductAllergen");
-                });
-
-            modelBuilder.Entity("SweetShop.Models.Product", b =>
-                {
-                    b.Navigation("ProductAllergen");
                 });
 #pragma warning restore 612, 618
         }

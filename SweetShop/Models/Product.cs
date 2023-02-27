@@ -1,7 +1,14 @@
-﻿namespace SweetShop.Models
+﻿using System.Collections.Generic;
+
+namespace SweetShop.Models
 {
     public class Product : BaseModel
     {
+
+        public Product()
+        {
+            this.ProductAllergen = new HashSet<ProductAllergen>();
+        }
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -10,8 +17,8 @@
 
         public decimal Price { get; set; }
 
-        public int AllergenId { get; set; }
+        public ICollection<ProductAllergen> ProductAllergen { get; set; }
 
-        public Allergen Allergens { get; set; }
+
     }
 }
