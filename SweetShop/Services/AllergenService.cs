@@ -50,11 +50,13 @@ namespace SweetShop.Services
                 {
                     Id = a.Id,
                     Name = a.Name,
-                    Products = a.Products
+                    CreatedOn= a.CreatedOn,
+                    ModifiedOn = a.ModifiedOn,
+                    Products = a.ProductAllergen
                     .Select(a => new ProductIdNameViewModel
                     {
-                        Id = a.Id,
-                        Name = a.Name,
+                        Id = a.ProductId,
+                        Name = a.Product.Name,
                     })
                     .ToList()
                 })
@@ -68,7 +70,7 @@ namespace SweetShop.Services
         public IEnumerable<AllAllergensViewModel> GetAll()
        => DbContext.Allergens.ProjectTo<AllAllergensViewModel>(this.Mapper.ConfigurationProvider).ToList();
 
-     
+
         public async Task<bool> UpdateAsync(UpdateAllergenBindingModel allergen)
         {
             var allergenToUpdate = this.DbContext.Allergens.Find(allergen.Id);
@@ -77,7 +79,7 @@ namespace SweetShop.Services
             {
                 return false;
             }
-            this.Mapper.Map(allergen,allergenToUpdate);
+            this.Mapper.Map(allergen, allergenToUpdate);
 
             allergenToUpdate.ModifiedOn = DateTime.UtcNow;
 
@@ -99,13 +101,13 @@ namespace SweetShop.Services
             }
 
             allergen.IsDeleted = true;
-            allergen.DeletedOn= DateTime.UtcNow;
+            allergen.DeletedOn = DateTime.UtcNow;
 
             this.DbContext.Remove(allergen);
             await this.DbContext.SaveChangesAsync();
             return true;
         }
 
-       
+
     }
 }

@@ -46,6 +46,7 @@ namespace SweetShop.Controllers
             }
 
             await this.allergenService.CreateAsync(alleren);
+          
 
             return this.RedirectToAction("Index");
         }
