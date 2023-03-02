@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SweetShop.Data;
+using SweetShop.Models;
 using SweetShop.Services;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
+using static SweetShop.Seeders.Launcher;
 
 namespace SweetShop
 {
@@ -35,10 +37,13 @@ namespace SweetShop
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<SweetShopDbContext>();
             services.AddControllersWithViews();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            
 
             services.AddTransient<IAllergenService, AllergenService>();
             services.AddTransient<IProductService, ProductService>();
@@ -51,6 +56,13 @@ namespace SweetShop
             {
                 app.UseDeveloperExceptionPage();
                 app.UseMigrationsEndPoint();
+                using(var serviceScope = app.ApplicationServices.CreateScope())
+                {
+                    var dbContext = serviceScope.ServiceProvider.GetRequiredService<SweetShopDbContext>();
+                    dbContext.Database.Migrate();
+
+                    
+                }
             }
             else
             {
@@ -58,6 +70,7 @@ namespace SweetShop
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+           SeedDataBase(app).GetAwaiter().GetResult();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
