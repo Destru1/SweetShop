@@ -29,8 +29,31 @@ namespace SweetShop.Seeder
                 CreatedOn = DateTime.UtcNow,
             };
 
+            var distributor = new ApplicationUser
+            {
+                FirstName = "Distributor",
+                LastName = "Distributorov",
+                Email = UserConstants.DISTRIBUTOR_EMAIL,
+                UserName = UserConstants.DISTRIBUTOR_EMAIL,
+                CreatedOn = DateTime.UtcNow,
+            };
+               var client = new ApplicationUser
+            {
+                FirstName = "Client",
+                LastName = "Clientov",
+                Email = UserConstants.CLIENT_EMAIL,
+                UserName = UserConstants.CLIENT_EMAIL,
+                CreatedOn = DateTime.UtcNow,
+            };
+
             await userManager.CreateAsync(admin,UserConstants.ADMIN_PASSWORD);
             await userManager.AddToRoleAsync(admin, RolesConstants.ADMIN_ROLE);
+
+            await userManager.CreateAsync(distributor, UserConstants.DISTRIBUTOR_PASSWORD);
+            await userManager.AddToRoleAsync(distributor,RolesConstants.DISTRIBUTOR_ROLE);
+
+            await userManager.CreateAsync(client, UserConstants.CLIENT_PASSWORD);
+            await userManager.AddToRoleAsync(client, RolesConstants.CLIENT_ROLE);
         }
     }
 }

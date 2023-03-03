@@ -8,5 +8,8 @@
         
         public const string CLIENT_EMAIL = "Client@Client.com";
         public const string CLIENT_PASSWORD = "Client@Client.com123";
+
+        public const string DISTRIBUTOR_EMAIL = "Distributor@mail.com";
+        public const string DISTRIBUTOR_PASSWORD = "Distributor@mail.com123";
     }
 }
