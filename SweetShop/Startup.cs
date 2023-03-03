@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using SweetShop.Data;
 using SweetShop.Models;
 using SweetShop.Services;
+using SweetShop.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,10 +44,7 @@ namespace SweetShop
             services.AddControllersWithViews();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            
-
-            services.AddTransient<IAllergenService, AllergenService>();
-            services.AddTransient<IProductService, ProductService>();
+            RegisterServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,12 +54,10 @@ namespace SweetShop
             {
                 app.UseDeveloperExceptionPage();
                 app.UseMigrationsEndPoint();
-                using(var serviceScope = app.ApplicationServices.CreateScope())
+                using (var serviceScope = app.ApplicationServices.CreateScope())
                 {
                     var dbContext = serviceScope.ServiceProvider.GetRequiredService<SweetShopDbContext>();
                     dbContext.Database.Migrate();
-
-                    
                 }
             }
             else
@@ -70,7 +66,7 @@ namespace SweetShop
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-           SeedDataBase(app).GetAwaiter().GetResult();
+            SeedDataBase(app).GetAwaiter().GetResult();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -82,10 +78,21 @@ namespace SweetShop
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
+        private static void RegisterServices(IServiceCollection services)
+        {
+            services.AddTransient<IAllergenService, AllergenService>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IAdministratorService, AdministratorService>();
+        }
     }
+
 }
