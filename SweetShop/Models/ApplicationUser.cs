@@ -12,6 +12,7 @@ namespace SweetShop.Models
         {
             this.UserRoles = new HashSet<ApplicationUserRole>();
             this.Distributors= new HashSet<Distributor>();
+            this.Clients= new HashSet<Client>();
         }
         [Required]
         public string FirstName { get; set; }
@@ -24,5 +25,7 @@ namespace SweetShop.Models
         public ICollection<ApplicationUserRole> UserRoles { get; set; }
 
         public virtual ICollection<Distributor> Distributors { get; set; }
+
+        public virtual ICollection<Client> Clients { get; set; }
     }
 }

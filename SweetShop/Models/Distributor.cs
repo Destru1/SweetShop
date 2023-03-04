@@ -1,10 +1,15 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SweetShop.Models
 {
     public class Distributor : BaseModel
     {
+        public Distributor()
+        {
+            this.Clients = new HashSet<Client>();
+        }
         public string Name { get; set; }
 
         public string City { get; set; }
@@ -17,5 +22,7 @@ namespace SweetShop.Models
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
+
+        public virtual ICollection<Client> Clients { get; set; }
     }
 }

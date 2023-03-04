@@ -21,6 +21,9 @@ namespace SweetShop.Data
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Distributor> Distributors { get; set; }
+
+        public DbSet<Client> Clients { get; set; }
+
         public DbSet<ProductAllergen> ProductAllergens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
