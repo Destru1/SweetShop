@@ -98,7 +98,7 @@ namespace SweetShop.Areas.Identity.Pages.Account
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
                     Email = Input.Email,
-                    UserName = Input.Email,
+                    UserName = Input.Username,
                     CreatedOn = DateTime.UtcNow
                 };
                 var result = await userManager.CreateAsync(user, Input.Password);

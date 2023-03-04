@@ -11,6 +11,7 @@ namespace SweetShop.Models
         public ApplicationUser()
         {
             this.UserRoles = new HashSet<ApplicationUserRole>();
+            this.Distributors= new HashSet<Distributor>();
         }
         [Required]
         public string FirstName { get; set; }
@@ -21,5 +22,7 @@ namespace SweetShop.Models
         public DateTime CreatedOn { get; set; }
 
         public ICollection<ApplicationUserRole> UserRoles { get; set; }
+
+        public virtual ICollection<Distributor> Distributors { get; set; }
     }
 }

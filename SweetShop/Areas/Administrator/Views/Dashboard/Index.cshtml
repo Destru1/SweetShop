@@ -28,12 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.CreatedOn)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.RoleName)
             </th>
-
-
             <th></th>
         </tr>
     </thead>
@@ -59,7 +56,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.RoleName)
                 </td>
-                <td class>
+                <td>
 
                     <form asp-action="Promote" asp-route-id="@item.Id" method="post">
                         <button class=" btn btn-success w-100 text-white">Promote</button>
