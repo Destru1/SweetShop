@@ -9,6 +9,7 @@ namespace SweetShop.Services.Interfaces
     public interface IDistributorService
     {
         IEnumerable<DistributorIndexViewModel> GetAll();
+
         TEntity GetById<TEntity>(int id);
 
         DetailsDistributorViewModel GetDetails(int id);
