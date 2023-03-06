@@ -80,6 +80,7 @@ namespace SweetShop.Services
                     City = a.City,
                     Address = a.Address,
                     PhoneNumber = a.PhoneNumber,
+                    PersonEntity= a.PersonEntity,
                     UserId = a.User.Email,
                     DistributorId = a.Distributor.Name,
                     CreatedOn = a.CreatedOn,
@@ -102,6 +103,7 @@ namespace SweetShop.Services
             clientToCreate.City = client.City;
             clientToCreate.Address = client.Address;
             clientToCreate.PhoneNumber = client.PhoneNumber;
+            clientToCreate.PersonEntity= client.PersonEntity;
             clientToCreate.UserId = client.UserId;
             clientToCreate.DistributorId = client.DistributorId;
             clientToCreate.CreatedOn = DateTime.UtcNow;
@@ -125,6 +127,7 @@ namespace SweetShop.Services
             clientToUpdate.City = client.City;
             clientToUpdate.Address = client.Address;
             clientToUpdate.PhoneNumber = client.PhoneNumber;
+            clientToUpdate.PersonEntity = client.PersonEntity;
             clientToUpdate.UserId = client.UserId;
             clientToUpdate.DistributorId = client.DistributorId;
             clientToUpdate.ModifiedOn = DateTime.UtcNow;

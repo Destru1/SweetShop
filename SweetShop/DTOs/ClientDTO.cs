@@ -15,10 +15,9 @@ namespace SweetShop.DTOs
 
         public string Address { get; set; }
 
-       
         public string PhoneNumber { get; set; }
 
-        public string PersonEntity { get; set; }
+        public PersonEntity PersonEntity { get; set; }
 
         public int DistributorId { get; set; }
 
