@@ -1,10 +1,18 @@
 ﻿using SweetShop.Models.Enums;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SweetShop.Models
 {
     public class Client : BaseModel
     {
+
+        public Client()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -25,5 +33,8 @@ namespace SweetShop.Models
         public virtual Distributor Distributor { get; set; }
 
         public virtual ApplicationUser User { get; set; }
+
+
+        public ICollection<Order> Orders { get; set; }
     }
 }

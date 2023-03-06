@@ -8,6 +8,7 @@ namespace SweetShop.Models
         public Product()
         {
             this.ProductAllergen = new HashSet<ProductAllergen>();
+            this.Orders = new HashSet<Order>();
         }
         public string Name { get; set; }
 
@@ -18,6 +19,8 @@ namespace SweetShop.Models
         public decimal Price { get; set; }
 
         public ICollection<ProductAllergen> ProductAllergen { get; set; }
+
+        public ICollection<Order> Orders { get; set; }
 
 
     }

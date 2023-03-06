@@ -24,6 +24,8 @@ namespace SweetShop.Data
 
         public DbSet<Client> Clients { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
         public DbSet<ProductAllergen> ProductAllergens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
