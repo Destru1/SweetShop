@@ -6,6 +6,8 @@ namespace SweetShop.ViewModels.Client
 {
     public class DetailClientViewModel
     {
+        public int Id { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -18,7 +20,7 @@ namespace SweetShop.ViewModels.Client
 
         public PersonEntity PersonEntity { get; set; }
 
-        public int DistributorId { get; set; }
+        public string DistributorId { get; set; }
 
         public string UserId { get; set; }
 

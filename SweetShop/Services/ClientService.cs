@@ -9,6 +9,7 @@ using SweetShop.DTOs;
 using SweetShop.Models;
 using SweetShop.Services.Interfaces;
 using SweetShop.ViewModels.Client;
+using SweetShop.ViewModels.Distributor;
 using SweetShop.ViewModels.User;
 
 namespace SweetShop.Services
@@ -56,18 +57,31 @@ namespace SweetShop.Services
             return users;
         }
 
+        public IEnumerable<DistributorIndexViewModel> GetDistributors()
+        {
+            IEnumerable<DistributorIndexViewModel> distributors = this.DbContext.Distributors
+                .Select(x => new DistributorIndexViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                })
+                .ToList();
+
+            return distributors;
+        }
         public DetailClientViewModel GetDetails(int id)
         {
             var client = this.DbContext.Clients.Where(x => x.Id == id)
                 .Select(a => new DetailClientViewModel
                 {
+                    Id = a.Id,
                     FirstName = a.FirstName,
                     LastName = a.LastName,
                     City = a.City,
                     Address = a.Address,
                     PhoneNumber = a.PhoneNumber,
                     UserId = a.User.Email,
-                    DistributorId = a.Distributor.Id,
+                    DistributorId = a.Distributor.Name,
                     CreatedOn = a.CreatedOn,
                     ModifiedOn = a.ModifiedOn,
                 })
@@ -77,18 +91,18 @@ namespace SweetShop.Services
             return client;
         }
 
-       
+
 
         public async Task CreateAsync(ClientDTO client)
         {
             var clientToCreate = new Client();
 
-            clientToCreate.FirstName= client.FirstName;
-            clientToCreate.LastName= client.LastName;
-            clientToCreate.City= client.City;
-            clientToCreate.Address= client.Address;
-            clientToCreate.PhoneNumber= client.PhoneNumber;
-            clientToCreate.UserId= client.UserId;
+            clientToCreate.FirstName = client.FirstName;
+            clientToCreate.LastName = client.LastName;
+            clientToCreate.City = client.City;
+            clientToCreate.Address = client.Address;
+            clientToCreate.PhoneNumber = client.PhoneNumber;
+            clientToCreate.UserId = client.UserId;
             clientToCreate.DistributorId = client.DistributorId;
             clientToCreate.CreatedOn = DateTime.UtcNow;
 
@@ -101,7 +115,7 @@ namespace SweetShop.Services
         {
             Client clientToUpdate = this.DbContext.Clients.Find(client.Id);
 
-            if(client == null)
+            if (client == null)
             {
                 return false;
             }
@@ -135,5 +149,7 @@ namespace SweetShop.Services
 
             return true;
         }
+
+
     }
 }

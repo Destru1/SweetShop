@@ -1,5 +1,6 @@
 ﻿using SweetShop.DTOs;
 using SweetShop.ViewModels.Client;
+using SweetShop.ViewModels.Distributor;
 using SweetShop.ViewModels.User;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace SweetShop.Services.Interfaces
         DetailClientViewModel GetDetails(int id);
 
         IEnumerable<UserViewModel> GetUser();
+
+        IEnumerable<DistributorIndexViewModel> GetDistributors();
 
         Task CreateAsync(ClientDTO client);
 

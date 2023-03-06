@@ -1,0 +1,128 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using SweetShop.Data;
+using SweetShop.DTOs;
+using SweetShop.Models;
+using SweetShop.Services.Interfaces;
+using SweetShop.ViewModels.Distributor;
+using SweetShop.ViewModels.User;
+
+namespace SweetShop.Controllers
+{
+    public class ClientsController : Controller
+    {
+        private readonly IClientService clientService;
+
+        public ClientsController(IClientService clientService)
+        {
+            this.clientService = clientService;
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var clients = this.clientService.GetAll();
+
+            return this.View(clients);
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var client = this.clientService.GetDetails(id);
+
+            if (client == null)
+            {
+                return this.RedirectToAction("Index");
+            }
+
+            return this.View(client);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            IEnumerable<UserViewModel> users = this.clientService.GetUser();
+            IEnumerable<DistributorIndexViewModel> distributors = this.clientService.GetDistributors();
+
+
+            this.ViewBag.Users = users;
+            this.ViewBag.Distributors = distributors;
+
+            return this.View();
+        }
+
+
+        [HttpPost]
+
+        public async Task<IActionResult> Create(ClientDTO client)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(client);
+            }
+
+            await this.clientService.CreateAsync(client);
+
+            return this.RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var clientToUpdate = this.clientService.GetById<ClientDTO>(id);
+
+            IEnumerable<UserViewModel> users = this.clientService.GetUser();
+            IEnumerable<DistributorIndexViewModel> distributors = this.clientService.GetDistributors();
+
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.RedirectToAction("Index");
+            }
+
+            this.ViewBag.Users = users;
+            this.ViewBag.Distributors = distributors;
+
+            return this.View(clientToUpdate);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Update(int id, ClientDTO updateClient)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(updateClient);
+            }
+
+            var isUpdated = await this.clientService.UpdateAsync(id, updateClient);
+
+            if (!isUpdated)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+
+            return this.RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var isDeleted = await this.clientService.DeleteAsync(id);
+
+            if (!isDeleted)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+            return this.RedirectToAction("Index");
+        }
+
+
+    }
+}
