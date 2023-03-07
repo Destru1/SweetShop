@@ -4,9 +4,9 @@
     {
         public int Id { get; set; }
 
-        public string Client { get; set; }
+        public string ClientId { get; set; }
 
-        public string Product { get; set; }
+        public string ProductId { get; set; }
 
         public int Quantity { get; set; }
     }
