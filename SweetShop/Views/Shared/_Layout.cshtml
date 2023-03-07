@@ -1,10 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using SweetShop.Constants;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SweetShop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/toastr/toastr.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -60,8 +62,26 @@
             &copy; 2023 - SweetShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+    <script type="text/javascript">
+		document.querySelector('body').onload = function checkIfNotificationMessageIsGiven() {
+			if ('@this.TempData[NotificationsConstants.SUCCESS_NOTIFICATION]') {
+				toastr.success('@this.TempData[NotificationsConstants.SUCCESS_NOTIFICATION]');
+			}
+			if ('@this.TempData[NotificationsConstants.ERROR_NOTIFICATION]') {
+				toastr.error('@this.TempData[NotificationsConstants.ERROR_NOTIFICATION]');
+			}
+			if ('@this.TempData[NotificationsConstants.WARNING_NOTIFICATION]') {
+				toastr.warning('@this.TempData[NotificationsConstants.WARNING_NOTIFICATION]');
+			}
+			if ('@this.TempData[NotificationsConstants.INFORMATION_NOTIFICATION]') {
+				toastr.info('@this.TempData[NotificationsConstants.INFORMATION_NOTIFICATION]');
+			}
+		};
+	</script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
