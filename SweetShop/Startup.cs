@@ -94,6 +94,7 @@ namespace SweetShop
             services.AddTransient<IDistributorService, DistributorService>();
             services.AddTransient<IAdministratorService, AdministratorService>();
             services.AddTransient<IClientService, ClientService>();
+            services.AddTransient<IOrderService,OrderService>();
         }
     }
 
