@@ -16,8 +16,6 @@ namespace SweetShop.MappingConfiguration
                 .ForMember(vm => vm.ProductId, mf => mf.MapFrom(o => o.Product.Name))
                 .ForMember(vm => vm.ClientId, mf => mf.MapFrom(m => m.Client.FirstName)).ReverseMap();
 
-           // this.CreateMap<Order, OrderIndexViewModel>()
-           //.ForMember(vm => vm.ClientId, mf => mf.MapFrom(map => map.Client.FirstName)).ReverseMap();
         }
     }
 }
