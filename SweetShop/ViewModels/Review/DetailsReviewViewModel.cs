@@ -6,9 +6,9 @@ namespace SweetShop.ViewModels.Review
     {
         public int Id { get; set; }
 
-        public int ClientId { get; set; }
+        public string Client { get; set; }
 
-        public int ProductId { get; set; }
+        public string Product { get; set; }
 
         public string Description { get; set; }
 
@@ -16,7 +16,7 @@ namespace SweetShop.ViewModels.Review
 
         public DateTime CreatedOn { get; set; }
 
-        public DateTime ModifiedOn { get; set;}
+        public DateTime? ModifiedOn { get; set;}
 
     }
 }

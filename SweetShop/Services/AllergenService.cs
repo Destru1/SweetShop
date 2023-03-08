@@ -19,14 +19,15 @@ namespace SweetShop.Services
         {
         }
 
-        public async Task CreateAsync(CreateAllergenDTO allergen)
-        {
-            var allergenToAdd = this.Mapper.Map<Allergen>(allergen);
-            allergenToAdd.CreatedOn = DateTime.UtcNow;
 
-            await this.DbContext.Allergens.AddAsync(allergenToAdd);
-            await this.DbContext.SaveChangesAsync();
+        public IEnumerable<AllAllergensViewModel> GetAll()
+        {
+            var allergens = this.DbContext.Allergens.ProjectTo<AllAllergensViewModel>(this.Mapper.ConfigurationProvider).ToList();
+
+            return allergens;
         }
+      
+       
 
 
         public TEntity GetById<TEntity>(int id)
@@ -67,10 +68,14 @@ namespace SweetShop.Services
         }
 
 
+        public async Task CreateAsync(CreateAllergenDTO allergen)
+        {
+            var allergenToAdd = this.Mapper.Map<Allergen>(allergen);
+            allergenToAdd.CreatedOn = DateTime.UtcNow;
 
-        public IEnumerable<AllAllergensViewModel> GetAll()
-       => DbContext.Allergens.ProjectTo<AllAllergensViewModel>(this.Mapper.ConfigurationProvider).ToList();
-
+            await this.DbContext.Allergens.AddAsync(allergenToAdd);
+            await this.DbContext.SaveChangesAsync();
+        }
 
         public async Task<bool> UpdateAsync(UpdateAllergenDTO allergen)
         {
