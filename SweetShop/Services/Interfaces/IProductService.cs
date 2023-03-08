@@ -13,6 +13,8 @@ namespace SweetShop.Services
 
         TEntity GetById<TEntity>(int id);
 
+        DetailProductViewModel GetDetails(int id);
+
         Task CreateAsync(ProductDTO product);
 
         Task<bool> UpdateAsync(int id, ProductDTO product);

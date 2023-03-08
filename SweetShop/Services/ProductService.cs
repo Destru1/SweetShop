@@ -39,7 +39,12 @@ namespace SweetShop.Services
             return productToReturn;
         }
 
+        public DetailProductViewModel GetDetails(int id)
+        {
+            var product = this.DbContext.Products.ProjectTo<DetailProductViewModel>(this.Mapper.ConfigurationProvider).ToList().FirstOrDefault();
 
+            return product;
+        }
 
         public async Task CreateAsync(ProductDTO product)
         {
@@ -123,5 +128,7 @@ namespace SweetShop.Services
 
             return true;
         }
+
+       
     }
 }

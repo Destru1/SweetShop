@@ -34,21 +34,16 @@ namespace SweetShop.Controllers
         }
 
         // GET: Products/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var product = this.productService.GetDetails(id);
 
-            var product = await dbContext.Products
-                .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
-                return NotFound();
+                return this.RedirectToAction("Index");
             }
+            return this.View(product);
 
-            return View(product);
         }
 
       

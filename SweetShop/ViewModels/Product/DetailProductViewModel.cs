@@ -1,4 +1,6 @@
-﻿namespace SweetShop.ViewModels.Product
+﻿using System;
+
+namespace SweetShop.ViewModels.Product
 {
     public class DetailProductViewModel
     {
@@ -11,6 +13,9 @@
 
         public decimal Price { get; set; }
 
-        
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime ModifiedOn { get; set; }
+
     }
 }
