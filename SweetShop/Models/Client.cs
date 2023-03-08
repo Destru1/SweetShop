@@ -11,6 +11,7 @@ namespace SweetShop.Models
         public Client()
         {
             this.Orders = new HashSet<Order>();
+            this.Reviews = new HashSet<Review>();
         }
 
         public string FirstName { get; set; }
@@ -36,5 +37,7 @@ namespace SweetShop.Models
 
 
         public ICollection<Order> Orders { get; set; }
+
+        public ICollection<Review> Reviews { get; set; }
     }
 }

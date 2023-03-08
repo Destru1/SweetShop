@@ -9,6 +9,7 @@ namespace SweetShop.Models
         {
             this.ProductAllergen = new HashSet<ProductAllergen>();
             this.Orders = new HashSet<Order>();
+            this.Reviews = new HashSet<Review>();
         }
         public string Name { get; set; }
 
@@ -21,6 +22,8 @@ namespace SweetShop.Models
         public ICollection<ProductAllergen> ProductAllergen { get; set; }
 
         public ICollection<Order> Orders { get; set; }
+
+        public ICollection<Review> Reviews { get; set; }
 
 
     }
