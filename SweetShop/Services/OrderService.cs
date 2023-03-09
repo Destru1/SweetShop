@@ -23,7 +23,16 @@ namespace SweetShop.Services
 
         public IEnumerable<OrderIndexViewModel> GetAll()
         {
-            var orders = this.DbContext.Orders.ProjectTo<OrderIndexViewModel>(this.Mapper.ConfigurationProvider).ToList();
+            var orders = this.DbContext.Orders.Select(x => new OrderIndexViewModel
+            {
+                Id = x.Id,
+                ClientId = x.Client.FirstName,
+                ProductId = x.Product.Name,
+                Quantity = x.Quantity,
+                Total = x.Quantity * x.Product.Price
+
+
+            }).ToList();
 
             return orders;
         }
