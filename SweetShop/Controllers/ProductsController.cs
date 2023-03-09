@@ -25,7 +25,7 @@ namespace SweetShop.Controllers
             this.allergenService = allergenService;
         }
 
-        // GET: Products
+
         public IActionResult Index()
         {
             var products = this.productService.GetAll();
@@ -33,7 +33,7 @@ namespace SweetShop.Controllers
             return this.View(products);
         }
 
-        // GET: Products/Details/5
+
         public IActionResult Details(int id)
         {
             var product = this.productService.GetDetails(id);
@@ -46,7 +46,7 @@ namespace SweetShop.Controllers
 
         }
 
-      
+
         public IActionResult Create()
         {
             var allergens = this.allergenService.GetAll().ToList();
@@ -74,9 +74,9 @@ namespace SweetShop.Controllers
         }
 
 
-        public  IActionResult Update(int id)
+        public IActionResult Update(int id)
         {
-           var productToUpdate = this.productService.GetById<ProductDTO>(id);
+            var productToUpdate = this.productService.GetById<ProductDTO>(id);
 
             if (!this.ModelState.IsValid)
             {
@@ -88,13 +88,13 @@ namespace SweetShop.Controllers
 
         [HttpPost]
 
-       public async Task<IActionResult> Update(int id,ProductDTO updateProduct)
+        public async Task<IActionResult> Update(int id, ProductDTO updateProduct)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.View(updateProduct);
             }
-            var isUpdated = await this.productService.UpdateAsync(id,updateProduct);
+            var isUpdated = await this.productService.UpdateAsync(id, updateProduct);
 
             if (!isUpdated)
             {
@@ -117,6 +117,6 @@ namespace SweetShop.Controllers
 
 
 
-       
+
     }
 }

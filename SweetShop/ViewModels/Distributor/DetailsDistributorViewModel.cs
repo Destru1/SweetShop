@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SweetShop.ViewModels.Client;
+using System;
+using System.Collections.Generic;
 
 namespace SweetShop.ViewModels.Distributor
 {
@@ -19,5 +21,9 @@ namespace SweetShop.ViewModels.Distributor
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
+
+        public int ClientId { get; set; }
+
+        public IEnumerable<ClientIndexViewModel> Clients { get; set; }
     }
 }

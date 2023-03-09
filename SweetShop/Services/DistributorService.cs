@@ -9,6 +9,7 @@ using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
 using SweetShop.Services.Interfaces;
+using SweetShop.ViewModels.Client;
 using SweetShop.ViewModels.Distributor;
 using SweetShop.ViewModels.User;
 
@@ -71,6 +72,14 @@ namespace SweetShop.Services
                     User = a.User.Email,
                     CreatedOn = a.CreatedOn,
                     ModifiedOn = a.ModifiedOn,
+                    Clients = a.Clients
+                    .Select(x => new ClientIndexViewModel
+                    {
+                        Id = x.Id,
+                        FirstName = x.FirstName,
+                        LastName = x.LastName,
+                    })
+                    .ToList()
                 })
                 .FirstOrDefault();
 
