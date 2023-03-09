@@ -12,6 +12,8 @@ using SweetShop.Services.Interfaces;
 using SweetShop.ViewModels.Client;
 using SweetShop.ViewModels.Product;
 
+using static SweetShop.Constants.NotificationsConstants;
+
 namespace SweetShop.Controllers
 {
     public class ReviewsController : Controller
@@ -67,6 +69,8 @@ namespace SweetShop.Controllers
 
             await this.reviewService.CreateAsync(review);
 
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_ADDED_REVIEW);
+
             return this.RedirectToAction("Index");
         }
 
@@ -115,8 +119,11 @@ namespace SweetShop.Controllers
 
             if (!isDeleted)
             {
+
                 return this.RedirectToAction("Index", "Home");
             }
+
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_DELETED_REVIEW);
 
             return this.RedirectToAction("Index");
         }

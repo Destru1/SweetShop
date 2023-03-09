@@ -12,6 +12,8 @@ using SweetShop.Services.Interfaces;
 using SweetShop.ViewModels.Client;
 using SweetShop.ViewModels.Product;
 
+using static SweetShop.Constants.NotificationsConstants;
+
 namespace SweetShop.Controllers
 {
     public class OrdersController : Controller
@@ -67,6 +69,8 @@ namespace SweetShop.Controllers
 
             await this.orderService.CreateAsync(order);
 
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_ADDED_ORDER);
+
             return this.RedirectToAction("Index");
         }
 
@@ -104,6 +108,7 @@ namespace SweetShop.Controllers
             {
                 return this.RedirectToAction("Index", "Home");
             }
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_UPDATED_ORDER);
 
             return this.RedirectToAction("Index");
         }
@@ -117,6 +122,8 @@ namespace SweetShop.Controllers
             {
                 return this.RedirectToAction("Index", "Home");
             }
+
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_DELETED_ORDER);
 
             return this.RedirectToAction("Index");
         }

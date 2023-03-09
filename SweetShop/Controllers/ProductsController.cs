@@ -10,6 +10,8 @@ using SweetShop.DTOs;
 using SweetShop.Models;
 using SweetShop.Services;
 
+using static SweetShop.Constants.NotificationsConstants;
+
 namespace SweetShop.Controllers
 {
     public class ProductsController : Controller
@@ -70,6 +72,8 @@ namespace SweetShop.Controllers
             }
             await this.productService.CreateAsync(product);
 
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_ADDED_PRODUCT);
+
             return this.RedirectToAction("Index");
         }
 
@@ -100,6 +104,9 @@ namespace SweetShop.Controllers
             {
                 return this.RedirectToAction("Index", "Home");
             }
+
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_UPDATED_PRODUCT);
+
             return this.RedirectToAction("Index");
         }
 
@@ -111,6 +118,8 @@ namespace SweetShop.Controllers
             {
                 return this.RedirectToAction("Index", "Home");
             }
+
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_DELETED_PRODUCT);
 
             return this.RedirectToAction("Index");
         }

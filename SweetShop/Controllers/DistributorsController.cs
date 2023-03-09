@@ -12,6 +12,8 @@ using SweetShop.Services.Interfaces;
 using SweetShop.ViewModels.Distributor;
 using SweetShop.ViewModels.User;
 
+using static SweetShop.Constants.NotificationsConstants;
+
 namespace SweetShop.Controllers
 {
     public class DistributorsController : Controller
@@ -50,6 +52,8 @@ namespace SweetShop.Controllers
             }
             await this.distributorService.CreateAsync(distributor);
 
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_ADDED_DISTRIBUTOR);
+
             return this.RedirectToAction("Index");
         }
 
@@ -85,6 +89,8 @@ namespace SweetShop.Controllers
 
             }
 
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_UPDATED_DISTRIBUTOR);
+
             return this.RedirectToAction("Index");
         }
 
@@ -109,6 +115,9 @@ namespace SweetShop.Controllers
             {
                 return this.RedirectToAction("Index", "Home");
             }
+
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_DELETED_DISTRIBUTOR);
+
             return this.RedirectToAction("Index");
         }
     }

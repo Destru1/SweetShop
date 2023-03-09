@@ -10,6 +10,8 @@ using SweetShop.DTOs;
 using SweetShop.Models;
 using SweetShop.Services;
 
+using static SweetShop.Constants.NotificationsConstants;
+
 namespace SweetShop.Controllers
 {
     public class AllergensController : Controller
@@ -46,7 +48,8 @@ namespace SweetShop.Controllers
             }
 
             await this.allergenService.CreateAsync(alleren);
-          
+
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_ADDED_ALLERGEN);
 
             return this.RedirectToAction("Index");
         }
@@ -75,7 +78,7 @@ namespace SweetShop.Controllers
             {
                 this.RedirectToAction("Index", "Home");
             }
-
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_UPDATED_ALLERGEN);
             return this.RedirectToAction("Index");
         }
 
@@ -99,6 +102,8 @@ namespace SweetShop.Controllers
             {
                 return this.RedirectToAction("Index", "Home");
             }
+
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_DELETED_ALLERGEN);
 
             return this.RedirectToAction(nameof(this.Index));
         }
