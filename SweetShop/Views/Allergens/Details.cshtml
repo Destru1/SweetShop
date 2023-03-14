@@ -4,6 +4,10 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Styles{
+    <link rel="stylesheet" href="~/css/alergen.css" />
+}
+
 
 <h1>Details</h1>
 
@@ -11,47 +15,47 @@
     <h4>Allergen</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedOn)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CreatedOn)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ModifiedOn)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ModifiedOn)
         </dd>
-        
+
     </dl>
-    <div class="mt-5 p-3 mb-5 bg-white rounded">
-        <div class="container">
-            <div class="row mb-3">
-                @foreach(var product in Model.Products)
-                {
-                    <a class="text-decoration-none text-warning" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
-                        <div class="p-3 mt-5 border bg-dark">
-                            <span>@product.Name</span>
-                        </div>
-                    </a>
-                }
-            </div>
-        </div>
-    </div>
+
+
+    
+    <ul class="list-group list-group-horizontal">
+        <p class="font-weight-bold p-1">Used in products:</p>
+        @foreach (var product in Model.Products)
+        {
+            <li class="list-group-item" id="highlight">
+                <a class="text-decoration-none" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">@product.Name</a>
+            </li>
+        }
+
+    </ul>
 </div>
+<br />
 <div>
     <a asp-action="Update" asp-route-id="@Model.Id">Update</a> |
     <a asp-action="Index">Back to List</a>
