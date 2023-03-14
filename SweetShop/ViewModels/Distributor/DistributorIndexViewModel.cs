@@ -1,4 +1,6 @@
-﻿namespace SweetShop.ViewModels.Distributor
+﻿using System.ComponentModel;
+
+namespace SweetShop.ViewModels.Distributor
 {
     public class DistributorIndexViewModel
     {
@@ -9,8 +11,10 @@
 
         public string Address { get; set; }
 
+        [DisplayName("Phone number")]
         public string PhoneNumber { get; set; }
 
+        [DisplayName("Account")]
         public string UserName { get; set; }
 
     }

@@ -1,6 +1,7 @@
 ﻿using SweetShop.ViewModels.Client;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SweetShop.ViewModels.Distributor
 {
@@ -14,6 +15,7 @@ namespace SweetShop.ViewModels.Distributor
 
         public string Address { get; set; }
 
+        [DisplayName("Phone number")]
         public string PhoneNumber { get; set; }
 
         public string User { get; set; }
