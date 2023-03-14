@@ -9,7 +9,7 @@ namespace SweetShop.Services
 {
     public interface IProductService
     {
-        IEnumerable<DetailProductViewModel> GetAll();
+        IEnumerable<ProductIndexViewModel> GetAll();
 
         TEntity GetById<TEntity>(int id);
 

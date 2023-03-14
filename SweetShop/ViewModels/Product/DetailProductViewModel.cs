@@ -15,7 +15,7 @@ namespace SweetShop.ViewModels.Product
 
         public DateTime CreatedOn { get; set; }
 
-        public DateTime ModifiedOn { get; set; }
+        public DateTime? ModifiedOn { get; set; }
 
     }
 }

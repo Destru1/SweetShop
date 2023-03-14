@@ -19,9 +19,9 @@ namespace SweetShop.Services
         }
 
 
-        public IEnumerable<DetailProductViewModel> GetAll()
+        public IEnumerable<ProductIndexViewModel> GetAll()
 
-          => DbContext.Products.ProjectTo<DetailProductViewModel>(this.Mapper.ConfigurationProvider).ToList();
+          => DbContext.Products.ProjectTo<ProductIndexViewModel>(this.Mapper.ConfigurationProvider).ToList();
 
 
 
@@ -41,7 +41,17 @@ namespace SweetShop.Services
 
         public DetailProductViewModel GetDetails(int id)
         {
-            var product = this.DbContext.Products.ProjectTo<DetailProductViewModel>(this.Mapper.ConfigurationProvider).ToList().FirstOrDefault();
+            DetailProductViewModel product = this.DbContext.Products.Where(x => x.Id == id)
+                .Select(x => new DetailProductViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description,
+                    Price = x.Price,
+                    ImageURL = x.ImageURL,
+                    CreatedOn = x.CreatedOn,
+                    ModifiedOn = x.ModifiedOn,
+                }).FirstOrDefault();
 
             return product;
         }
