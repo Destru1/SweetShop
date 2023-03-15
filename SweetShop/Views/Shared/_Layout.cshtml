@@ -30,22 +30,22 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Allergens" asp-action="Index">Allergen</a>
+                            <a class="nav-link text-dark" asp-area="Store" asp-controller="Allergens" asp-action="Index">Allergen</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Product</a>
+                            <a class="nav-link text-dark" asp-area="Store" asp-controller="Products" asp-action="Index">Product</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Distributors" asp-action="Index">Distributor</a>
+                            <a class="nav-link text-dark" asp-area="Store" asp-controller="Distributors" asp-action="Index">Distributor</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Clients" asp-action="Index">Clients</a>
+                            <a class="nav-link text-dark" asp-area="Store" asp-controller="Clients" asp-action="Index">Clients</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
+                            <a class="nav-link text-dark" asp-area="Store" asp-controller="Orders" asp-action="Index">Orders</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reviews" asp-action="Index">Reviews</a>
+                            <a class="nav-link text-dark" asp-area="Store" asp-controller="Reviews" asp-action="Index">Reviews</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Administrator" asp-controller="Dashboard" asp-action="Index">Administration</a>
@@ -65,7 +65,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - SweetShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @DateTime.UtcNow.Year - SweetShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
 

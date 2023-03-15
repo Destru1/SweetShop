@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SweetShop.Areas.Store.Controllers;
 using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
@@ -14,7 +15,7 @@ using static SweetShop.Constants.NotificationsConstants;
 
 namespace SweetShop.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : StoreController
     {
         private readonly SweetShopDbContext dbContext;
         private readonly IProductService productService;

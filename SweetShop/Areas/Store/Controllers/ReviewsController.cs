@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SweetShop.Areas.Store.Controllers;
 using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
@@ -16,42 +17,42 @@ using static SweetShop.Constants.NotificationsConstants;
 
 namespace SweetShop.Controllers
 {
-    public class OrdersController : Controller
+    public class ReviewsController : StoreController
     {
-        private readonly IOrderService orderService;
+        private readonly IReviewService reviewService;
 
-        public OrdersController(IOrderService orderService)
+        public ReviewsController(IReviewService reviewService)
         {
-            this.orderService = orderService;
+            this.reviewService = reviewService;
         }
+
 
         [HttpGet]
         public IActionResult Index()
         {
-            var orders = this.orderService.GetAll();
+            var reviews = this.reviewService.GetAll();
 
-            return View(orders);
+            return this.View(reviews);
         }
 
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var order = this.orderService.GetDetails(id);
+            var review = this.reviewService.GetDetails(id);
 
-            if (order == null)
+            if (review == null)
             {
                 return this.RedirectToAction("Index");
             }
 
-            return this.View(order);
+            return this.View(review);
         }
 
         [HttpGet]
-
         public IActionResult Create()
         {
-            IEnumerable<ProductIdNameViewModel> products = this.orderService.GetProducts();
-            IEnumerable<ClientIndexViewModel> clients = this.orderService.GetClients();
+            IEnumerable<ProductIdNameViewModel> products = this.reviewService.GetProducts();
+            IEnumerable<ClientIndexViewModel> clients = this.reviewService.GetClients();
 
             this.ViewBag.Products = products;
             this.ViewBag.Clients = clients;
@@ -60,16 +61,16 @@ namespace SweetShop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(OrderDTO order)
+        public async Task<IActionResult> Create(ReviewDTO review)
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(order);
+                return this.View(review);
             }
 
-            await this.orderService.CreateAsync(order);
+            await this.reviewService.CreateAsync(review);
 
-            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_ADDED_ORDER);
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_ADDED_REVIEW);
 
             return this.RedirectToAction("Index");
         }
@@ -77,10 +78,10 @@ namespace SweetShop.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            var orderToUpdate = this.orderService.GetById<OrderDTO>(id);
+            var reviewToUpdate = this.reviewService.GetById<OrderDTO>(id);
 
-            IEnumerable<ProductIdNameViewModel> products = this.orderService.GetProducts();
-            IEnumerable<ClientIndexViewModel> clients = this.orderService.GetClients();
+            IEnumerable<ProductIdNameViewModel> products = this.reviewService.GetProducts();
+            IEnumerable<ClientIndexViewModel> clients = this.reviewService.GetClients();
 
             if (!this.ModelState.IsValid)
             {
@@ -91,24 +92,23 @@ namespace SweetShop.Controllers
             this.ViewBag.Products = products;
             this.ViewBag.Clients = clients;
 
-            return this.View(orderToUpdate);
+            return this.View(reviewToUpdate);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(int id, OrderDTO order)
+        public async Task<IActionResult> Update(int id, ReviewDTO order)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.View(order);
 
             }
-            var isUpdated = await this.orderService.UpdateAsync(id, order);
+            var isUpdated = await this.reviewService.UpdateAsync(id, order);
 
             if (!isUpdated)
             {
                 return this.RedirectToAction("Index", "Home");
             }
-            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_UPDATED_ORDER);
 
             return this.RedirectToAction("Index");
         }
@@ -116,14 +116,15 @@ namespace SweetShop.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var isDeleted = await this.orderService.DeleteAsync(id);
+            var isDeleted = await this.reviewService.DeleteAsync(id);
 
             if (!isDeleted)
             {
+
                 return this.RedirectToAction("Index", "Home");
             }
 
-            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_DELETED_ORDER);
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_DELETED_REVIEW);
 
             return this.RedirectToAction("Index");
         }
