@@ -34,7 +34,10 @@ namespace SweetShop.Controllers
             {
                 clients = clients.Where(c => c.FirstName.ToUpper().Contains(keyword.ToUpper())
                 || c.LastName.ToUpper().Contains(keyword.ToUpper())
-                || c.City.ToUpper().Contains(keyword.ToUpper())).ToList();
+                || c.City.ToUpper().Contains(keyword.ToUpper())
+                || c.Distributor.ToUpper().Contains(keyword.ToUpper()))
+                    .ToList();
+
             }
 
             return this.View(clients);

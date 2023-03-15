@@ -11,7 +11,8 @@ namespace SweetShop.MappingConfiguration
         {
             this.CreateMap<Client, ClientDTO>();
 
-            this.CreateMap<Client, ClientIndexViewModel>();
+            this.CreateMap<Client, ClientIndexViewModel>()
+                .ForMember(c => c.Distributor, mf => mf.MapFrom(d => d.Distributor.Name)).ReverseMap();
         }
     }
 }

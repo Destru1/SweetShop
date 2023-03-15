@@ -17,5 +17,7 @@ namespace SweetShop.ViewModels.Client
         [DisplayName("Phone number")]
         public string PhoneNumber { get; set; }
 
+        public string Distributor { get; set; }
+
     }
 }
