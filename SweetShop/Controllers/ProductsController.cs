@@ -28,10 +28,14 @@ namespace SweetShop.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult Index(string keyword)
         {
             var products = this.productService.GetAll();
-
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                products = products.Where(p => p.Name.ToUpper().Contains(keyword.ToUpper()) 
+                || p.Price.ToString().Contains(keyword)).ToList();
+            }
             return this.View(products);
         }
 

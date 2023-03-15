@@ -26,9 +26,16 @@ namespace SweetShop.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string keyword)
         {
             var clients = this.clientService.GetAll();
+
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                clients = clients.Where(c => c.FirstName.ToUpper().Contains(keyword.ToUpper())
+                || c.LastName.ToUpper().Contains(keyword.ToUpper())
+                || c.City.ToUpper().Contains(keyword.ToUpper())).ToList();
+            }
 
             return this.View(clients);
         }

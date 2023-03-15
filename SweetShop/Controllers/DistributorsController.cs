@@ -25,11 +25,16 @@ namespace SweetShop.Controllers
             this.distributorService = distributorService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string keyword)
         {
 
             var distributors = this.distributorService.GetAll();
 
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                distributors = distributors.Where(d => d.Name.ToUpper().Contains(keyword.ToUpper()) 
+                || d.City.ToUpper().Contains(keyword.ToUpper())).ToList();
+            }
             return this.View(distributors);
         }
 

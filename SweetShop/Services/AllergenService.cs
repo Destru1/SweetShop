@@ -52,6 +52,7 @@ namespace SweetShop.Services
                 {
                     Id = a.Id,
                     Name = a.Name,
+                    Description= a.Description,
                     CreatedOn= a.CreatedOn,
                     ModifiedOn = a.ModifiedOn,
                     Products = a.ProductAllergen

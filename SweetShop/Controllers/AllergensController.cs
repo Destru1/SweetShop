@@ -23,10 +23,16 @@ namespace SweetShop.Controllers
             this.allergenService = allergenService;
         }
 
-        // GET: Allergens
-        public  IActionResult Index()
+        [HttpGet]
+        public IActionResult Index(string keyword)
         {
             var allergens = this.allergenService.GetAll();
+
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                allergens = allergens.Where(a => a.Name.ToUpper().Contains(keyword.ToUpper()) 
+                || a.Description.ToUpper().Contains(keyword.ToUpper())).ToList();
+            }
 
             return this.View(allergens);
         }
@@ -83,11 +89,12 @@ namespace SweetShop.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int id) {
+        public IActionResult Details(int id)
+        {
             var allergen = this.allergenService.GetDetails(id);
             if (allergen == null)
             {
-                return this.RedirectToAction("Index","Home");
+                return this.RedirectToAction("Index", "Home");
             }
 
             return this.View(allergen);

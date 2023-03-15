@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SweetShop.Constants;
 using SweetShop.Models;
 using SweetShop.Services.Interfaces;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SweetShop.Controllers
@@ -21,9 +22,18 @@ namespace SweetShop.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string keyword)
         {
             var users = this.administratorService.GetAll();
+
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                users = users.Where(u => u.UserName.ToUpper().Contains(keyword.ToUpper())
+                || u.FirstName.ToUpper().Contains(keyword.ToUpper())
+                || u.LastName.ToUpper().Contains(keyword.ToUpper())
+                || u.RoleName.ToUpper().Contains(keyword.ToUpper()))
+                .ToList();
+            }
 
             return View(users);
         }
@@ -41,7 +51,7 @@ namespace SweetShop.Controllers
                 return this.RedirectToAction(nameof(this.Index));
             }
 
-            var isPromoted  = await this.administratorService.PromoteAsync(user);
+            var isPromoted = await this.administratorService.PromoteAsync(user);
 
             if (!isPromoted)
             {
