@@ -99,11 +99,15 @@ namespace SweetShop.Services
         {
             var orderToCreate = new Order();
 
+            var product = this.DbContext.Products.FirstOrDefault(x => x.Id == order.ProductId);
+
             orderToCreate.OrderedOn = order.OrderedOn;
             orderToCreate.Quantity = order.Quantity;
             orderToCreate.ProductId = order.ProductId;
             orderToCreate.ClientId = order.ClientId;
             orderToCreate.CreatedOn = DateTime.UtcNow;
+
+            product.TimesSold += order.Quantity;
 
             await this.DbContext.AddAsync(orderToCreate);
             await this.DbContext.SaveChangesAsync();
@@ -116,9 +120,21 @@ namespace SweetShop.Services
         {
             var orderToUpdate = this.DbContext.Orders.Find(order.Id);
 
+            var oldProductId = orderToUpdate.ProductId;
+
+            var oldProduct = this.DbContext.Products.FirstOrDefault(x => x.Id == oldProductId);
+
+
+            var newProduct = this.DbContext.Products.FirstOrDefault(x => x.Id == order.ProductId);
+
             if (order == null)
             {
                 return false;
+            }
+            if (oldProductId != order.ProductId)
+            {
+
+                oldProduct.TimesSold -= orderToUpdate.Quantity;
             }
 
             orderToUpdate.OrderedOn = order.OrderedOn;
@@ -126,6 +142,8 @@ namespace SweetShop.Services
             orderToUpdate.ProductId = order.ProductId;
             orderToUpdate.ClientId = order.ClientId;
             orderToUpdate.ModifiedOn = DateTime.UtcNow;
+
+            newProduct.TimesSold += order.Quantity;
 
             this.DbContext.Update(orderToUpdate);
             await this.DbContext.SaveChangesAsync();
@@ -137,10 +155,14 @@ namespace SweetShop.Services
         {
             var order = this.GetById<Order>(id);
 
+            var product = this.DbContext.Products.FirstOrDefault(x => x.Id == order.ProductId);
+
             if (order == null)
             {
                 return false;
             }
+
+            product.TimesSold -= order.Quantity;
 
             this.DbContext.Remove(order);
             await this.DbContext.SaveChangesAsync();
