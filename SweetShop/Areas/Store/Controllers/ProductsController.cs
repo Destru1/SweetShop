@@ -29,13 +29,18 @@ namespace SweetShop.Controllers
         }
 
 
-        public IActionResult Index(string keyword)
+        public IActionResult Index(string keyword, decimal? startPrice, decimal? endPrice)
         {
             var products = this.productService.GetAll();
             if (!string.IsNullOrWhiteSpace(keyword))
             {
                 products = products.Where(p => p.Name.ToUpper().Contains(keyword.ToUpper()) 
                 || p.Price.ToString().Contains(keyword)).ToList();
+            }
+
+            if (startPrice.HasValue && endPrice.HasValue)
+            {
+                products = products.Where(p => p.Price >= startPrice && p.Price <= endPrice).OrderBy(p => p.Price).ToList();
             }
             return this.View(products);
         }

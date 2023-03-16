@@ -13,6 +13,12 @@
 </p>
 
 <form asp-controller="Products" asp-action="Index" method="get">
+    <div class="input-group mb-3">
+    <input type="number" step="any" name="StartPrice" class="form-control" placeholder="Min price" min="0" />
+    <input type="number" step="any" name="EndPrice" class="form-control" placeholder="Max price" min="0" />
+    <button type="submit" class="btn btn-secondary">Search by price</button>
+    </div>
+ 
     <partial name="_SearchBarPartial" />
 </form>
 
