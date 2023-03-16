@@ -13,6 +13,8 @@ namespace SweetShop.ViewModels.Product
 
         public decimal Price { get; set; }
 
+        public double AverageRating { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }

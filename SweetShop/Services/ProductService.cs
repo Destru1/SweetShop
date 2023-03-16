@@ -39,6 +39,18 @@ namespace SweetShop.Services
             return productToReturn;
         }
 
+        public ProductRatingViewModel GetRating(int id)
+        {
+            ProductRatingViewModel product = this.DbContext.Products.Where(x => x.Id == id)
+                .Select(x => new ProductRatingViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    AverageRating = x.AverageRating,
+                }).FirstOrDefault();
+
+            return product;
+        }
         public DetailProductViewModel GetDetails(int id)
         {
             DetailProductViewModel product = this.DbContext.Products.Where(x => x.Id == id)
@@ -79,9 +91,9 @@ namespace SweetShop.Services
             await this.DbContext.Products.AddAsync(productToCreate);
             await this.DbContext.SaveChangesAsync();
         }
-      
 
-        public async Task<bool> UpdateAsync(int id,ProductDTO product)
+
+        public async Task<bool> UpdateAsync(int id, ProductDTO product)
         {
             var productToUpdate = await this.DbContext.Products
                 .Include(x => x.ProductAllergen)
@@ -105,7 +117,7 @@ namespace SweetShop.Services
                 };
                 allergens.Add(productAllergen);
             }
-            this.Mapper.Map(product,productToUpdate);
+            this.Mapper.Map(product, productToUpdate);
 
             productToUpdate.ProductAllergen = allergens;
             productToUpdate.ModifiedOn = DateTime.UtcNow;
@@ -117,8 +129,8 @@ namespace SweetShop.Services
 
         }
 
-      
-        
+
+
 
         public async Task<bool> DeleteAsync(int id)
         {
@@ -136,6 +148,6 @@ namespace SweetShop.Services
             return true;
         }
 
-       
+
     }
 }

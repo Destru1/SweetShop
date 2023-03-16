@@ -94,11 +94,15 @@ namespace SweetShop.Services.Interfaces
         {
             var reviewToCreate = new Review();
 
+            var product = this.DbContext.Products.FirstOrDefault(x => x.Id == review.ProductId);
+
             reviewToCreate.Description = review.Description;
             reviewToCreate.Rating = review.Rating;
             reviewToCreate.ClientId = review.ClientId;
             reviewToCreate.ProductId = review.ProductId;
             reviewToCreate.CreatedOn = DateTime.UtcNow;
+            product.Rating += reviewToCreate.Rating;
+            product.TimesRated++;
 
             await this.DbContext.AddAsync(reviewToCreate);
             await this.DbContext.SaveChangesAsync();

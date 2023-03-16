@@ -27,6 +27,22 @@ namespace SweetShop.Models
 
         public int TimesSold { get; set; }
 
+        public int Rating { get; set; }
+
+        public int TimesRated { get; set; }
+
+        public double AverageRating
+        {
+            get
+            {
+                if (TimesRated == 0)
+                {
+                    return 0;
+                }
+                return Rating / TimesRated;
+            }
+        }
+
         public ICollection<ProductAllergen> ProductAllergen { get; set; }
 
         public ICollection<Order> Orders { get; set; }

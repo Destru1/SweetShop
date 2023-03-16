@@ -34,7 +34,7 @@ namespace SweetShop.Controllers
             var products = this.productService.GetAll();
             if (!string.IsNullOrWhiteSpace(keyword))
             {
-                products = products.Where(p => p.Name.ToUpper().Contains(keyword.ToUpper()) 
+                products = products.Where(p => p.Name.ToUpper().Contains(keyword.ToUpper())
                 || p.Price.ToString().Contains(keyword)).ToList();
             }
 
@@ -43,6 +43,18 @@ namespace SweetShop.Controllers
                 products = products.Where(p => p.Price >= startPrice && p.Price <= endPrice).OrderBy(p => p.Price).ToList();
             }
             return this.View(products);
+        }
+
+        public IActionResult GetRating(int id)
+        {
+            var product = this.productService.GetRating(id);
+
+            if (product == null)
+            {
+                return this.RedirectToAction("Index");
+            }
+
+            return this.View(product);
         }
 
 

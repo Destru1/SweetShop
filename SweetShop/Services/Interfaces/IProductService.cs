@@ -13,6 +13,8 @@ namespace SweetShop.Services
 
         TEntity GetById<TEntity>(int id);
 
+        ProductRatingViewModel GetRating(int id);
+
         DetailProductViewModel GetDetails(int id);
 
         Task CreateAsync(ProductDTO product);
