@@ -107,9 +107,6 @@ namespace SweetShop.Services
                 return false;
             }
 
-            allergen.IsDeleted = true;
-            allergen.DeletedOn = DateTime.UtcNow;
-
             this.DbContext.Remove(allergen);
             await this.DbContext.SaveChangesAsync();
             return true;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SweetShop.Models
 {
@@ -6,10 +7,13 @@ namespace SweetShop.Models
     {
         public DateTime OrderedOn { get; set; }
 
+        [Required]
         public int Quantity { get; set; }
 
+        [Required]
         public int ClientId { get; set; }
-
+       
+        [Required]
         public int ProductId { get; set; }
 
         public virtual Client Client { get; set; }

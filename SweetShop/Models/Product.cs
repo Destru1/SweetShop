@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SweetShop.Models
 {
@@ -11,13 +12,20 @@ namespace SweetShop.Models
             this.Orders = new HashSet<Order>();
             this.Reviews = new HashSet<Review>();
         }
+
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
+        [Required]
         public string ImageURL { get; set; }
 
+        [Required]
         public decimal Price { get; set; }
+
+        public int TimesSold { get; set; }
 
         public ICollection<ProductAllergen> ProductAllergen { get; set; }
 

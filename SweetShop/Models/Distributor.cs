@@ -10,13 +10,18 @@ namespace SweetShop.Models
         {
             this.Clients = new HashSet<Client>();
         }
+
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public string City { get; set; }
 
+        [Required]
         public string Address { get; set; }
 
         [Phone]
+        [Required]
         public string PhoneNumber { get; set; }
 
         public string UserId { get; set; }

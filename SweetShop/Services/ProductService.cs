@@ -129,9 +129,6 @@ namespace SweetShop.Services
                 return false;
             }
 
-            product.IsDeleted= true;
-            product.DeletedOn = DateTime.UtcNow;
-
             this.DbContext.Remove(product);
 
             await this.DbContext.SaveChangesAsync();
