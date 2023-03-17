@@ -24,7 +24,7 @@ namespace SweetShop.DTOs
         public string Address { get; set; }
 
         [Required]
-        [MinLength(DistributorConstants.PHONE_NUMBER_MAX_VALUE)]
+        [MinLength(DistributorConstants.PHONE_NUMBER_MIN_VALUE)]
         [MaxLength(DistributorConstants.PHONE_NUMBER_MAX_VALUE)]
         public string PhoneNumber { get; set; }
 

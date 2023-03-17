@@ -18,6 +18,7 @@ namespace SweetShop.DTOs
         public string Description { get; set; }
 
         [Required]
+        [Url]
         public string ImageURL { get; set; }
 
         [Required]
