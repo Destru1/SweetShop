@@ -15,7 +15,16 @@
 <form asp-controller="Distributors" asp-action="Index" method="get">
     <partial name="_SearchBarPartial" />
 </form>
+<div class="dropdown m-1">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+        Order by
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">Name</a>
+        <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["CitySort"]">City</a>
 
+    </div>
+</div>
 
 <table class="table">
     <thead>

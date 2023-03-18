@@ -14,29 +14,43 @@
 
 <form asp-controller="Products" asp-action="Index" method="get">
     <div class="input-group mb-3">
-    <input type="number" step="any" name="StartPrice" class="form-control" placeholder="Min price" min="0" />
-    <input type="number" step="any" name="EndPrice" class="form-control" placeholder="Max price" min="0" />
-    <button type="submit" class="btn btn-secondary">Search by price</button>
+        <input type="number" step="any" name="StartPrice" class="form-control" placeholder="Min price" min="0" />
+        <input type="number" step="any" name="EndPrice" class="form-control" placeholder="Max price" min="0" />
+        <button type="submit" class="btn btn-secondary">Search by price</button>
     </div>
- 
+
     <partial name="_SearchBarPartial" />
 </form>
 
-<div class="btn-group pb-sm-2">
-    <button class="btn btn-primary btn" type="button">
-        Get rating
-    </button>
-    <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-        
-        @foreach (var item in Model)
-        {
-            <a asp-action="GetRating" asp-route-id="@item.Id" class="dropdown-item">@item.Name</a>
-        }
+<div class="container p-0">
+    <div class="btn-group pb-sm-2 mr-1">
+        <button class="btn btn-primary btn" type="button">
+            Get rating
+        </button>
+        <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+
+            @foreach (var item in Model)
+            {
+                <a asp-action="GetRating" asp-route-id="@item.Id" class="dropdown-item">@item.Name</a>
+            }
+        </div>
+        <div class="dropdown mr-1">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+            Order by
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">Name</a>
+            <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSort"]">Price</a>
+
+        </div>
+    </div>
     </div>
 </div>
+
+
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -49,7 +63,7 @@
                     <h5 class="card-title">@item.Name</h5>
                     <p class="card-text">@item.Price</p>
 
-                   <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-pill badge-primary w-25 p-2 m-2">Update</a>
+                    <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-pill badge-primary w-25 p-2 m-2">Update</a>
                     <a asp-action="Details" asp-route-id="@item.Id" class="badge  badge-pill badge-info w-25 p-2 m-2">Details</a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger w-25 p-2 m-2"> Delete</a>
                 </div>

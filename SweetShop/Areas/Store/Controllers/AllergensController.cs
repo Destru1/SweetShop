@@ -25,13 +25,29 @@ namespace SweetShop.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(string keyword)
+        public IActionResult Index(string keyword, string sortOrder)
         {
             var allergens = this.allergenService.GetAll();
 
+            ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DescriptionSort"] = String.IsNullOrEmpty(sortOrder) ? "desc_sort" : "";
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    allergens = allergens.OrderByDescending(x => x.Name);
+                    break;
+
+                case "desc_sort":
+                    allergens = allergens.OrderByDescending(x => x.Description);
+                    break;
+                default:
+                    allergens = allergens.OrderBy(x => x.Name);
+                    break;
+            }
             if (!string.IsNullOrWhiteSpace(keyword))
             {
-                allergens = allergens.Where(a => a.Name.ToUpper().Contains(keyword.ToUpper()) 
+                allergens = allergens.Where(a => a.Name.ToUpper().Contains(keyword.ToUpper())
                 || a.Description.ToUpper().Contains(keyword.ToUpper())).ToList();
             }
 

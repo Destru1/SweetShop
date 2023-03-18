@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SweetShop.Areas.Store.Controllers;
 using SweetShop.Data;
@@ -26,14 +27,31 @@ namespace SweetShop.Controllers
             this.distributorService = distributorService;
         }
 
-        public IActionResult Index(string keyword)
+        public IActionResult Index(string keyword, string sortOrder)
         {
 
             var distributors = this.distributorService.GetAll();
 
+            ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["CitySort"] = String.IsNullOrEmpty(sortOrder) ? "city" : "";
+
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    distributors = distributors.OrderByDescending(x => x.Name);
+                    break;
+                case "city":
+                    distributors = distributors.OrderBy(x => x.City);
+                    break;
+                default:
+                    distributors = distributors.OrderBy(x => x.Name);
+                    break;
+            }
+
             if (!string.IsNullOrWhiteSpace(keyword))
             {
-                distributors = distributors.Where(d => d.Name.ToUpper().Contains(keyword.ToUpper()) 
+                distributors = distributors.Where(d => d.Name.ToUpper().Contains(keyword.ToUpper())
                 || d.City.ToUpper().Contains(keyword.ToUpper())).ToList();
             }
             return this.View(distributors);
@@ -45,7 +63,7 @@ namespace SweetShop.Controllers
             IEnumerable<UserViewModel> users = this.distributorService.GetUser();
 
             this.ViewBag.Users = users;
-           
+
             return this.View();
         }
 

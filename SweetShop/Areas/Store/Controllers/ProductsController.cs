@@ -29,9 +29,27 @@ namespace SweetShop.Controllers
         }
 
 
-        public IActionResult Index(string keyword, decimal? startPrice, decimal? endPrice)
+        public IActionResult Index(string keyword, decimal? startPrice, decimal? endPrice, string sortOrder)
         {
             var products = this.productService.GetAll();
+
+            ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["PriceSort"] = sortOrder == "decimal" ? "price" : "decimal";
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    products = products.OrderByDescending(x => x.Name);
+                    break;
+
+                case "price":
+                    products = products.OrderBy(x => x.Price);
+                    break;
+                default:
+                    products = products.OrderBy(x => x.Name);
+                    break;
+            }
+
             if (!string.IsNullOrWhiteSpace(keyword))
             {
                 products = products.Where(p => p.Name.ToUpper().Contains(keyword.ToUpper())

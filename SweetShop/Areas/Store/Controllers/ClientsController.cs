@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SweetShop.Areas.Store.Controllers;
 using SweetShop.Data;
@@ -27,9 +28,34 @@ namespace SweetShop.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(string keyword)
+        public IActionResult Index(string keyword,string sortOrder)
         {
             var clients = this.clientService.GetAll();
+
+            ViewData["FirstNameSort"] = String.IsNullOrEmpty(sortOrder) ? "first_name" : "";
+            ViewData["LastNameSort"] = String.IsNullOrEmpty(sortOrder) ? "last_name" : "";
+            ViewData["CitySort"] = String.IsNullOrEmpty(sortOrder) ? "city" : "";
+            ViewData["DistributorSort"] = String.IsNullOrEmpty(sortOrder) ? "distributor" : "";
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    clients = clients.OrderByDescending(x => x.FirstName);
+                    break;
+
+                case "last_name":
+                    clients = clients.OrderBy(x => x.LastName);
+                    break;
+                case "city":
+                    clients = clients.OrderBy(x => x.City);
+                    break;
+                case "distributor":
+                    clients = clients.OrderBy(x => x.Distributor);
+                    break;
+                default:
+                    clients = clients.OrderBy(x => x.FirstName);
+                    break;
+            }
 
             if (!string.IsNullOrWhiteSpace(keyword))
             {

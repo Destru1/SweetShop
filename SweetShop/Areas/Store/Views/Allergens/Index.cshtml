@@ -14,14 +14,25 @@
 <form asp-controller="Allergens" asp-action="Index" method="get">
     <partial name="_SearchBarPartial" />
 </form>
+<div class="dropdown m-1">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+        Order by
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">Name</a>
+        <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["DescriptionSort"]">Description</a>
+        
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]"> @Html.DisplayNameFor(model => model.Name)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DescriptionSort"]"> @Html.DisplayNameFor(model => model.Description)</a>
             </th>
 
 
