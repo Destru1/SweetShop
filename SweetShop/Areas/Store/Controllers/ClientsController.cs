@@ -21,10 +21,14 @@ namespace SweetShop.Controllers
     public class ClientsController : StoreController
     {
         private readonly IClientService clientService;
+        private readonly IAdministratorService administratorService;
+        private readonly IDistributorService distributorService;
 
-        public ClientsController(IClientService clientService)
+        public ClientsController(IClientService clientService, IAdministratorService administratorService, IDistributorService distributorService)
         {
             this.clientService = clientService;
+            this.administratorService = administratorService;
+            this.distributorService = distributorService;
         }
 
         [HttpGet]
@@ -86,8 +90,8 @@ namespace SweetShop.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            IEnumerable<UserViewModel> users = this.clientService.GetUser();
-            IEnumerable<DistributorIndexViewModel> distributors = this.clientService.GetDistributors();
+            IEnumerable<UserViewModel> users = this.administratorService.GetAll();
+            IEnumerable<DistributorIndexViewModel> distributors = this.distributorService.GetAll();
 
 
             this.ViewBag.Users = users;
@@ -118,8 +122,8 @@ namespace SweetShop.Controllers
         {
             var clientToUpdate = this.clientService.GetById<ClientDTO>(id);
 
-            IEnumerable<UserViewModel> users = this.clientService.GetUser();
-            IEnumerable<DistributorIndexViewModel> distributors = this.clientService.GetDistributors();
+            IEnumerable<UserViewModel> users = this.administratorService.GetAll();
+            IEnumerable<DistributorIndexViewModel> distributors = this.distributorService.GetAll();
 
 
             if (!this.ModelState.IsValid)

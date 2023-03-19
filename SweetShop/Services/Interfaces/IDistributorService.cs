@@ -14,8 +14,6 @@ namespace SweetShop.Services.Interfaces
 
         DetailsDistributorViewModel GetDetails(int id);
 
-        IEnumerable<UserViewModel> GetUser();
-
         Task CreateAsync(DistributorDTO distributor);
 
         Task<bool> UpdateAsync(int id, DistributorDTO distributor);

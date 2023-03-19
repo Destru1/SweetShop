@@ -29,6 +29,8 @@
         public const string SUCCSESSFULLY_DELETED_REVIEW = "Успешно изтрит отзив";
 
 
+        public const string INFO_PRODUCT = "За да съдадете продукт, първо създадете алерген";
+
 
 
 

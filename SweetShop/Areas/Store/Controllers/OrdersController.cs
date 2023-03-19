@@ -9,6 +9,7 @@ using SweetShop.Areas.Store.Controllers;
 using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
+using SweetShop.Services;
 using SweetShop.Services.Interfaces;
 using SweetShop.ViewModels.Client;
 using SweetShop.ViewModels.Product;
@@ -20,11 +21,14 @@ namespace SweetShop.Controllers
     public class OrdersController : StoreController
     {
         private readonly IOrderService orderService;
+        private readonly IClientService clientService;
+        private readonly IProductService productService;
 
-        public OrdersController(IOrderService orderService)
+        public OrdersController(IOrderService orderService,IClientService clientService,IProductService productService)
         {
             this.orderService = orderService;
-
+            this.clientService= clientService;
+            this.productService = productService;
 
         }
 
@@ -69,8 +73,8 @@ namespace SweetShop.Controllers
 
         public IActionResult Create()
         {
-            IEnumerable<ProductIdNameViewModel> products = this.orderService.GetProducts();
-            IEnumerable<ClientIndexViewModel> clients = this.orderService.GetClients();
+            IEnumerable<ProductIndexViewModel> products = this.productService.GetAll();
+            IEnumerable<ClientIndexViewModel> clients = this.clientService.GetAll();
 
             this.ViewBag.Products = products;
             this.ViewBag.Clients = clients;
@@ -98,8 +102,8 @@ namespace SweetShop.Controllers
         {
             var orderToUpdate = this.orderService.GetById<OrderDTO>(id);
 
-            IEnumerable<ProductIdNameViewModel> products = this.orderService.GetProducts();
-            IEnumerable<ClientIndexViewModel> clients = this.orderService.GetClients();
+            IEnumerable<ProductIndexViewModel> products = this.productService.GetAll();
+            IEnumerable<ClientIndexViewModel> clients = this.clientService.GetAll();
 
             if (!this.ModelState.IsValid)
             {

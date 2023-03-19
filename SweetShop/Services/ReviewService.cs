@@ -61,35 +61,6 @@ namespace SweetShop.Services.Interfaces
 
         }
 
-
-        public IEnumerable<ClientIndexViewModel> GetClients()
-        {
-            IEnumerable<ClientIndexViewModel> clients = this.DbContext.Clients.Select(x => new ClientIndexViewModel
-            {
-                Id = x.Id,
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                PhoneNumber = x.PhoneNumber,
-                City = x.City,
-            })
-                .ToList();
-            return clients;
-        }
-
-
-        public IEnumerable<ProductIdNameViewModel> GetProducts()
-        {
-            IEnumerable<ProductIdNameViewModel> products = this.DbContext.Products.Select(x => new ProductIdNameViewModel
-            {
-                Id = x.Id,
-                Name = x.Name,
-            })
-                .ToList();
-
-            return products;
-        }
-
-
         public async Task CreateAsync(ReviewDTO review)
         {
             var reviewToCreate = new Review();

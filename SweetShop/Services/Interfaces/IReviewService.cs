@@ -15,10 +15,6 @@ namespace SweetShop.Services.Interfaces
 
         DetailsReviewViewModel GetDetails(int id);
 
-        IEnumerable<ProductIdNameViewModel> GetProducts();
-
-        IEnumerable<ClientIndexViewModel> GetClients();
-
         Task CreateAsync(ReviewDTO review);
 
         Task<bool> UpdateAsync(int id, ReviewDTO review);

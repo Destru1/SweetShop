@@ -15,10 +15,6 @@ namespace SweetShop.Services.Interfaces
 
         DetailsOrderViewModel GetDetails(int id);
 
-        IEnumerable<ProductIdNameViewModel> GetProducts();
-
-        IEnumerable<ClientIndexViewModel> GetClients();
-
         Task CreateAsync(OrderDTO order);
 
         Task<bool> UpdateAsync(int id,OrderDTO order);

@@ -45,20 +45,6 @@ namespace SweetShop.Services
             return distributorToReturn;
         }
 
-
-        public IEnumerable<UserViewModel> GetUser()
-        {
-            IEnumerable<UserViewModel> users = this.DbContext.Users.Select(x => new UserViewModel
-            {
-                Id = x.Id,
-                UserName = x.UserName,
-                Email = x.Email,
-                RoleName = x.UserRoles.Select(ur => ur.Role.Name).FirstOrDefault()
-            }).ToList();
-
-            return users;
-        }
-
         public DetailsDistributorViewModel GetDetails(int id)
         {
             var distributor = this.DbContext.Distributors.Where(x => x.Id == id)

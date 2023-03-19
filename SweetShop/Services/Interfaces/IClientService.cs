@@ -16,8 +16,6 @@ namespace SweetShop.Services.Interfaces
 
         DetailClientViewModel GetDetails(int id);
 
-        IEnumerable<UserViewModel> GetUser();
-
         IEnumerable<DistributorIndexViewModel> GetDistributors();
 
         Task CreateAsync(ClientDTO client);

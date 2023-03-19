@@ -93,6 +93,13 @@ namespace SweetShop.Controllers
         {
             var allergens = this.allergenService.GetAll().ToList();
 
+            bool alergensAreEmpty = allergens.Count== 0;
+            if (alergensAreEmpty)
+            {
+                this.TempData[INFORMATION_NOTIFICATION] = string.Format(INFO_PRODUCT);
+                return this.RedirectToAction("Index");
+
+            }
             var productsModel = new ProductDTO()
             {
                 Allergens = allergens,

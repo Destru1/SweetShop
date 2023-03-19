@@ -21,10 +21,12 @@ namespace SweetShop.Controllers
     public class DistributorsController : StoreController
     {
         private readonly IDistributorService distributorService;
+        private readonly IAdministratorService administratorService;
 
-        public DistributorsController(IDistributorService distributorService)
+        public DistributorsController(IDistributorService distributorService, IAdministratorService administratorService)
         {
             this.distributorService = distributorService;
+            this.administratorService = administratorService;
         }
 
         public IActionResult Index(string keyword, string sortOrder)
@@ -60,7 +62,7 @@ namespace SweetShop.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            IEnumerable<UserViewModel> users = this.distributorService.GetUser();
+            IEnumerable<UserViewModel> users = this.administratorService.GetAll();
 
             this.ViewBag.Users = users;
 
@@ -86,7 +88,7 @@ namespace SweetShop.Controllers
         {
             var distributorToUpdate = this.distributorService.GetById<DistributorDTO>(id);
 
-            IEnumerable<UserViewModel> users = this.distributorService.GetUser();
+            IEnumerable<UserViewModel> users = this.administratorService.GetAll();
 
             if (!this.ModelState.IsValid)
             {

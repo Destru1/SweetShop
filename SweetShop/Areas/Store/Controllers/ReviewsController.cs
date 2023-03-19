@@ -9,6 +9,7 @@ using SweetShop.Areas.Store.Controllers;
 using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
+using SweetShop.Services;
 using SweetShop.Services.Interfaces;
 using SweetShop.ViewModels.Client;
 using SweetShop.ViewModels.Product;
@@ -20,10 +21,14 @@ namespace SweetShop.Controllers
     public class ReviewsController : StoreController
     {
         private readonly IReviewService reviewService;
+        private readonly IClientService clientService;
+        private readonly IProductService productService;
 
-        public ReviewsController(IReviewService reviewService)
+        public ReviewsController(IReviewService reviewService, IClientService clientService, IProductService productService)
         {
             this.reviewService = reviewService;
+            this.clientService= clientService;
+            this.productService= productService;
         }
 
 
@@ -51,8 +56,8 @@ namespace SweetShop.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            IEnumerable<ProductIdNameViewModel> products = this.reviewService.GetProducts();
-            IEnumerable<ClientIndexViewModel> clients = this.reviewService.GetClients();
+            IEnumerable<ProductIndexViewModel> products = this.productService.GetAll();
+            IEnumerable<ClientIndexViewModel> clients = this.clientService.GetAll();
 
             this.ViewBag.Products = products;
             this.ViewBag.Clients = clients;
@@ -80,8 +85,8 @@ namespace SweetShop.Controllers
         {
             var reviewToUpdate = this.reviewService.GetById<OrderDTO>(id);
 
-            IEnumerable<ProductIdNameViewModel> products = this.reviewService.GetProducts();
-            IEnumerable<ClientIndexViewModel> clients = this.reviewService.GetClients();
+            IEnumerable<ProductIndexViewModel> products = this.productService.GetAll();
+            IEnumerable<ClientIndexViewModel> clients = this.clientService.GetAll();
 
             if (!this.ModelState.IsValid)
             {
