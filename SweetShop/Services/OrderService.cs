@@ -29,7 +29,9 @@ namespace SweetShop.Services
                 ClientId = x.Client.FirstName,
                 ProductId = x.Product.Name,
                 Quantity = x.Quantity,
-                Total = x.Quantity * x.Product.Price
+                Total = x.Quantity * x.Product.Price,
+                OrderedOn = x.OrderedOn
+                
 
 
             }).ToList();

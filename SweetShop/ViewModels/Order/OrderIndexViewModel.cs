@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace SweetShop.ViewModels.Order
 {
@@ -15,5 +16,7 @@ namespace SweetShop.ViewModels.Order
         public int Quantity { get; set; }
 
         public decimal Total { get; set; }
+
+        public DateTime OrderedOn { get; set; }
     }
 }

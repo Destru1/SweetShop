@@ -24,12 +24,30 @@ namespace SweetShop.Controllers
         public OrdersController(IOrderService orderService)
         {
             this.orderService = orderService;
+
+
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string? ClientId, string? ProductId, DateTime? sortDate)
         {
             var orders = this.orderService.GetAll();
+
+            if (!string.IsNullOrWhiteSpace(ClientId))
+            {
+                orders = orders.Where(o => o.ClientId.Contains(ClientId)).ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(ProductId))
+            {
+                orders = orders.Where(o => o.ProductId.Contains(ProductId)).ToList();
+            }
+
+            if (sortDate.HasValue)
+            {
+                orders = orders.Where(o => o.OrderedOn.Date.Equals(sortDate.Value));
+            }
+
 
             return View(orders);
         }
