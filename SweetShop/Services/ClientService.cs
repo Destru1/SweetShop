@@ -44,18 +44,6 @@ namespace SweetShop.Services
             return clientToReturn;
         }
 
-        public IEnumerable<DistributorIndexViewModel> GetDistributors()
-        {
-            IEnumerable<DistributorIndexViewModel> distributors = this.DbContext.Distributors
-                .Select(x => new DistributorIndexViewModel
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                })
-                .ToList();
-
-            return distributors;
-        }
         public DetailClientViewModel GetDetails(int id)
         {
             var client = this.DbContext.Clients.Where(x => x.Id == id)

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SweetShop.Areas.Store.Controllers;
+using SweetShop.Constants;
 using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
@@ -18,6 +21,7 @@ using static SweetShop.Constants.NotificationsConstants;
 
 namespace SweetShop.Controllers
 {
+    [Authorize(Roles = RolesConstants.ADMIN_ROLE + "," + RolesConstants.CLIENT_ROLE)]
     public class ReviewsController : StoreController
     {
         private readonly IReviewService reviewService;
@@ -53,6 +57,7 @@ namespace SweetShop.Controllers
             return this.View(review);
         }
 
+        [Authorize(Roles = RolesConstants.CLIENT_ROLE)]
         [HttpGet]
         public IActionResult Create()
         {
@@ -65,6 +70,7 @@ namespace SweetShop.Controllers
             return this.View();
         }
 
+        [Authorize(Roles = RolesConstants.CLIENT_ROLE)]
         [HttpPost]
         public async Task<IActionResult> Create(ReviewDTO review)
         {
@@ -118,6 +124,7 @@ namespace SweetShop.Controllers
             return this.RedirectToAction("Index");
         }
 
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {

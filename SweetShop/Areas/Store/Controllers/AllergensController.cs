@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SweetShop.Areas.Store.Controllers;
+using SweetShop.Constants;
 using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
@@ -15,6 +17,7 @@ using static SweetShop.Constants.NotificationsConstants;
 
 namespace SweetShop.Controllers
 {
+    [Authorize]
     public class AllergensController : StoreController
     {
         private readonly IAllergenService allergenService;
@@ -24,6 +27,7 @@ namespace SweetShop.Controllers
             this.allergenService = allergenService;
         }
 
+        
         [HttpGet]
         public IActionResult Index(string keyword, string sortOrder)
         {
@@ -55,12 +59,26 @@ namespace SweetShop.Controllers
         }
 
         [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var allergen = this.allergenService.GetDetails(id);
+            if (allergen == null)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+
+            return this.View(allergen);
+        }
+
+
+        [Authorize(Roles =RolesConstants.ADMIN_ROLE)]
+        [HttpGet]
         public IActionResult Create()
         {
             return this.View();
         }
 
-
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpPost]
 
         public async Task<IActionResult> Create(CreateAllergenDTO alleren)
@@ -77,6 +95,7 @@ namespace SweetShop.Controllers
             return this.RedirectToAction("Index");
         }
 
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -88,6 +107,7 @@ namespace SweetShop.Controllers
             return this.View(allergenToUpdate);
         }
 
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpPost]
         public async Task<IActionResult> Update(UpdateAllergenDTO updateAllergen)
         {
@@ -104,19 +124,8 @@ namespace SweetShop.Controllers
             this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_UPDATED_ALLERGEN);
             return this.RedirectToAction("Index");
         }
-
-        [HttpGet]
-        public IActionResult Details(int id)
-        {
-            var allergen = this.allergenService.GetDetails(id);
-            if (allergen == null)
-            {
-                return this.RedirectToAction("Index", "Home");
-            }
-
-            return this.View(allergen);
-        }
-
+       
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {

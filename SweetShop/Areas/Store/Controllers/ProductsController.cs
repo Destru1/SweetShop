@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SweetShop.Areas.Store.Controllers;
+using SweetShop.Constants;
 using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
@@ -15,20 +17,20 @@ using static SweetShop.Constants.NotificationsConstants;
 
 namespace SweetShop.Controllers
 {
+    [Authorize]
     public class ProductsController : StoreController
     {
-        private readonly SweetShopDbContext dbContext;
         private readonly IProductService productService;
         private readonly IAllergenService allergenService;
 
-        public ProductsController(SweetShopDbContext dbContext, IProductService productService, IAllergenService allergenService)
+        public ProductsController(IProductService productService, IAllergenService allergenService)
         {
-            this.dbContext = dbContext;
+          
             this.productService = productService;
             this.allergenService = allergenService;
         }
 
-
+        [HttpGet]
         public IActionResult Index(string keyword, decimal? startPrice, decimal? endPrice, string sortOrder)
         {
             var products = this.productService.GetAll();
@@ -63,6 +65,7 @@ namespace SweetShop.Controllers
             return this.View(products);
         }
 
+        [HttpGet]
         public IActionResult GetRating(int id)
         {
             var product = this.productService.GetRating(id);
@@ -76,6 +79,7 @@ namespace SweetShop.Controllers
         }
 
 
+        [HttpGet]
         public IActionResult Details(int id)
         {
             var product = this.productService.GetDetails(id);
@@ -88,7 +92,9 @@ namespace SweetShop.Controllers
 
         }
 
-
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
+        [HttpGet]
+      
         public IActionResult Create()
         {
             var allergens = this.allergenService.GetAll().ToList();
@@ -107,7 +113,7 @@ namespace SweetShop.Controllers
             return this.View(productsModel);
         }
 
-
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpPost]
 
         public async Task<IActionResult> Create(ProductDTO product)
@@ -124,7 +130,8 @@ namespace SweetShop.Controllers
             return this.RedirectToAction("Index");
         }
 
-
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
+        [HttpGet]
         public IActionResult Update(int id)
         {
             var productToUpdate = this.productService.GetById<ProductDTO>(id);
@@ -137,6 +144,7 @@ namespace SweetShop.Controllers
             return this.View(productToUpdate);
         }
 
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpPost]
 
         public async Task<IActionResult> Update(int id, ProductDTO updateProduct)
@@ -157,6 +165,8 @@ namespace SweetShop.Controllers
             return this.RedirectToAction("Index");
         }
 
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             var isDeleted = await this.productService.DeleteAsync(id);

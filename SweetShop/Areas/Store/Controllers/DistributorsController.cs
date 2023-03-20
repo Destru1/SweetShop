@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SweetShop.Areas.Store.Controllers;
+using SweetShop.Constants;
 using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
@@ -18,6 +21,7 @@ using static SweetShop.Constants.NotificationsConstants;
 
 namespace SweetShop.Controllers
 {
+    [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
     public class DistributorsController : StoreController
     {
         private readonly IDistributorService distributorService;
@@ -29,6 +33,8 @@ namespace SweetShop.Controllers
             this.administratorService = administratorService;
         }
 
+
+        [HttpGet]
         public IActionResult Index(string keyword, string sortOrder)
         {
 
@@ -60,6 +66,18 @@ namespace SweetShop.Controllers
         }
 
         [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var distributor = this.distributorService.GetDetails(id);
+
+            if (distributor == null)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+            return this.View(distributor);
+        }
+
+        [HttpGet]
         public IActionResult Create()
         {
             IEnumerable<UserViewModel> users = this.administratorService.GetAll();
@@ -68,6 +86,7 @@ namespace SweetShop.Controllers
 
             return this.View();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Create(DistributorDTO distributor)
@@ -84,6 +103,7 @@ namespace SweetShop.Controllers
         }
 
         [HttpGet]
+
         public IActionResult Update(int id)
         {
             var distributorToUpdate = this.distributorService.GetById<DistributorDTO>(id);
@@ -101,6 +121,7 @@ namespace SweetShop.Controllers
         }
 
         [HttpPost]
+
         public async Task<IActionResult> Update(int id, DistributorDTO updateDistributor)
         {
             if (!this.ModelState.IsValid)
@@ -120,17 +141,6 @@ namespace SweetShop.Controllers
             return this.RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public IActionResult Details(int id)
-        {
-            var distributor = this.distributorService.GetDetails(id);
-
-            if (distributor == null)
-            {
-                return this.RedirectToAction("Index", "Home");
-            }
-            return this.View(distributor);
-        }
 
         [HttpGet]
         public async Task<IActionResult> Delete(int id)

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SweetShop.Areas.Store.Controllers;
+using SweetShop.Constants;
 using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
@@ -31,6 +34,7 @@ namespace SweetShop.Controllers
             this.distributorService = distributorService;
         }
 
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE + "," + RolesConstants.DISTRIBUTOR_ROLE)]
         [HttpGet]
         public IActionResult Index(string keyword,string sortOrder)
         {
@@ -74,6 +78,7 @@ namespace SweetShop.Controllers
             return this.View(clients);
         }
 
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE + "," + RolesConstants.DISTRIBUTOR_ROLE)]
         [HttpGet]
         public IActionResult Details(int id)
         {
@@ -87,6 +92,7 @@ namespace SweetShop.Controllers
             return this.View(client);
         }
 
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpGet]
         public IActionResult Create()
         {
@@ -101,6 +107,7 @@ namespace SweetShop.Controllers
         }
 
 
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpPost]
 
         public async Task<IActionResult> Create(ClientDTO client)
@@ -117,6 +124,7 @@ namespace SweetShop.Controllers
             return this.RedirectToAction("Index");
         }
 
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -137,7 +145,7 @@ namespace SweetShop.Controllers
             return this.View(clientToUpdate);
         }
 
-
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpPost]
         public async Task<IActionResult> Update(int id, ClientDTO updateClient)
         {
@@ -158,6 +166,7 @@ namespace SweetShop.Controllers
             return this.RedirectToAction("Index");
         }
 
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
