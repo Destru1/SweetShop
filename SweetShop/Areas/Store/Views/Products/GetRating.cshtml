@@ -4,36 +4,40 @@
     ViewData["Title"] = "GetRating";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="~/css/product.css" />
 
-<h1 class="text-center">Rating for @Html.DisplayNameFor(model => model.Name)</h1>
-<hr />
+<div class="wrapper">
+    <h1 class="text-center">Rating for @Html.DisplayNameFor(model => model.Name)</h1>
+    <hr />
 
 
-<div class="card w-50 mx-auto">
-    <div class="card-body">
-        <h5 class="card-title">@Html.DisplayNameFor(model => model.Name)<span>@Html.DisplayFor(model => model.Name)</span></h5>
-        <p class="card-text">
-            @if (Model.AverageRating == 0)
-            {
-                <span>Null</span>
-            }
-            else if  (Model.AverageRating < 5)
-            {
-            <span>Low</span>
-            }
-            else if (Model.AverageRating >= 5 && Model.AverageRating < 8)
-            {
-                <span>Average</span>
-            } 
-            else if (Model.AverageRating > 8)
-            {
-                <span>Good</span>
-            }
-            else
-            {
-            <span>@Html.DisplayFor(model => model.AverageRating)</span>
-            }
-        </p>
-        <a asp-action="Index" class="btn btn-primary">Back to products</a>
+    <div class="card w-50 mx-auto">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.Name)<span>@Html.DisplayFor(model => model.Name)</span></h5>
+            <p class="card-text">
+                @if (Model.AverageRating == 0)
+                {
+                    <span>Null</span>
+                }
+                else if (Model.AverageRating < 5)
+                {
+                    <span>Low</span>
+                }
+                else if (Model.AverageRating >= 5 && Model.AverageRating < 8)
+                {
+                    <span>Average</span>
+                }
+                else if (Model.AverageRating > 8)
+                {
+                    <span>Good</span>
+                }
+                else
+                {
+                    <span>@Html.DisplayFor(model => model.AverageRating)</span>
+                }
+            </p>
+            <p>Average rating: @Model.AverageRating</p>
+            <a asp-action="Index" class="btn btn-primary">Back to products</a>
+        </div>
     </div>
 </div>

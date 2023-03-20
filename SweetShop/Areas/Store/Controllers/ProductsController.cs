@@ -25,7 +25,7 @@ namespace SweetShop.Controllers
 
         public ProductsController(IProductService productService, IAllergenService allergenService)
         {
-          
+
             this.productService = productService;
             this.allergenService = allergenService;
         }
@@ -37,6 +37,7 @@ namespace SweetShop.Controllers
 
             ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["PriceSort"] = sortOrder == "decimal" ? "price" : "decimal";
+            ViewData["MostSold"] = sortOrder == "int" ? "sold" : "int";
 
             switch (sortOrder)
             {
@@ -46,6 +47,9 @@ namespace SweetShop.Controllers
 
                 case "price":
                     products = products.OrderBy(x => x.Price);
+                    break;
+                case "sold":
+                    products = products.OrderByDescending(x => x.TimesSold);
                     break;
                 default:
                     products = products.OrderBy(x => x.Name);
@@ -94,12 +98,12 @@ namespace SweetShop.Controllers
 
         [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpGet]
-      
+
         public IActionResult Create()
         {
             var allergens = this.allergenService.GetAll().ToList();
 
-            bool alergensAreEmpty = allergens.Count== 0;
+            bool alergensAreEmpty = allergens.Count == 0;
             if (alergensAreEmpty)
             {
                 this.TempData[INFORMATION_NOTIFICATION] = string.Format(INFO_PRODUCT);

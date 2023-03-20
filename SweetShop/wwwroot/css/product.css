@@ -1,0 +1,18 @@
+﻿body {
+    background-image: url(https://images.unsplash.com/photo-1583338917451-face2751d8d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
+}
+
+.container .wrapper {
+    background-color: #fdf3fbfd;
+    border-radius: 5%;
+    padding: 2% 10% 15% 10%;
+    margin-left: -7vw;
+    margin-right: -7vw;
+}
+.card{
+    border-radius:5%;
+}
+.card img{
+    border-top-right-radius:5%;
+    border-top-left-radius:5%;
+}
