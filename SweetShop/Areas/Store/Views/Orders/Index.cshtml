@@ -4,21 +4,21 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-<h1>Index</h1>
-@{
     List<string> clientOptions = new List<string>();
     List<string> productOptions = new List<string>();
 
     decimal totalPrice = 0;
 }
+
+
+<h1>Index</h1>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
 <form asp-controller="Orders" asp-action="Index" method="get" class="m-1">
-    <div class="row justify-content-center align-items-center">
+    <div class="d-flex justify-content-center align-items-center">
 
         <div class="form-group col-xs-6 m-1">
             <label for="ClientId" />

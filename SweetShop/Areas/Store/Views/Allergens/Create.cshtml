@@ -4,13 +4,21 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="~/css/alergen.css" />
 
-<h1>Create</h1>
+<div class="wrapper">
+    <div class="d-flex justify-content-between align-items-start p-1 ">
+       
+         <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        <h1 class="text-left">Create allergen</h1>
+    </div>
+    
 
-<h4>Allergen</h4>
+
+
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="w-50 mx-auto pb-5 ">
+        <div class="offset-3 col-6 mt-3">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -25,15 +33,13 @@
             </div>
       
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary w-100 mx-auto" />
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

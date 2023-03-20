@@ -1,4 +1,6 @@
-﻿namespace SweetShop.ViewModels.Review
+﻿using System;
+
+namespace SweetShop.ViewModels.Review
 {
     public class IndexReviewViewModel
     {
@@ -11,6 +13,8 @@
         public string Description { get; set; }
 
         public int Rating { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
     }
 }

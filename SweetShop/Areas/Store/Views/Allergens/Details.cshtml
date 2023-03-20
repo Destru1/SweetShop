@@ -1,62 +1,75 @@
-﻿@model DetailsAlergenViewModel
+﻿@using SweetShop.Constants;
+@model DetailsAlergenViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = $"Details {Model.Name}";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Styles{
     <link rel="stylesheet" href="~/css/alergen.css" />
 }
 
+<div class="wrapper w-50 mx-auto">
+    <h1>Details</h1>
 
-<h1>Details</h1>
+    <div>
+        <hr />
+        <dl class="row ">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </dt>
+            <dd class="col-sm-10">
+                <span class="m-1">@Html.DisplayFor(model => model.ModifiedOn)</span>
+            </dd>
 
-<div>
-    <h4>Allergen</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CreatedOn)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ModifiedOn)
-        </dd>
-
-    </dl>
+        </dl>
 
 
-    
-    <ul class="list-group list-group-horizontal">
-        <p class="font-weight-bold p-1">Used in products:</p>
+        <p class="font-weight-bold">Used in products:</p>
+    <div class="list-group col-sm-2">
+
         @foreach (var product in Model.Products)
         {
-            <li class="list-group-item" id="highlight">
-                <a class="text-decoration-none" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">@product.Name</a>
-            </li>
+                <a class="list-group-item list-group-item-action" id="highlight" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+                <span class="text-decoration-none">@product.Name</span>
+            </a>
         }
 
-    </ul>
-</div>
-<br />
-<div>
-    <a asp-action="Update" asp-route-id="@Model.Id">Update</a> |
-    <a asp-action="Index">Back to List</a>
+    </div>
+
+    </div>
+    
+    <br />
+    <div>
+        @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+        {
+            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>
+            <span>|</span>
+            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        }
+        else
+        {
+            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        }
+
+    </div>
+
 </div>

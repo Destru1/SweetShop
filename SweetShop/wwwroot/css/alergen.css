@@ -1,8 +1,47 @@
-﻿#highlight a{
-    color:black
+﻿body {
+    background-image: url(https://images.unsplash.com/photo-1546549158-993c3d92d592?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80);
+    content: "";
+}
+
+#highlight {
+    color: black;
+    background: #fdf3fbfd;
+    width: 15vw;
 }
 
 #highlight :hover {
-    text-decoration: underline;
-    color: hotpink;
+        text-decoration: underline;
+        color: dodgerblue;
+    }
+
+.container .wrapper {
+    background-color: #fdf3fbfd;
+    border-radius: 5%;
+    padding: 2%;
+    padding-bottom: 15%;
+}
+
+
+@media (min-width: 576px) {
+    .wrapper {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .wrapper {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .wrapper {
+        max-width: 1140px;
+    }
 }

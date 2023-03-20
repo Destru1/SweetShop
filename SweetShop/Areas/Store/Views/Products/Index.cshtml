@@ -22,7 +22,7 @@
     <partial name="_SearchBarPartial" />
 
 </form>
-<div class="row justify-content-end">
+<div class="d-flex justify-content-end">
     <div class="btn-group">
         <div class="dropdown mr-1">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
@@ -60,7 +60,7 @@
     @foreach (var item in Model)
     {
         <div class="col-4 m-0 p-1">
-            <div class="card" style="width: 18rem;">
+            <div class="card shadow-lg" style="width: 18rem;">
                 <img src="@item.ImageURL" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">@item.Name</h5>

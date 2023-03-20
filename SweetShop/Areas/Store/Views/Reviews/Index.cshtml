@@ -16,7 +16,7 @@
 
     @foreach (var item in Model)
     {
-
+@*
         <div class="card bg-white mb-5 col-4 p-1 m-1" style="max-width: 18rem;">
             <div class="card-header">@item.Client <span class="float-right">Rating: @item.Rating</span></div>
             <div class="card-body">
@@ -32,6 +32,20 @@
                 <p class="card-text">@item.Description</p>
             </div>
             <div class="card-footer bg-transparent border-success">Footer</div>
+        </div>
+*@
+        <div class="card text-center mb-5 col-4 p-1 m-1">
+            <div class="card-header">
+                @item.Product - @item.Rating
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@item.Client</h5>
+                <p class="card-text">@item.Description</p>
+               
+            </div>
+            <div class="card-footer text-muted">
+                @item.CreatedOn
+            </div>
         </div>
     }
 

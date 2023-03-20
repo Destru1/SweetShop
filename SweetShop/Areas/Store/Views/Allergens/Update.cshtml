@@ -1,41 +1,45 @@
 ﻿@model UpdateAllergenDTO
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="~/css/alergen.css" />
 
-<h1>Edit</h1>
+<div class="wrapper">
+    <div class="d-flex justify-content-between align-items-start p-1 ">
 
-<h4>Allergen</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Update">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-          
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        <h1 class="text-left">Upadte allergen</h1>
+    </div>
+
+    <hr />
+    <div class="w-50 mx-auto pb-5 ">
+        <div class="offset-3 col-6 mt-3">
+            <form asp-action="Update">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-warning w-100 mx-auto" />
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
