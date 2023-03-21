@@ -99,6 +99,10 @@ namespace SweetShop.Controllers
             IEnumerable<UserViewModel> users = this.administratorService.GetAll();
             IEnumerable<DistributorIndexViewModel> distributors = this.distributorService.GetAll();
 
+            if (distributors.Count() == 0)
+            {
+                this.TempData[INFORMATION_NOTIFICATION] = string.Format(INFO_CLIENT);
+            }
 
             this.ViewBag.Users = users;
             this.ViewBag.Distributors = distributors;

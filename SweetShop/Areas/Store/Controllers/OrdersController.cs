@@ -80,6 +80,11 @@ namespace SweetShop.Controllers
             IEnumerable<ProductIndexViewModel> products = this.productService.GetAll();
             IEnumerable<ClientIndexViewModel> clients = this.clientService.GetAll();
 
+            if (products.Count() == 0 && clients.Count() == 0)
+            {
+                this.TempData[INFORMATION_NOTIFICATION] = string.Format(INFO_ORDER);
+            }
+
             this.ViewBag.Products = products;
             this.ViewBag.Clients = clients;
 
