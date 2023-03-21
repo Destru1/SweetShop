@@ -1,91 +1,96 @@
-﻿@using SweetShop.ViewModels.Distributor;
+﻿@using SweetShop.Constants;
+@using SweetShop.ViewModels.Distributor;
 @model IEnumerable<DistributorIndexViewModel>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="~/css/distributor.css" />
 
-<h1>Index</h1>
+<div class="wrapper">
+    <h1 class="text-center">Distributors</h1>
+    @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+    {
+        <p>
+            <a asp-action="Create" class="btn btn-success">Create New</a>
+        </p>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    }
 
-<form asp-controller="Distributors" asp-action="Index" method="get">
-    <partial name="_SearchBarPartial" />
-</form>
-<div class="dropdown m-1 float-right">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-        Order by
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">Name</a>
-        <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["CitySort"]">City</a>
+    <form asp-controller="Distributors" asp-action="Index" method="get">
+        <partial name="_SearchBarPartial" />
+    </form>
+    <div class="dropdown m-1 float-right">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+            Order by
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">Name</a>
+            <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["CitySort"]">City</a>
 
+        </div>
     </div>
-</div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-
-            </th>
-
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserName)
-                </td>
-                @* <td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-            </td>
-            <td>
-            @Html.DisplayFor(modelItem => item.ModifiedOn)
-            </td>
-            <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-            </td>
-            <td>
-            @Html.DisplayFor(modelItem => item.DeletedOn)
-            </td>*@
-                <td>
-                    <a asp-action="Update" asp-route-id="@item.Id">Update</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+
+                </th>
+
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+                        {
+
+                            <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Details</a>
+                            <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-pill badge-warning p-2 m-2">Update</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger p-2 m-2">Delete</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Details</a>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

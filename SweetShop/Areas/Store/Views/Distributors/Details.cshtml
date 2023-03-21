@@ -1,74 +1,88 @@
-﻿@using SweetShop.ViewModels.Distributor;
+﻿@using SweetShop.Constants;
+@using SweetShop.ViewModels.Distributor;
 @model DetailsDistributorViewModel
 
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="~/css/distributor.css" />
 
-<h1>Details</h1>
 
-<div>
-    <h4>Distributor</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.City)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.User)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CreatedOn)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ModifiedOn)
-        </dd>
+<div class="wrapper w-50 mx-auto">
+    <div>
+        <h4>Distributor</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.City)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.City)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.User)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </dd>
 
-        
-    </dl>
-    <p class="font-weight-bold">Distributor clients:</p>
-    <div class="list-group col-sm-2">
-        @foreach (var client in Model.Clients)
-        {
-                    <a class="list-group-item list-group-item-action " asp-controller="Clients" asp-action="Details" asp-route-id="@client.Id">
-                        <span>@client.FirstName @client.FirstName</span>
 
-                    </a>
-        }
+        </dl>
+        <p class="font-weight-bold">Distributor clients:</p>
+        <div class="list-group col-sm-2">
+            @foreach (var client in Model.Clients)
+            {
+                <a class="list-group-item list-group-item-action" id="highlight" asp-controller="Clients" asp-action="Details" asp-route-id="@client.Id">
+                    <span>@client.FirstName @client.FirstName</span>
+
+                </a>
+            }
         </div>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    </div>
+    <div>
+        <br />
+        @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+        {
+            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>
+            <span>|</span>
+            <a asp-action="Index" class="btn btn-primary"> Back to List</a>
+        }
+        else
+        {
+            <a asp-action="Index" class="btn btn-primary"> Back to List</a>
+        }
+
+    </div>
+
 </div>

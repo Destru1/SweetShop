@@ -1,0 +1,21 @@
+﻿body {
+    background-image: url(https://images.unsplash.com/photo-1491821893533-80f535044695?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
+}
+
+.container .wrapper {
+    background-color: #fdf3fbfd;
+    border-radius: 3%;
+    padding: 2%;
+    padding-bottom: 15%;
+}
+
+#highlight {
+    color: black;
+    background: #fdf3fbfd;
+    width: 15vw;
+}
+
+    #highlight :hover {
+        text-decoration: none;
+        color: dodgerblue;
+    }
