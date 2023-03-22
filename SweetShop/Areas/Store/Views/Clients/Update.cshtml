@@ -5,80 +5,81 @@
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Edit</h1>
-
-<h4>Client</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Update">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PersonEntity" class="control-label"></label>
-                <select asp-for="PersonEntity" asp-items="Html.GetEnumSelectList<PersonEntity>()" class="form-control"></select>
-                <span asp-validation-for="PersonEntity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DistributorId" class="control-label"></label>
-                <select asp-for="DistributorId" class="form-control">
-                    @foreach (var distributor in ViewBag.Distributors)
-                    {
-                        <option value="@distributor.Id">@distributor.Name</option>
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class="form-control">
-                    @foreach (var users in ViewBag.Users)
-                    {
-                        @if (users.RoleName == "Client")
+<link rel="stylesheet" href="~/css/client.css" />
+<div class="wrapper">
+    <div>
+        <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        <h1 class="text-center">Update client</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form asp-action="Update">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City" class="control-label"></label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PersonEntity" class="control-label"></label>
+                    <select asp-for="PersonEntity" asp-items="Html.GetEnumSelectList<PersonEntity>()" class="form-control"></select>
+                    <span asp-validation-for="PersonEntity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DistributorId" class="control-label"></label>
+                    <select asp-for="DistributorId" class="form-control">
+                        @foreach (var distributor in ViewBag.Distributors)
                         {
-                            <option value="@users.Id">@users.UserName</option>
+                            <option value="@distributor.Id">@distributor.Name</option>
                         }
-                    }
-                </select>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserId" class="control-label"></label>
+                    <select asp-for="UserId" class="form-control">
+                        @foreach (var users in ViewBag.Users)
+                        {
+                            @if (users.RoleName == "Client")
+                            {
+                                <option value="@users.Id">@users.UserName</option>
+                            }
+                        }
+                    </select>
 
-            </div>
-            <input type="hidden" asp-for="Id" />
-            
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+                </div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-warning w-100 mx-auto" />
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -1,10 +1,14 @@
 ﻿body {
     background-image: url(https://images.unsplash.com/photo-1583338917451-face2751d8d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
+    backdrop-filter:blur(px);
 }
 
 .container .wrapper {
-    background-color: #fdf3fbfd;
-    border-radius: 5%;
+    background: rgba(253, 243, 251, 0.63);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(14.7px);
+    -webkit-backdrop-filter: blur(15px);
     padding: 2% 10% 15% 10%;
     margin-left: -7vw;
     margin-right: -7vw;

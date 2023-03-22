@@ -1,0 +1,13 @@
+﻿body {
+    background-image: url(https://images.unsplash.com/photo-1555526148-0fa555bb2e78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80)
+}
+
+.container .wrapper {
+    background: rgba(253, 243, 251, 0.63);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(14.7px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 2%;
+    padding-bottom: 15%;
+}

@@ -1,4 +1,5 @@
-﻿@using SweetShop.ViewModels.Order;
+﻿@using SweetShop.Constants;
+@using SweetShop.ViewModels.Order;
 @model IEnumerable<OrderIndexViewModel>
 
 @{
@@ -10,113 +11,124 @@
 
     decimal totalPrice = 0;
 }
+<link rel="stylesheet" href="~/css/order.css" />
+<div class="wrapper">
+    <h1>Index</h1>
+    <p>
+        <a asp-action="Create" class="btn btn-success">Create New</a>
+    </p>
 
+    <form asp-controller="Orders" asp-action="Index" method="get" class="m-1">
+        <div class="d-flex justify-content-center align-items-center">
 
-<h1>Index</h1>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+            <div class="form-group col-xs-6 m-1">
+                <label for="ClientId" />
+                <select id="ClientId" name="ClientId" class="form-control">
+                    <option value="">Get all clients</option>
 
-<form asp-controller="Orders" asp-action="Index" method="get" class="m-1">
-    <div class="d-flex justify-content-center align-items-center">
-
-        <div class="form-group col-xs-6 m-1">
-            <label for="ClientId" />
-            <select id="ClientId" name="ClientId" class="form-control">
-                <option value="">Get all clients</option>
-
-                @foreach (var item in Model)
-                {
-                    if (!clientOptions.Contains(item.ClientId))
+                    @foreach (var item in Model)
                     {
-                        <option value="@item.ClientId">@item.ClientId</option>
-                        clientOptions.Add(item.ClientId);
+                        if (!clientOptions.Contains(item.ClientId))
+                        {
+                            <option value="@item.ClientId">@item.ClientId</option>
+                            clientOptions.Add(item.ClientId);
+                        }
+                        totalPrice += item.Total;
                     }
-                    totalPrice += item.Total;
-                }
 
-            </select>
-        </div>
+                </select>
+            </div>
 
-        <div class="form-group col-xs-6 m-1">
-            <label for="ProductId" />
-            <select id="ProductId" name="ProductId" class="form-control">
-                <option value="">Get all products</option>
+            <div class="form-group col-xs-6 m-1">
+                <label for="ProductId" />
+                <select id="ProductId" name="ProductId" class="form-control">
+                    <option value="">Get all products</option>
 
-                @foreach (var item in Model)
-                {
-                    if (!productOptions.Contains(item.ProductId))
+                    @foreach (var item in Model)
                     {
-                        <option value="@item.ProductId">@item.ProductId</option>
-                        productOptions.Add(item.ProductId);
+                        if (!productOptions.Contains(item.ProductId))
+                        {
+                            <option value="@item.ProductId">@item.ProductId</option>
+                            productOptions.Add(item.ProductId);
+                        }
                     }
-                }
 
-            </select>
+                </select>
+
+            </div>
+            <input type="date" value="sortDate" class="shadow col-xs-6  rounded-lg" name="sortDate" />
+            <input type="submit" value="Search" class="shadow btn btn-primary m-1" />
 
         </div>
-        <input type="date" value="sortDate" class="shadow col-xs-6  rounded-lg" name="sortDate" />
-        <input type="submit" value="Search" class="shadow btn btn-primary m-1" />
-
-    </div>
-</form>
+    </form>
 
 
 
 
 
-<table class="table">
-    <thead>
-        <tr>
-
-            <th>
-                @Html.DisplayNameFor(model => model.ClientId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Total)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderedOn)
-            </th>
-
-
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClientId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Total)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderedOn)
-                </td>
 
-                <td>
-                    <a asp-action="Update" asp-route-id="@item.Id">Update</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClientId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderedOn)
+                </th>
+
+
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderedOn)
+                    </td>
 
-<h2>Total: @String.Format("{0:0.00}",totalPrice)</h2>
+                    <td>
+                        @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+                        {
+
+                            <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Details</a>
+                            <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-pill badge-warning p-2 m-2">Update</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger p-2 m-2">Delete</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Details</a>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <hr />
+    <h2 class="text-right">Total: @String.Format("{0:0.00}",totalPrice)</h2>
+</div>
