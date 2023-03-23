@@ -1,5 +1,7 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+@import url("//fonts.googleapis.com/css?family=Roboto:400,300,100");
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css");
 
 a.navbar-brand {
   white-space: normal;
@@ -27,7 +29,7 @@ a {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
   html {
@@ -59,8 +61,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: "Roboto";
 }
 .footer {
   position: absolute;
@@ -74,4 +77,5 @@ body {
 .menuStyle {
     background: #d2c5ffd4;
     color: antiquewhite;
+   
 }
