@@ -3,15 +3,15 @@
 @model DetailClientViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = $"Details {Model.FirstName} {Model.LastName}";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <link rel="stylesheet" href="~/css/client.css" />
 
-<div class="wrapper w-50 mx-auto">
+<div class="wrapper w-75 mx-auto">
 <div>
-    <h4>Client</h4>
+    <h4>Клиент</h4>
     <hr />
         <dl class="row">
         <dt class = "col-sm-2">
@@ -80,13 +80,13 @@
 <div>
         @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
         {
-            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>
+            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Промяна</a>
             <span>|</span>
-            <a asp-action="Index" class="btn btn-primary"> Back to List</a>
+            <a asp-action="Index" class="btn btn-primary">Обратно към клиенти</a>
         }
         else
         {
-            <a asp-action="Index" class="btn btn-primary"> Back to List</a>
+            <a asp-action="Index" class="btn btn-primary">Обратно към клиенти</a>
         }
 </div>
 </div>

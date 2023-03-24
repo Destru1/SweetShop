@@ -11,20 +11,20 @@
 
 
 <div class="wrapper">
-    <h1 class="text-center">Products</h1>
+    <h1 class="text-center">Продукти</h1>
     @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
     {
         <p>
-            <a asp-action="Create" class="btn btn-success">Create New</a>
+            <a asp-action="Create" class="btn btn-success">Добавяне</a>
         </p>
 
     }
 
     <form asp-controller="Products" asp-action="Index" method="get">
         <div class="input-group mb-3">
-            <input type="number" step="any" name="StartPrice" class="form-control" placeholder="Min price" min="0" />
-            <input type="number" step="any" name="EndPrice" class="form-control" placeholder="Max price" min="0" />
-            <button type="submit" class="btn btn-secondary">Search by price</button>
+            <input type="number" step="any" name="StartPrice" class="form-control" placeholder="Мин. цена" min="0" />
+            <input type="number" step="any" name="EndPrice" class="form-control" placeholder="Макс. цена" min="0" />
+            <button type="submit" class="btn btn-secondary">Търсене по цена</button>
         </div>
 
         <partial name="_SearchBarPartial" />
@@ -34,7 +34,7 @@
         <div class="btn-group">
             <div class="dropdown mr-1">
                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                    Get rating
+                    Оценка за
                 </button>
 
                 <div class="dropdown-menu">
@@ -47,12 +47,12 @@
             </div>
             <div class="dropdown mr-1">
                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                    Order by
+                    Сортиране по
                 </button>
                 <div class="dropdown-menu ">
-                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">Name</a>
-                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSort"]">Price</a>
-                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["MostSold"]">Sells</a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">Име</a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSort"]">Цена</a>
+                    <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["MostSold"]">Продажби</a>
 
                 </div>
             </div>
@@ -68,17 +68,17 @@
                     <img src="@item.ImageURL" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">@item.Name</h5>
-                        <p class="card-text">@item.Price$<span class="float-right">Times sold: @item.TimesSold </span></p>
+                        <p class="card-text">@item.Price$<span class="float-right">Продажби: @item.TimesSold </span></p>
 
                         @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
                         {
-                            <a asp-action="Details" asp-route-id="@item.Id" class="badge  badge-pill badge-info w-25 p-2 m-2">Details</a>
-                            <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-pill badge-warning w-25 p-2 m-2">Update</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger w-25 p-2 m-2"> Delete</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Детайли</a>
+                            <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-pill badge-warning p-2 m-2">Промяна</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger p-2 m-2"> Изтрий</a>
                         }
                         else
                         {
-                            <a asp-action="Details" asp-route-id="@item.Id" class="badge  badge-pill badge-info w-25 p-2 m-2">Details</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="badge  badge-pill badge-info p-2 m-2">Детайли</a>
                         }
 
                     </div>

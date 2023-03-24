@@ -33,10 +33,10 @@ namespace SweetShop.ViewModels.Client
         [DisplayName("Потребителско име")]
         public string UserId { get; set; }
 
-        [DisplayName("Създадено на")]
+        [DisplayName("Създадено")]
         public DateTime CreatedOn { get; set; }
 
-        [DisplayName("Променено на")]
+        [DisplayName("Променено")]
         public DateTime? ModifiedOn { get; set;}
     }
 }

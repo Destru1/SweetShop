@@ -15,10 +15,10 @@ namespace SweetShop.ViewModels
         [DisplayName("Описание")]
         public string Description { get; set; }
 
-        [DisplayName("Създаден на")]
+        [DisplayName("Създаден")]
         public DateTime CreatedOn { get; set; }
 
-        [DisplayName("Променен на")]
+        [DisplayName("Променен")]
         public DateTime? ModifiedOn { get; set; }
 
         public int ProductId { get; set; }

@@ -2,10 +2,9 @@
 @model IEnumerable<UserViewModel>
 @{
     ViewData["Title"] = "Index";
-    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
 
 <p>
 
@@ -62,11 +61,11 @@
                 <td>
 
                     <form asp-action="Promote" asp-route-id="@item.Id" method="post">
-                        <button class=" btn btn-success w-100 text-white">Promote</button>
+                        <button class=" btn btn-success w-100 text-white">Повишаване</button>
                     </form>
 
                     <form asp-action="Demote" asp-route-id="@item.Id" method="post">
-                        <button class=" btn btn-danger w-100 text-white">Demote</button>
+                        <button class=" btn btn-danger w-100 text-white">Понижаване</button>
                     </form>
 
 

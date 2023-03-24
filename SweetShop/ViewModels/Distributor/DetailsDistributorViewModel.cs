@@ -24,10 +24,10 @@ namespace SweetShop.ViewModels.Distributor
         [DisplayName("Потребителско име")]
         public string User { get; set; }
 
-        [DisplayName("Създадено на")]
+        [DisplayName("Създадено")]
         public DateTime CreatedOn { get; set; }
 
-        [DisplayName("Променено на")]
+        [DisplayName("Променено")]
         public DateTime? ModifiedOn { get; set; }
 
         public int ClientId { get; set; }

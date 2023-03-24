@@ -13,16 +13,16 @@ namespace SweetShop.ViewModels.Order
         [DisplayName("Количество")]
         public int Quantity { get; set; }
 
-        [DisplayName("Име на клиент")]
+        [DisplayName("Клиент")]
         public string Client { get; set; }
 
-        [DisplayName("Име на продукт")]
+        [DisplayName("Продукт")]
         public string Product { get; set; }
 
-        [DisplayName("Създадено на")]
+        [DisplayName("Създадено")]
         public DateTime CreatedOn { get; set; }
 
-        [DisplayName("Променено на")]
+        [DisplayName("Променено")]
         public DateTime? ModifiedOn { get; set; }
     }
 }

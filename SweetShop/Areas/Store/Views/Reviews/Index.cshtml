@@ -10,12 +10,12 @@
 
 
 <div class="wrapper">
-    <h1>Reviews</h1>
+    <h1>Отзиви</h1>
 
     @if (User.IsInRole(RolesConstants.CLIENT_ROLE))
     {
         <p>
-            <a asp-action="Create" class="btn btn-success">Create New</a>
+            <a asp-action="Create" class="btn btn-success">Добавяне на отзив</a>
         </p>
     }
 
@@ -26,7 +26,7 @@
         {
             <div class="card mb-5 col-4 p-1 m-1" style="max-width:22rem;">
                 <div class="card-header">
-                    <p class="card-text"> @item.Product  <span class="float-right">Rating: @item.Rating</span></p>
+                    <p class="card-text"> @item.Product  <span class="float-right">Оценка: @item.Rating</span></p>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">@item.Client</h5>
@@ -34,10 +34,10 @@
 
                 </div>
                 <div class="card-footer text-muted">
-                    <p class="card-text">Reviewed on: @item.CreatedOn</p>
+                    <p class="card-text">Дата: @item.CreatedOn</p>
                     @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
                     {
-                        <p class="card-tex"><a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger w-25 p-2 m-2"> Delete</a></p>
+                        <p class="card-tex"><a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger w-50 mx-auto p-2"> Изтрий</a></p>
                     }
 
 
