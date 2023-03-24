@@ -20,7 +20,6 @@ namespace SweetShop.Services.Interfaces
         }
 
 
-
         public IEnumerable<IndexReviewViewModel> GetAll()
         {
             var reviews = this.DbContext.Reviews.ProjectTo<IndexReviewViewModel>(this.Mapper.ConfigurationProvider).ToList();
@@ -42,24 +41,6 @@ namespace SweetShop.Services.Interfaces
             return reviewToReturn;
         }
 
-        //public DetailsReviewViewModel GetDetails(int id)
-        //{
-        //    var review = this.DbContext.Reviews.Where(x => x.Id == id)
-        //        .Select(x => new DetailsReviewViewModel
-        //        {
-        //            Id = x.Id,
-        //            Product = x.Product.Name,
-        //            Client = x.Client.FirstName + " " + x.Client.LastName,
-        //            Rating = x.Rating,
-        //            Description = x.Description,
-        //            CreatedOn = x.CreatedOn,
-        //            ModifiedOn = x.ModifiedOn,
-        //        })
-        //        .FirstOrDefault();
-
-        //    return review;
-
-        //}
 
         public async Task CreateAsync(ReviewDTO review)
         {
@@ -78,27 +59,6 @@ namespace SweetShop.Services.Interfaces
             await this.DbContext.AddAsync(reviewToCreate);
             await this.DbContext.SaveChangesAsync();
         }
-
-        //public async Task<bool> UpdateAsync(int id, ReviewDTO review)
-        //{
-        //    var reviewToUpdate = this.DbContext.Reviews.Find(review.Id);
-
-        //    if (review == null)
-        //    {
-        //        return false;
-        //    }
-
-        //    reviewToUpdate.Description = review.Description;
-        //    reviewToUpdate.Rating = review.Rating;
-        //    reviewToUpdate.ClientId = review.ClientId;
-        //    reviewToUpdate.ProductId = review.ProductId;
-        //    reviewToUpdate.ModifiedOn = DateTime.UtcNow;
-
-        //    this.DbContext.Update(reviewToUpdate);
-        //    await this.DbContext.SaveChangesAsync();
-
-        //    return true;
-        //}
 
         public async Task<bool> DeleteAsync(int id)
         {

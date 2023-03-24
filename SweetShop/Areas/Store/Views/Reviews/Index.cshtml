@@ -10,7 +10,7 @@
 
 
 <div class="wrapper">
-    <h1>Отзиви</h1>
+    <h1 class="text-center">Отзиви</h1>
 
     @if (User.IsInRole(RolesConstants.CLIENT_ROLE))
     {
@@ -18,9 +18,12 @@
             <a asp-action="Create" class="btn btn-success">Добавяне на отзив</a>
         </p>
     }
+    <div class="mb-3">
+    <a asp-action="Index" asp-route-sort="@ViewData["HighestRated"]" class="btn btn-primary">Най-висока оценка</a>
+    <a asp-action="Index" asp-route-sort="@ViewData["LowestRated"]" class="btn btn-primary">Оценки под 5</a>
+    </div>
 
-
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-md-3 g-4">
 
         @foreach (var item in Model)
         {
