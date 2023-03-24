@@ -13,10 +13,14 @@
 }
 <link rel="stylesheet" href="~/css/order.css" />
 <div class="wrapper">
-    <h1>Index</h1>
-    <p>
-        <a asp-action="Create" class="btn btn-success">Create New</a>
-    </p>
+    <h1 class="text-center">Поръчки</h1>
+    @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+    {
+        <p>
+            <a asp-action="Create" class="btn btn-success">Добавяне</a>
+        </p>
+    }
+
 
     <form asp-controller="Orders" asp-action="Index" method="get" class="m-1">
         <div class="d-flex justify-content-center align-items-center">
@@ -24,7 +28,7 @@
             <div class="form-group col-xs-6 m-1">
                 <label for="ClientId" />
                 <select id="ClientId" name="ClientId" class="form-control">
-                    <option value="">Get all clients</option>
+                    <option value="">Всички клиенти</option>
 
                     @foreach (var item in Model)
                     {
@@ -42,7 +46,7 @@
             <div class="form-group col-xs-6 m-1">
                 <label for="ProductId" />
                 <select id="ProductId" name="ProductId" class="form-control">
-                    <option value="">Get all products</option>
+                    <option value="">Всички продукти</option>
 
                     @foreach (var item in Model)
                     {
@@ -57,7 +61,11 @@
 
             </div>
             <input type="date" value="sortDate" class="shadow col-xs-6  rounded-lg" name="sortDate" />
-            <input type="submit" value="Search" class="shadow btn btn-primary m-1" />
+            <button type="submit" id="button-addon2" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+        </button>
 
         </div>
     </form>
@@ -111,16 +119,15 @@
                     </td>
 
                     <td>
-                        @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+                         @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
                         {
-
-                            <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Details</a>
-                            <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-pill badge-warning p-2 m-2">Update</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger p-2 m-2">Delete</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Детайли</a>
+                            <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-pill badge-warning p-2 m-2">Промяна</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger  p-2 m-2"> Изтрий</a>
                         }
                         else
                         {
-                            <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Details</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="badge  badge-pill badge-info p-2 m-2">Детайли</a>
                         }
 
                     </td>

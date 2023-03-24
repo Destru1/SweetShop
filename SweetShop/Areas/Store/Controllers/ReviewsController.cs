@@ -44,18 +44,18 @@ namespace SweetShop.Controllers
             return this.View(reviews);
         }
 
-        [HttpGet]
-        public IActionResult Details(int id)
-        {
-            var review = this.reviewService.GetDetails(id);
+        //[HttpGet]
+        //public IActionResult Details(int id)
+        //{
+        //    var review = this.reviewService.GetDetails(id);
 
-            if (review == null)
-            {
-                return this.RedirectToAction("Index");
-            }
+        //    if (review == null)
+        //    {
+        //        return this.RedirectToAction("Index");
+        //    }
 
-            return this.View(review);
-        }
+        //    return this.View(review);
+        //}
 
         [Authorize(Roles = RolesConstants.CLIENT_ROLE)]
         [HttpGet]
@@ -86,43 +86,43 @@ namespace SweetShop.Controllers
             return this.RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public IActionResult Update(int id)
-        {
-            var reviewToUpdate = this.reviewService.GetById<OrderDTO>(id);
+        //[HttpGet]
+        //public IActionResult Update(int id)
+        //{
+        //    var reviewToUpdate = this.reviewService.GetById<OrderDTO>(id);
 
-            IEnumerable<ProductIndexViewModel> products = this.productService.GetAll();
-            IEnumerable<ClientIndexViewModel> clients = this.clientService.GetAll();
+        //    IEnumerable<ProductIndexViewModel> products = this.productService.GetAll();
+        //    IEnumerable<ClientIndexViewModel> clients = this.clientService.GetAll();
 
-            if (!this.ModelState.IsValid)
-            {
-                return this.RedirectToAction("Index");
+        //    if (!this.ModelState.IsValid)
+        //    {
+        //        return this.RedirectToAction("Index");
 
-            }
+        //    }
 
-            this.ViewBag.Products = products;
-            this.ViewBag.Clients = clients;
+        //    this.ViewBag.Products = products;
+        //    this.ViewBag.Clients = clients;
 
-            return this.View(reviewToUpdate);
-        }
+        //    return this.View(reviewToUpdate);
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> Update(int id, ReviewDTO order)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(order);
+        //[HttpPost]
+        //public async Task<IActionResult> Update(int id, ReviewDTO order)
+        //{
+        //    if (!this.ModelState.IsValid)
+        //    {
+        //        return this.View(order);
 
-            }
-            var isUpdated = await this.reviewService.UpdateAsync(id, order);
+        //    }
+        //    var isUpdated = await this.reviewService.UpdateAsync(id, order);
 
-            if (!isUpdated)
-            {
-                return this.RedirectToAction("Index", "Home");
-            }
+        //    if (!isUpdated)
+        //    {
+        //        return this.RedirectToAction("Index", "Home");
+        //    }
 
-            return this.RedirectToAction("Index");
-        }
+        //    return this.RedirectToAction("Index");
+        //}
 
         [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpGet]

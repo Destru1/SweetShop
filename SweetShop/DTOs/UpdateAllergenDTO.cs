@@ -1,4 +1,5 @@
 ﻿using SweetShop.Constants.ModelConstants;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace SweetShop.DTOs
@@ -9,10 +10,12 @@ namespace SweetShop.DTOs
 
         [MinLength(AllergenConstants.NAME_MIN_VALUE)]
         [MaxLength(AllergenConstants.NAME_MAX_VALUE)]
+        [DisplayName("Име")]
         public string Name { get; set; }
 
         [MinLength(AllergenConstants.DESCRIPTION_MIN_VALUE)]
         [MaxLength(AllergenConstants.DESCRIPTION_MAX_VALUE)]
+        [DisplayName("Описание")]
         public string Description { get; set; }
     }
 }

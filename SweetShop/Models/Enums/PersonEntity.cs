@@ -2,7 +2,7 @@
 {
     public enum PersonEntity
     {
-        Private_person  = 0,
-        Legal_entity  = 1,
+        Частно  = 0,
+        Юридическо  = 1,
     }
 }

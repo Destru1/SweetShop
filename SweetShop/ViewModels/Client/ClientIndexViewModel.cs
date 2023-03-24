@@ -6,17 +6,19 @@ namespace SweetShop.ViewModels.Client
     {
         public int Id { get; set; }
 
-        [DisplayName("First name")]
+        [DisplayName("Име")]
         public string FirstName { get; set; }
 
-        [DisplayName("Last name")]
+        [DisplayName("Презиме")]
         public string LastName { get; set; }
 
+        [DisplayName("Град")]
         public string City { get; set; }
 
-        [DisplayName("Phone number")]
+        [DisplayName("Телефонен номер")]
         public string PhoneNumber { get; set; }
 
+        [DisplayName("Дистрибутор")]
         public string Distributor { get; set; }
 
     }

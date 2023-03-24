@@ -3,14 +3,14 @@
 @model DetailProductViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = $"Details{Model.Name}";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="~/css/product.css" />
 
 
 <div class="wrapper">
-    <h1 class="text-center">Details for @Model.Name</h1>
+    <h1 class="text-center">Детайли</h1>
 
     <div class="card mb-1 w-50 mx-auto">
 
@@ -46,13 +46,13 @@
     <div>
         @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
         {
-            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>
+            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Промяна</a>
             <span>|</span>
-            <a asp-action="Index" class="btn btn-primary"> Back to List</a>
+            <a asp-action="Index" class="btn btn-primary">Обратно към продукти</a>
         }
         else
         {
-            <a asp-action="Index" class="btn btn-primary"> Back to List</a>
+            <a asp-action="Index" class="btn btn-primary">Обратно към продукти</a>
         }
 
     </div>

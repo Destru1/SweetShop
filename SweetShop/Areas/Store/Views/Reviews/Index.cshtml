@@ -1,4 +1,5 @@
-﻿@using SweetShop.ViewModels.Review;
+﻿@using SweetShop.Constants;
+@using SweetShop.ViewModels.Review;
 @model IEnumerable<IndexReviewViewModel>
 
 @{
@@ -9,11 +10,15 @@
 
 
 <div class="wrapper">
-    <h1>Index</h1>
+    <h1>Отзиви</h1>
 
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
+    @if (User.IsInRole(RolesConstants.CLIENT_ROLE))
+    {
+        <p>
+            <a asp-action="Create" class="btn btn-success">Добавяне на отзив</a>
+        </p>
+    }
+
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -21,7 +26,7 @@
         {
             <div class="card mb-5 col-4 p-1 m-1" style="max-width:22rem;">
                 <div class="card-header">
-                    <p class="card-text"> @item.Product  <span class="float-right">Rating: @item.Rating</span></p>
+                    <p class="card-text"> @item.Product  <span class="float-right">Оценка: @item.Rating</span></p>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">@item.Client</h5>
@@ -29,11 +34,16 @@
 
                 </div>
                 <div class="card-footer text-muted">
-                    <p class="card-text">Reviewed on: @item.CreatedOn</p>
+                    <p class="card-text">Дата: @item.CreatedOn</p>
+                    @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+                    {
+                        <p class="card-tex"><a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger w-50 mx-auto p-2"> Изтрий</a></p>
+                    }
+
+
                 </div>
+
             </div>
-
-
         }
     </div>
 </div>
