@@ -8,78 +8,71 @@
 @section Styles{
     <link rel="stylesheet" href="~/css/alergen.css" />
 }
-<div class="background">
-    <div class="blur">
-    </div>
+<div class="wrapper" style="backdrop-filter:blur(50px);">
+    <h1 class="text-center">Allergens</h1>
+    @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+    {
+        <p>
+            <a asp-action="Create" class="btn btn-success">Create New</a>
+        </p>
 
+    }
 
+    <form asp-controller="Allergens" asp-action="Index" method="get">
+        <partial name="_SearchBarPartial" />
+    </form>
+    <div class="dropdown m-1 float-right">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+            Order by
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">Name</a>
+            <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["DescriptionSort"]">Description</a>
 
-    <div class="wrapper" style="backdrop-filter:blur(50px);">
-        <h1 class="text-center">Allergens</h1>
-        @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
-        {
-            <p>
-                <a asp-action="Create" class="btn btn-success">Create New</a>
-            </p>
-
-        }
-
-        <form asp-controller="Allergens" asp-action="Index" method="get">
-            <partial name="_SearchBarPartial" />
-        </form>
-        <div class="dropdown m-1 float-right">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                Order by
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">Name</a>
-                <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["DescriptionSort"]">Description</a>
-
-            </div>
         </div>
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Description)
-                    </th>
-
-
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-
-
-                        <td>
-                            @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
-                            {
-                                <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Details</a>
-                                <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-pill badge-warning p-2 m-2">Update</a>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger p-2 m-2">Delete</a>
-                            }
-                            else
-                            {
-                                <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Details</a>
-                            }
-
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
     </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+
+
+                    <td>
+                        @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+                        {
+                            <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Details</a>
+                            <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-pill badge-warning p-2 m-2">Update</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger p-2 m-2">Delete</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Details</a>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

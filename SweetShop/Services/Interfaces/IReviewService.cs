@@ -13,11 +13,11 @@ namespace SweetShop.Services.Interfaces
 
         TEntity GetById<TEntity>(int id);
 
-        DetailsReviewViewModel GetDetails(int id);
+        //DetailsReviewViewModel GetDetails(int id);
 
         Task CreateAsync(ReviewDTO review);
 
-        Task<bool> UpdateAsync(int id, ReviewDTO review);
+       // Task<bool> UpdateAsync(int id, ReviewDTO review);
 
         Task<bool> DeleteAsync (int id);
 

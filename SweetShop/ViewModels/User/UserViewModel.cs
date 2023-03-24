@@ -9,18 +9,19 @@ namespace SweetShop.ViewModels.User
 
         public string Email { get; set; }
 
-        [DisplayName("Username")]
+        [DisplayName("Потребителско име")]
         public string UserName { get; set; }
 
-        [DisplayName("First name")]
+        [DisplayName("Име")]
         public string FirstName { get; set; }
 
-        [DisplayName("Last name")]
+        [DisplayName("Презиме")]
         public string LastName { get; set; }
 
+        [DisplayName("Създаден на")]
         public DateTime CreatedOn { get; set; }
 
-        [DisplayName("Role")]
+        [DisplayName("Роля")]
         public string RoleName { get; set; }
 
     }

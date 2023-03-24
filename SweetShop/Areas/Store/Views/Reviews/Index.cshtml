@@ -1,4 +1,5 @@
-﻿@using SweetShop.ViewModels.Review;
+﻿@using SweetShop.Constants;
+@using SweetShop.ViewModels.Review;
 @model IEnumerable<IndexReviewViewModel>
 
 @{
@@ -9,11 +10,15 @@
 
 
 <div class="wrapper">
-    <h1>Index</h1>
+    <h1>Reviews</h1>
 
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
+    @if (User.IsInRole(RolesConstants.CLIENT_ROLE))
+    {
+        <p>
+            <a asp-action="Create" class="btn btn-success">Create New</a>
+        </p>
+    }
+
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -30,10 +35,15 @@
                 </div>
                 <div class="card-footer text-muted">
                     <p class="card-text">Reviewed on: @item.CreatedOn</p>
+                    @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+                    {
+                        <p class="card-tex"><a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger w-25 p-2 m-2"> Delete</a></p>
+                    }
+
+
                 </div>
+
             </div>
-
-
         }
     </div>
 </div>

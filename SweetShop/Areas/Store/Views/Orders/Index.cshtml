@@ -13,10 +13,14 @@
 }
 <link rel="stylesheet" href="~/css/order.css" />
 <div class="wrapper">
-    <h1>Index</h1>
-    <p>
-        <a asp-action="Create" class="btn btn-success">Create New</a>
-    </p>
+    <h1>Orders</h1>
+    @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+    {
+        <p>
+            <a asp-action="Create" class="btn btn-success">Create New</a>
+        </p>
+    }
+
 
     <form asp-controller="Orders" asp-action="Index" method="get" class="m-1">
         <div class="d-flex justify-content-center align-items-center">
