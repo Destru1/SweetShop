@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using SweetShop.Models;
+using System.ComponentModel;
 
 namespace SweetShop.Areas.Identity.Pages.Account
 {
@@ -45,13 +46,15 @@ namespace SweetShop.Areas.Identity.Pages.Account
         {
             [Required]
             [EmailAddress]
+           
             public string Email { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
+            [DisplayName("Парола")]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Запомни ме")]
             public bool RememberMe { get; set; }
         }
 

@@ -23,27 +23,38 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Store" asp-controller="Allergens" asp-action="Index">Алерген</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Store" asp-controller="Products" asp-action="Index">Продукт</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Store" asp-controller="Distributors" asp-action="Index">Дистрибутор</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Store" asp-controller="Clients" asp-action="Index">Клиент</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Store" asp-controller="Orders" asp-action="Index">Поръчка</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Store" asp-controller="Reviews" asp-action="Index">Отзив</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Administrator" asp-controller="Dashboard" asp-action="Index">Администрация</a>
-                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Store" asp-controller="Allergens" asp-action="Index">Алерген</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Store" asp-controller="Products" asp-action="Index">Продукт</a>
+                            </li>
+                            @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Store" asp-controller="Distributors" asp-action="Index">Дистрибутор</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Store" asp-controller="Clients" asp-action="Index">Клиент</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Store" asp-controller="Orders" asp-action="Index">Поръчка</a>
+                                </li>
+                            }
+
+
+                            @if (!User.IsInRole(RolesConstants.DISTRIBUTOR_ROLE))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Store" asp-controller="Reviews" asp-action="Index">Отзив</a>
+                                </li>
+                            }
+
+                        }
 
                     </ul>
                     <partial name="_LoginPartial" />
