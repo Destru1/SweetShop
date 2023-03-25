@@ -33,7 +33,7 @@ namespace SweetShop.Services.Interfaces
 
             if (review == null)
             {
-                //todo review does not exist
+                throw new ArgumentException("Review does not exist.");
             }
 
             var reviewToReturn = this.Mapper.Map<TEntity>(review);

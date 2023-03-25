@@ -36,7 +36,7 @@ namespace SweetShop.Services
 
             if (client == null)
             {
-                //TODO client does not exist
+                throw new ArgumentException("Client does not exist.");
             }
 
             var clientToReturn = this.Mapper.Map<TEntity>(client);

@@ -36,7 +36,7 @@ namespace SweetShop.Services
 
             if (allergen == null)
             {
-                //TODO Error message
+                throw new ArgumentException("Alergen does not exist.");
             }
             var allergenToReturn = this.Mapper.Map<TEntity>(allergen);
 

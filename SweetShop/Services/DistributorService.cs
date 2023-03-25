@@ -37,7 +37,7 @@ namespace SweetShop.Services
 
             if (distributor == null)
             {
-                //Todo distributor does not exits
+                throw new ArgumentException("Distributor does not exist.");
             }
 
             var distributorToReturn = this.Mapper.Map<TEntity>(distributor);

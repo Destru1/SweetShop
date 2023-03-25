@@ -45,7 +45,7 @@ namespace SweetShop.Services
 
             if (order == null)
             {
-                //TODO order does not exist
+                throw new ArgumentException("Order does not exist.");
             }
 
             var orderToReturn = this.Mapper.Map<TEntity>(order);

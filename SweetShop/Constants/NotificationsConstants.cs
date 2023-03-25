@@ -29,9 +29,20 @@
         public const string SUCCSESSFULLY_DELETED_REVIEW = "Успешно изтрит отзив";
 
 
+        public const string SUCCSESSFULLY_DEMOTED_USER = "Успешно понижен потребител";
+        public const string SUCCSESSFULLY_PROMOTED_USER = "Успешно повишен потребител";
+
+
         public const string INFO_PRODUCT = "За да съдадете продукт, първо създайте алерген";
         public const string INFO_CLIENT = "За да добавите клиент, първо създайте дистрибутор";
         public const string INFO_ORDER = "За да добавите поръчка, първо създайте дистрибутор и клиент";
+
+
+
+        public const string ERROR_USER_DOES_NOT_EXIST = "Не същестува потребител с такова име.";
+
+        public const string WARNING_USER_NOT_PROMOTED = "Потребителя не беше повишен.";
+        public const string WARNING_USER_NOT_DEMOTED = "Потребителя не беше понижен.";
 
 
 

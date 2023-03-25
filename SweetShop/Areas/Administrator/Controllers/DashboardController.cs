@@ -8,6 +8,8 @@ using SweetShop.Services.Interfaces;
 using System.Linq;
 using System.Threading.Tasks;
 
+using static SweetShop.Constants.NotificationsConstants;
+
 namespace SweetShop.Areas.Administrator.Controllers
 {
     [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
@@ -47,7 +49,7 @@ namespace SweetShop.Areas.Administrator.Controllers
 
             if (user == null)
             {
-                //Todo user does not exist message
+                this.TempData[ERROR_NOTIFICATION] = string.Format(ERROR_USER_DOES_NOT_EXIST);
 
                 return RedirectToAction(nameof(this.Index));
             }
@@ -56,10 +58,12 @@ namespace SweetShop.Areas.Administrator.Controllers
 
             if (!isPromoted)
             {
-                //Todo not promoted message
+                this.TempData[WARNING_NOTIFICATION] = string.Format(WARNING_USER_NOT_PROMOTED);
 
                 return RedirectToAction(nameof(this.Index));
             }
+
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_PROMOTED_USER);
 
             return RedirectToAction(nameof(this.Index));
 
@@ -79,11 +83,12 @@ namespace SweetShop.Areas.Administrator.Controllers
 
             if (!isDemoted)
             {
-                //Todo not demoted message
+                this.TempData[WARNING_NOTIFICATION] = string.Format(WARNING_USER_NOT_DEMOTED);
                 return RedirectToAction(nameof(this.Index));
             }
 
-            //Todo demoted message
+            this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_DEMOTED_USER);
+
             return RedirectToAction(nameof(this.Index));
         }
     }
