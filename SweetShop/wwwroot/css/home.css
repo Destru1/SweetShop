@@ -1,0 +1,37 @@
+﻿.carousel-caption {
+    margin-bottom: 20%;
+    margin-bottom: 20%;
+    background: rgba(0,0,0,0.6);
+    padding: 50px 100px;
+}
+
+    .carousel-caption h5 {
+        font-size: 60px;
+        text-transform: uppercase;
+    }
+
+    .carousel-caption p {
+        font-size: 20px;
+    }
+
+
+.carousel-item img {
+    background-size: cover;
+}
+
+.container .wrapper{
+   
+   margin-left:-9vw;
+   margin-right:-9vw;
+   margin-top:-15px;
+   margin-bottom:-13px;
+
+}
+section {
+    width: 1240px;
+}
+
+
+body {
+    background-color: rgba(232, 144, 239, 0.1)
+}

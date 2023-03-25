@@ -26,20 +26,24 @@
                         @if (User.Identity.IsAuthenticated)
                         {
 
-
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="Store" asp-controller="Allergens" asp-action="Index">Алерген</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="Store" asp-controller="Products" asp-action="Index">Продукт</a>
                             </li>
+
+
+                            @if (User.IsInRole(RolesConstants.ADMIN_ROLE) || User.IsInRole(RolesConstants.DISTRIBUTOR_ROLE))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Store" asp-controller="Clients" asp-action="Index">Клиент</a>
+                                </li>
+                            }
                             @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="Store" asp-controller="Distributors" asp-action="Index">Дистрибутор</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Store" asp-controller="Clients" asp-action="Index">Клиент</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="Store" asp-controller="Orders" asp-action="Index">Поръчка</a>
@@ -47,12 +51,14 @@
                             }
 
 
-                            @if (!User.IsInRole(RolesConstants.DISTRIBUTOR_ROLE))
+                            @if (User.IsInRole(RolesConstants.ADMIN_ROLE) || User.IsInRole(RolesConstants.CLIENT_ROLE))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="Store" asp-controller="Reviews" asp-action="Index">Отзив</a>
                                 </li>
                             }
+
+
 
                         }
 
@@ -68,7 +74,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted menuStyle" >
+    <footer class="border-top footer text-muted menuStyle">
         <div class="container">
             &copy; @DateTime.UtcNow.Year - SweetShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
