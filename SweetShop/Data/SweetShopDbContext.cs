@@ -2,14 +2,11 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SweetShop.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SweetShop.Data
 {
     public class SweetShopDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string
-        , IdentityUserClaim<string>, ApplicationUserRole, IdentityUserLogin<string>,IdentityRoleClaim<string>,IdentityUserToken<string>>
+        , IdentityUserClaim<string>, ApplicationUserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
         public SweetShopDbContext(DbContextOptions<SweetShopDbContext> options)
             : base(options)

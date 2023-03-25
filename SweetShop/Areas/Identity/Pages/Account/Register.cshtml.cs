@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using SweetShop.Constants;
 using SweetShop.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SweetShop.Areas.Identity.Pages.Account
 {
@@ -129,7 +126,7 @@ namespace SweetShop.Areas.Identity.Pages.Account
                     //{
                     //    await signInManager.SignInAsync(user, isPersistent: false);
                     //    return LocalRedirect(returnUrl);
-                    }
+                }
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
@@ -138,8 +135,8 @@ namespace SweetShop.Areas.Identity.Pages.Account
             return Page();
         }
 
-            // If we got this far, something failed, redisplay form
-            
-        }
+        // If we got this far, something failed, redisplay form
+
     }
+}
 

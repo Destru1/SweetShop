@@ -14,7 +14,7 @@ namespace SweetShop.DTOs
         public DateTime OrderedOn { get; set; }
 
         [Required]
-        [Range(OrderConstants.QUANTITY_MIN_VALUE,OrderConstants.QUANTITY_MAX_VALUE)]
+        [Range(OrderConstants.QUANTITY_MIN_VALUE, OrderConstants.QUANTITY_MAX_VALUE)]
         [DisplayName("Количество")]
         public int Quantity { get; set; }
 

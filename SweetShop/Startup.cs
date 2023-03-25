@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,11 +8,7 @@ using SweetShop.Data;
 using SweetShop.Models;
 using SweetShop.Services;
 using SweetShop.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 using static SweetShop.Seeders.Launcher;
 
@@ -94,8 +87,8 @@ namespace SweetShop
             services.AddTransient<IDistributorService, DistributorService>();
             services.AddTransient<IAdministratorService, AdministratorService>();
             services.AddTransient<IClientService, ClientService>();
-            services.AddTransient<IOrderService,OrderService>();
-            services.AddTransient<IReviewService,ReviewService>();
+            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IReviewService, ReviewService>();
         }
     }
 

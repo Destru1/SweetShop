@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using SweetShop.Constants;
-using SweetShop.Data;
 using SweetShop.Models;
 using System;
 using System.Linq;
@@ -37,7 +36,7 @@ namespace SweetShop.Seeder
                 UserName = UserConstants.DISTRIBUTOR_EMAIL,
                 CreatedOn = DateTime.UtcNow,
             };
-               var client = new ApplicationUser
+            var client = new ApplicationUser
             {
                 FirstName = "Client",
                 LastName = "Clientov",
@@ -46,11 +45,11 @@ namespace SweetShop.Seeder
                 CreatedOn = DateTime.UtcNow,
             };
 
-            await userManager.CreateAsync(admin,UserConstants.ADMIN_PASSWORD);
+            await userManager.CreateAsync(admin, UserConstants.ADMIN_PASSWORD);
             await userManager.AddToRoleAsync(admin, RolesConstants.ADMIN_ROLE);
 
             await userManager.CreateAsync(distributor, UserConstants.DISTRIBUTOR_PASSWORD);
-            await userManager.AddToRoleAsync(distributor,RolesConstants.DISTRIBUTOR_ROLE);
+            await userManager.AddToRoleAsync(distributor, RolesConstants.DISTRIBUTOR_ROLE);
 
             await userManager.CreateAsync(client, UserConstants.CLIENT_PASSWORD);
             await userManager.AddToRoleAsync(client, RolesConstants.CLIENT_ROLE);

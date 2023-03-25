@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
 using SweetShop.Areas.Store.Controllers;
 using SweetShop.Constants;
-using SweetShop.Data;
 using SweetShop.DTOs;
-using SweetShop.Models;
 using SweetShop.Services;
 using SweetShop.Services.Interfaces;
 using SweetShop.ViewModels.Client;
 using SweetShop.ViewModels.Product;
-
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
 using static SweetShop.Constants.NotificationsConstants;
 
 namespace SweetShop.Controllers
@@ -32,8 +25,8 @@ namespace SweetShop.Controllers
         public ReviewsController(IReviewService reviewService, IClientService clientService, IProductService productService)
         {
             this.reviewService = reviewService;
-            this.clientService= clientService;
-            this.productService= productService;
+            this.clientService = clientService;
+            this.productService = productService;
         }
 
 
@@ -43,13 +36,13 @@ namespace SweetShop.Controllers
             ViewData["HighestRated"] = sort == "int" ? "top" : "int";
             ViewData["LowestRated"] = sort == "int" ? "low" : "int";
 
-           
+
             var reviews = this.reviewService.GetAll();
 
             if (sort == "top")
             {
                 reviews = reviews.OrderByDescending(r => r.Rating);
-                
+
             }
             if (sort == "low")
             {

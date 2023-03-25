@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using SweetShop.Data;
-using System;
 
 namespace SweetShop.Services
 {

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,8 +10,8 @@ namespace SweetShop.Models
         public ApplicationUser()
         {
             this.UserRoles = new HashSet<ApplicationUserRole>();
-            this.Distributors= new HashSet<Distributor>();
-            this.Clients= new HashSet<Client>();
+            this.Distributors = new HashSet<Distributor>();
+            this.Clients = new HashSet<Client>();
         }
         [Required]
         public string FirstName { get; set; }

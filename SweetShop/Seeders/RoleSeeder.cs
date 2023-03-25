@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using SweetShop.Constants;
-using SweetShop.Data;
 using SweetShop.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace SweetShop.Seeder
 {
     public class RoleSeeder : ISeeder
     {
-       
+
         public async Task SeedAsync(IServiceScope serviceScope)
         {
             var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace SweetShop.Models
@@ -11,7 +10,7 @@ namespace SweetShop.Models
             this.UserRole = new HashSet<ApplicationUserRole>();
         }
         public ApplicationRole(string roleName)
-            :base(roleName)
+            : base(roleName)
         {
 
         }

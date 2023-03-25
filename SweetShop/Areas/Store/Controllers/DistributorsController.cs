@@ -1,22 +1,15 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SweetShop.Areas.Store.Controllers;
+using SweetShop.Constants;
+using SweetShop.DTOs;
+using SweetShop.Services.Interfaces;
+using SweetShop.ViewModels.User;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using SweetShop.Areas.Store.Controllers;
-using SweetShop.Constants;
-using SweetShop.Data;
-using SweetShop.DTOs;
-using SweetShop.Models;
-using SweetShop.Services.Interfaces;
-using SweetShop.ViewModels.Distributor;
-using SweetShop.ViewModels.User;
-
 using static SweetShop.Constants.NotificationsConstants;
 
 namespace SweetShop.Controllers

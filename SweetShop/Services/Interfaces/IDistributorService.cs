@@ -1,6 +1,5 @@
 ﻿using SweetShop.DTOs;
 using SweetShop.ViewModels.Distributor;
-using SweetShop.ViewModels.User;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

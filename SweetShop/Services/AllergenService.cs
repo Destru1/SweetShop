@@ -8,7 +8,6 @@ using SweetShop.ViewModels.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SweetShop.Services
@@ -26,8 +25,8 @@ namespace SweetShop.Services
 
             return allergens;
         }
-      
-       
+
+
 
 
         public TEntity GetById<TEntity>(int id)
@@ -52,8 +51,8 @@ namespace SweetShop.Services
                 {
                     Id = a.Id,
                     Name = a.Name,
-                    Description= a.Description,
-                    CreatedOn= a.CreatedOn,
+                    Description = a.Description,
+                    CreatedOn = a.CreatedOn,
                     ModifiedOn = a.ModifiedOn,
                     Products = a.ProductAllergen
                     .Select(a => new ProductIdNameViewModel

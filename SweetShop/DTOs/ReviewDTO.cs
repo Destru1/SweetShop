@@ -23,7 +23,7 @@ namespace SweetShop.DTOs
         public string Description { get; set; }
 
         [Required]
-        [Range(ReviewConstants.RATING_MIN_VALUE,ReviewConstants.RATING_MAX_VALUE)]
+        [Range(ReviewConstants.RATING_MIN_VALUE, ReviewConstants.RATING_MAX_VALUE)]
         [DisplayName("Оценка (1-10)")]
         public int Rating { get; set; }
 

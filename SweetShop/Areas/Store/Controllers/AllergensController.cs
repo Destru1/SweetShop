@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using SweetShop.Areas.Store.Controllers;
 using SweetShop.Constants;
-using SweetShop.Data;
 using SweetShop.DTOs;
-using SweetShop.Models;
 using SweetShop.Services;
-
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using static SweetShop.Constants.NotificationsConstants;
 
 namespace SweetShop.Controllers
@@ -27,7 +21,7 @@ namespace SweetShop.Controllers
             this.allergenService = allergenService;
         }
 
-        
+
         [HttpGet]
         public IActionResult Index(string keyword, string sortOrder)
         {
@@ -71,7 +65,7 @@ namespace SweetShop.Controllers
         }
 
 
-        [Authorize(Roles =RolesConstants.ADMIN_ROLE)]
+        [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpGet]
         public IActionResult Create()
         {
@@ -124,7 +118,7 @@ namespace SweetShop.Controllers
             this.TempData[SUCCESS_NOTIFICATION] = string.Format(SUCCSESSFULLY_UPDATED_ALLERGEN);
             return this.RedirectToAction("Index");
         }
-       
+
         [Authorize(Roles = RolesConstants.ADMIN_ROLE)]
         [HttpGet]
         public async Task<IActionResult> Delete(int id)

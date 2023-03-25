@@ -1,5 +1,4 @@
 ﻿using SweetShop.Constants.ModelConstants;
-using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -37,6 +36,6 @@ namespace SweetShop.DTOs
         [DisplayName("Потребителско име")]
         public string UserId { get; set; }
 
-       
+
     }
 }

@@ -1,6 +1,4 @@
 ﻿using SweetShop.DTOs;
-using SweetShop.ViewModels.Client;
-using SweetShop.ViewModels.Product;
 using SweetShop.ViewModels.Review;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,7 +13,7 @@ namespace SweetShop.Services.Interfaces
 
         Task CreateAsync(ReviewDTO review);
 
-        Task<bool> DeleteAsync (int id);
+        Task<bool> DeleteAsync(int id);
 
 
     }

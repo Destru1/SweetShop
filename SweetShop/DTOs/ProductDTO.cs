@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using SweetShop.Constants.ModelConstants;
+using SweetShop.ViewModels;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using SweetShop.Constants.ModelConstants;
-using SweetShop.ViewModels;
 
 namespace SweetShop.DTOs
 {
@@ -26,7 +26,7 @@ namespace SweetShop.DTOs
         public string ImageURL { get; set; }
 
         [Required]
-        [Range(ProductConstants.PRICE_MIN_VALUE,ProductConstants.PRICE_MAX_VALUE)]
+        [Range(ProductConstants.PRICE_MIN_VALUE, ProductConstants.PRICE_MAX_VALUE)]
         [DisplayName("Цена")]
         public decimal Price { get; set; }
 

@@ -2,7 +2,6 @@
 using SweetShop.DTOs;
 using SweetShop.Models;
 using SweetShop.ViewModels.Order;
-using System.Linq;
 
 namespace SweetShop.MappingConfiguration
 {

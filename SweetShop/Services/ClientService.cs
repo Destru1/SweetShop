@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
 using SweetShop.Services.Interfaces;
 using SweetShop.ViewModels.Client;
-using SweetShop.ViewModels.Distributor;
-using SweetShop.ViewModels.User;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SweetShop.Services
 {
@@ -55,7 +53,7 @@ namespace SweetShop.Services
                     City = a.City,
                     Address = a.Address,
                     PhoneNumber = a.PhoneNumber,
-                    PersonEntity= a.PersonEntity,
+                    PersonEntity = a.PersonEntity,
                     UserId = a.User.Email,
                     DistributorId = a.Distributor.Name,
                     CreatedOn = a.CreatedOn,
@@ -78,7 +76,7 @@ namespace SweetShop.Services
             clientToCreate.City = client.City;
             clientToCreate.Address = client.Address;
             clientToCreate.PhoneNumber = client.PhoneNumber;
-            clientToCreate.PersonEntity= client.PersonEntity;
+            clientToCreate.PersonEntity = client.PersonEntity;
             clientToCreate.UserId = client.UserId;
             clientToCreate.DistributorId = client.DistributorId;
             clientToCreate.CreatedOn = DateTime.UtcNow;

@@ -10,7 +10,7 @@ namespace SweetShop.MappingConfiguration
     {
         public ProductProfile()
         {
-            this.CreateMap<Product,ProductIndexViewModel>();
+            this.CreateMap<Product, ProductIndexViewModel>();
             this.CreateMap<Product, ProductDTO>()
                 .ForMember(sm => sm.AllergensIds,
                 pfsm => pfsm.MapFrom(pa => pa.ProductAllergen.Select(pp => pp.AllergenId))).ReverseMap();

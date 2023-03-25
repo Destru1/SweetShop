@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity;
 using SweetShop.Constants;
@@ -10,6 +6,9 @@ using SweetShop.Data;
 using SweetShop.Models;
 using SweetShop.Services.Interfaces;
 using SweetShop.ViewModels.User;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SweetShop.Services
 {
@@ -55,7 +54,7 @@ namespace SweetShop.Services
 
         }
 
-        private async Task<bool> SetNewRole(ApplicationUser user, string oldRole,string newRole)
+        private async Task<bool> SetNewRole(ApplicationUser user, string oldRole, string newRole)
         {
             bool isEmpty = string.IsNullOrEmpty(oldRole) && string.IsNullOrEmpty(newRole);
 
@@ -89,7 +88,7 @@ namespace SweetShop.Services
                 newRole = RolesConstants.ADMIN_ROLE;
             }
 
-            return(oldRole, newRole);
+            return (oldRole, newRole);
         }
 
 

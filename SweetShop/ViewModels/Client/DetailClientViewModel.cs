@@ -1,7 +1,6 @@
 ﻿using SweetShop.Models.Enums;
 using System;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 
 namespace SweetShop.ViewModels.Client
 {
@@ -37,6 +36,6 @@ namespace SweetShop.ViewModels.Client
         public DateTime CreatedOn { get; set; }
 
         [DisplayName("Променено")]
-        public DateTime? ModifiedOn { get; set;}
+        public DateTime? ModifiedOn { get; set; }
     }
 }

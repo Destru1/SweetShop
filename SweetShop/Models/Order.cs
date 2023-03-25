@@ -12,7 +12,7 @@ namespace SweetShop.Models
 
         [Required]
         public int ClientId { get; set; }
-       
+
         [Required]
         public int ProductId { get; set; }
 

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
+﻿using AutoMapper;
 using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
 using SweetShop.Services.Interfaces;
-using SweetShop.ViewModels.Client;
 using SweetShop.ViewModels.Order;
-using SweetShop.ViewModels.Product;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SweetShop.Services
 {
@@ -31,7 +28,7 @@ namespace SweetShop.Services
                 Quantity = x.Quantity,
                 Total = x.Quantity * x.Product.Price,
                 OrderedOn = x.OrderedOn
-                
+
 
 
             }).ToList();

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SweetShop.Models;
 
@@ -13,7 +12,7 @@ namespace SweetShop.Data.EntityTypeConfiguration
                 .HasOne(d => d.User)
                 .WithMany(u => u.Distributors)
                 .HasForeignKey(d => d.UserId);
-               
+
         }
     }
 }

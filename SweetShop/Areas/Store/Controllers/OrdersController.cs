@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using SweetShop.Areas.Store.Controllers;
 using SweetShop.Constants;
-using SweetShop.Data;
 using SweetShop.DTOs;
-using SweetShop.Models;
 using SweetShop.Services;
 using SweetShop.Services.Interfaces;
 using SweetShop.ViewModels.Client;
 using SweetShop.ViewModels.Product;
-
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
 using static SweetShop.Constants.NotificationsConstants;
 
 namespace SweetShop.Controllers
@@ -28,10 +23,10 @@ namespace SweetShop.Controllers
         private readonly IClientService clientService;
         private readonly IProductService productService;
 
-        public OrdersController(IOrderService orderService,IClientService clientService,IProductService productService)
+        public OrdersController(IOrderService orderService, IClientService clientService, IProductService productService)
         {
             this.orderService = orderService;
-            this.clientService= clientService;
+            this.clientService = clientService;
             this.productService = productService;
 
         }

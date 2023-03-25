@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using SweetShop.Data;
 using SweetShop.DTOs;
 using SweetShop.Models;
-using SweetShop.ViewModels.Client;
-using SweetShop.ViewModels.Product;
 using SweetShop.ViewModels.Review;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SweetShop.Services.Interfaces
 {

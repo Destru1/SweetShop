@@ -1,7 +1,5 @@
 ﻿using SweetShop.DTOs;
-using SweetShop.ViewModels.Client;
 using SweetShop.ViewModels.Order;
-using SweetShop.ViewModels.Product;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -17,7 +15,7 @@ namespace SweetShop.Services.Interfaces
 
         Task CreateAsync(OrderDTO order);
 
-        Task<bool> UpdateAsync(int id,OrderDTO order);
+        Task<bool> UpdateAsync(int id, OrderDTO order);
 
         Task<bool> DeleteAsync(int id);
     }

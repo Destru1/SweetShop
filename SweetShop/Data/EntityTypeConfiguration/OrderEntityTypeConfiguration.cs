@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SweetShop.Models;
 
@@ -18,7 +17,7 @@ namespace SweetShop.Data.EntityTypeConfiguration
                 .HasOne(o => o.Product)
                 .WithMany(p => p.Orders)
                 .HasForeignKey(o => o.ProductId);
-                
+
         }
     }
 }

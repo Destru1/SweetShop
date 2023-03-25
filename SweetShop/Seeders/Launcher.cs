@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using SweetShop.Seeder;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

@@ -10,7 +10,7 @@ namespace SweetShop.MappingConfiguration
         public DistributorProfile()
         {
             this.CreateMap<Distributor, DistributorIndexViewModel>()
-                .ForMember(d => d.UserName, conf => conf.MapFrom(s=> s.User.UserName)).ReverseMap();
+                .ForMember(d => d.UserName, conf => conf.MapFrom(s => s.User.UserName)).ReverseMap();
 
             this.CreateMap<Distributor, DistributorDTO>()
                 .ForMember(d => d.UserId, conf => conf.MapFrom(s => s.User.UserName)).ReverseMap();

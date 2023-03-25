@@ -1,7 +1,5 @@
 ﻿using SweetShop.DTOs;
-using SweetShop.Models;
 using SweetShop.ViewModels.Product;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
