@@ -28,7 +28,10 @@ namespace SweetShop.DTOs
         [DisplayName("Снимка (URL)")]
         public string ImageURL { get; set; }
 
-        [Range(1, 1000)]
+
+
+        [Required]
+        [Range(0, 1000)]
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
         [DisplayName("Цена")]

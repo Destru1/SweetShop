@@ -52,6 +52,8 @@ namespace SweetShop
                     var dbContext = serviceScope.ServiceProvider.GetRequiredService<SweetShopDbContext>();
                     dbContext.Database.Migrate();
                 }
+
+                app.UseRequestLocalization("bg-BG");
             }
             else
             {
