@@ -1,8 +1,11 @@
-﻿using SweetShop.Constants.ModelConstants;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using SweetShop.Constants.ModelConstants;
 using SweetShop.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SweetShop.DTOs
 {
@@ -25,8 +28,9 @@ namespace SweetShop.DTOs
         [DisplayName("Снимка (URL)")]
         public string ImageURL { get; set; }
 
-        [Required]
-        [Range(ProductConstants.PRICE_MIN_VALUE, ProductConstants.PRICE_MAX_VALUE)]
+        [Range(1, 1000)]
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "decimal(18, 2)")]
         [DisplayName("Цена")]
         public decimal Price { get; set; }
 

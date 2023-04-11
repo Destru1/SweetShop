@@ -5,7 +5,7 @@
         public const int NAME_MIN_VALUE = 3;
         public const int NAME_MAX_VALUE = 30;
 
-        public const int CITY_MIN_VALUE = 5;
+        public const int CITY_MIN_VALUE = 3;
         public const int CITY_MAX_VALUE = 30;
 
         public const int ADDRESS_MIN_VALUE = 5;

@@ -13,7 +13,7 @@
 
     <div class="card w-50 mx-auto">
         <div class="card-body">
-            <h5 class="card-title">@Html.DisplayNameFor(model => model.Name)<span>@Html.DisplayFor(model => model.Name)</span></h5>
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.Name)<span> @Html.DisplayFor(model => model.Name)</span></h5>
             <p class="card-text">
                 @if (Model.AverageRating == 0)
                 {
@@ -27,7 +27,7 @@
                 {
                     <span>Средно</span>
                 }
-                else if (Model.AverageRating > 8)
+                else if (Model.AverageRating >= 8)
                 {
                     <span>Добро</span>
                 }

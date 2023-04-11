@@ -136,6 +136,7 @@ namespace SweetShop.Controllers
 
             if (!this.ModelState.IsValid)
             {
+
                 return this.RedirectToAction("Index");
             }
             productToUpdate.Allergens = this.allergenService.GetAll().ToList();
@@ -149,6 +150,7 @@ namespace SweetShop.Controllers
         {
             if (!this.ModelState.IsValid)
             {
+                updateProduct.Allergens =  this.allergenService.GetAll().ToList();
                 return this.View(updateProduct);
             }
             var isUpdated = await this.productService.UpdateAsync(id, updateProduct);
