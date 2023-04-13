@@ -63,6 +63,14 @@ namespace SweetShop.Services
                     ImageURL = x.ImageURL,
                     CreatedOn = x.CreatedOn,
                     ModifiedOn = x.ModifiedOn,
+                    Allergens = x.ProductAllergen
+                    .Select(a => new ViewModels.AllAllergensViewModel
+                    {
+                        Id = a.Id,
+                        Name = a.Allergen.Name,
+                    })
+                    .ToList()
+
                 }).FirstOrDefault();
 
             return product;

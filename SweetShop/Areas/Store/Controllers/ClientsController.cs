@@ -96,6 +96,7 @@ namespace SweetShop.Controllers
             if (distributors.Count() == 0)
             {
                 this.TempData[INFORMATION_NOTIFICATION] = string.Format(INFO_CLIENT);
+                return this.RedirectToAction("Index");
             }
 
             this.ViewBag.Users = users;

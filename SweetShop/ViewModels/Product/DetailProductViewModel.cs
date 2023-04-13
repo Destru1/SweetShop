@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace SweetShop.ViewModels.Product
@@ -19,6 +20,9 @@ namespace SweetShop.ViewModels.Product
         [DisplayName("Цена")]
         public decimal Price { get; set; }
 
+        [DisplayName("Алергени")]
+        public string Allergen { get; set; }
+
         public double AverageRating { get; set; }
 
         [DisplayName("Създадено на")]
@@ -26,6 +30,9 @@ namespace SweetShop.ViewModels.Product
 
         [DisplayName("Променено на")]
         public DateTime? ModifiedOn { get; set; }
+
+        
+        public ICollection<AllAllergensViewModel> Allergens { get; set; }
 
     }
 }

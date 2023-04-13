@@ -78,6 +78,7 @@ namespace SweetShop.Controllers
             if (products.Count() == 0 && clients.Count() == 0)
             {
                 this.TempData[INFORMATION_NOTIFICATION] = string.Format(INFO_ORDER);
+                return this.RedirectToAction("Index");
             }
 
             this.ViewBag.Products = products;

@@ -27,6 +27,16 @@
                 @Html.DisplayNameFor(model => model.Price):
                 <span class="font-weight-normal">@Html.DisplayFor(model => model.Price)</span>
             </p>
+
+              <p class="card-text">
+                <small class="text">
+                    @Html.DisplayNameFor(model => model.Allergen):
+                    @foreach (var allergen in Model.Allergens)
+                    {
+                            <span>@Html.DisplayFor(model => allergen.Name), </span>
+                    }
+                </small>
+            </p>
             <p class="card-text">
                 <small class="text">
                     @Html.DisplayNameFor(model => model.CreatedOn):
@@ -39,6 +49,7 @@
                     <span>@Html.DisplayFor(model => model.ModifiedOn)</span>
                 </small>
             </p>
+
         </div>
         <img src=" @Html.DisplayFor(model => model.ImageURL)" class="card-img-bottom rounded" alt="...">
     </div>

@@ -7,6 +7,9 @@
 
         public const int DESCRIPTION_MIN_VALUE = 10;
         public const int DESCRIPTION_MAX_VALUE = 1000;
+
+        public const double PRICE_MIN_VALUE = 0;
+        public const double PRICE_MAX_VALUE = 1000;
  
     }
 }

@@ -21,6 +21,7 @@ namespace SweetShop.Seeder
 
             var admin = new ApplicationUser
             {
+                Id = "1",
                 FirstName = "Admin",
                 LastName = "Adminov",
                 Email = UserConstants.ADMIN_EMAIL,
@@ -30,6 +31,7 @@ namespace SweetShop.Seeder
 
             var distributor = new ApplicationUser
             {
+                Id = "2",
                 FirstName = "Distributor",
                 LastName = "Distributorov",
                 Email = UserConstants.DISTRIBUTOR_EMAIL,
@@ -38,6 +40,7 @@ namespace SweetShop.Seeder
             };
             var client = new ApplicationUser
             {
+                Id = "3",
                 FirstName = "Client",
                 LastName = "Clientov",
                 Email = UserConstants.CLIENT_EMAIL,

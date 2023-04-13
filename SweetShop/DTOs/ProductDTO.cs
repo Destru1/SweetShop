@@ -31,7 +31,7 @@ namespace SweetShop.DTOs
 
 
         [Required]
-        [Range(0, 1000)]
+        [Range(ProductConstants.PRICE_MIN_VALUE,ProductConstants.NAME_MAX_VALUE)]
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
         [DisplayName("Цена")]
