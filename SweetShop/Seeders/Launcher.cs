@@ -14,6 +14,7 @@ namespace SweetShop.Seeders
             {
                 new RoleSeeder(),
                 new UserSeeder(),
+                new DatabaseSeeder(),
             };
 
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
