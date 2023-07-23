@@ -23,11 +23,11 @@ namespace SweetShop.Seeders
 
             var allergens = new List<Allergen>()
             {
-                 new Allergen{ Name = "Мляко и млечни продукти",Description="Включително и лактоза",CreatedOn = DateTime.UtcNow},
-                 new Allergen{ Name = "Яйца ",Description="Включва и продукти от яйца",CreatedOn = DateTime.UtcNow},
-                 new Allergen{ Name = "Зърнени култури",Description="Съдържащи глутен",CreatedOn = DateTime.UtcNow},
-                 new Allergen{ Name = "Соя и соеви продукти",Description="Соя и соеви продукти",CreatedOn = DateTime.UtcNow},
-                 new Allergen{ Name = "Ядки",Description="Бадем, лешник, орехи и др.",CreatedOn = DateTime.UtcNow},
+                 new Allergen{ Name = "Milk",Description="Including lactose.",CreatedOn = DateTime.UtcNow},
+                 new Allergen{ Name = "Eggs ",Description="Products with eggs",CreatedOn = DateTime.UtcNow},
+                 new Allergen{ Name = "Cereals",Description="Containing gluten",CreatedOn = DateTime.UtcNow},
+                 new Allergen{ Name = "Soybeans",Description="Products containig soybeans",CreatedOn = DateTime.UtcNow},
+                 new Allergen{ Name = "Nuts",Description="Almonds, hazelnuts, walnuts etc.",CreatedOn = DateTime.UtcNow},
             };
 
             if (await dbContext.Products.AnyAsync())
@@ -40,8 +40,8 @@ namespace SweetShop.Seeders
                 new Product
                 {
 
-                    Name = "Червено кадифе",
-                    Description = "Блатове с какао и кафе, обвити в нежна комбинация от крема сирене, сметана и ванилия.",
+                    Name = "Red velvet",
+                    Description = "Cocoa and coffee marshmallows wrapped in a delicate combination of cream cheese, cream and vanilla.",
                     ImageURL = "https://cdncloudcart.com/17396/products/images/1532/cerveno-kadife-image_5efb8be4ae54d_800x800.png?1593543702",
                     Price = 55.45m,
                     TimesSold = 5,
@@ -52,8 +52,8 @@ namespace SweetShop.Seeders
                 }, new Product
                 {
 
-                    Name = "Медена Торта",
-                    Description = "Лека комбинация от йогурт, мус, медени платки и хрупкави орехи.",
+                    Name = "Honey Cake",
+                    Description = "A light combination of yogurt, mousse, honey wafers and crunchy walnuts.",
                     ImageURL = "https://cdncloudcart.com/17396/products/images/1524/meden-jogurt-image_5efb8bcfdd2e8_800x800.jpeg?1593543660",
                     Price = 63.99m,
                     TimesSold = 5,
@@ -63,8 +63,8 @@ namespace SweetShop.Seeders
                 }, new Product
                 {
 
-                    Name = "Еклерова торта",
-                    Description = "Торта със сърцевина от орехови платки/без варианта за 8 парчета/, пухкави еклери с млечен крем, шоколадова сметана и покрита с течен шоколад.",
+                    Name = "Eclair cake",
+                    Description = "Cake with a core of walnut wafers/without the option for 8 pieces/, fluffy eclairs with milk cream, chocolate cream and covered with liquid chocolate.",
                     ImageURL = "https://cdncloudcart.com/17396/products/images/1528/eklerova-sokolad-image_5efb8bd9049c7_800x800.png?1593543685",
                     Price = 49.99m,
                     TimesSold = 3,
@@ -74,8 +74,8 @@ namespace SweetShop.Seeders
                 }, new Product
                 {
 
-                    Name = "Френски макарони 12бр",
-                    Description = "Цветни и вкусни оригинални макарони, луксозно опаковани.",
+                    Name = "French macarons 12 pcs",
+                    Description = "Colorful and delicious original macarons, luxuriously packaged.",
                     ImageURL = "https://cdncloudcart.com/17396/products/images/1494/frenski-makaroni-12br-image_5efb8b22003e4_1920x1920.jpeg?1593543489",
                     Price = 19.80m,
                     TimesSold = 5,
@@ -85,8 +85,8 @@ namespace SweetShop.Seeders
                 }, new Product
                 {
 
-                    Name = "Чийзкейк с боровинка и лимон",
-                    Description = "Плътнаrа основа от кашу и бадеми се комбинира с наситения вкус на цели боровинки и лимон, а сиропите or кокос и агаве правят вкуса още по–неустоим.",
+                    Name = "Cheesecake with blueberry and lemon",
+                    Description = "The dense base of cashews and almonds is combined with the rich taste of whole blueberries and lemon, and the coconut and agave syrups make the taste even more irresistible.",
                     ImageURL = "https://ameliesweetshop.com/wp-content/uploads/2017/08/Blueberry-Lemon-Swirl-Vegan-Cheesecake-.jpg",
                     Price = 119.90m,
                     TimesSold = 1,
@@ -96,8 +96,8 @@ namespace SweetShop.Seeders
                 }, new Product
                 {
 
-                    Name = "Ягодова торта",
-                    Description = "Вкусна комбинация от шоколадови блатове, сметана, млечен крем, свежи ягоди и много шоколад.",
+                    Name = "Strawberry cake",
+                    Description = "A delicious combination of chocolate marshmallows, cream, milk cream, fresh strawberries and lots of chocolate.\r\n",
                     ImageURL = "https://cdncloudcart.com/17396/products/images/1522/agodova-image_6157f5da78bd4_600x600.png?1633154554",
                     Price = 49.99m,
                     TimesSold = 2,
@@ -146,10 +146,10 @@ namespace SweetShop.Seeders
 
             var distributors = new List<Distributor>()
             {
-             new Distributor {  Name = "Иван Солаков", City = "Варна", Address = "ул. \"България\" 16", PhoneNumber = "+359876972542", UserId = "2", CreatedOn = DateTime.UtcNow },
-             new Distributor { Name = "Камелия Илиева", City = "София", Address = "ул. \"Вита\" 6", PhoneNumber = "+359884454546", UserId = "2", CreatedOn = DateTime.UtcNow },
-             new Distributor { Name = "Ангел Цветков", City = "Пловдив", Address = "ул. \"Никола Козлев\" 6", PhoneNumber = "+359876972542", UserId = "2", CreatedOn = DateTime.UtcNow },
-             new Distributor { Name = "Яна Димитрова", City = "В. Търново", Address = "ул. \"Марно Поле\" 23", PhoneNumber = "+359876972542", UserId = "2", CreatedOn = DateTime.UtcNow },
+             new Distributor {  Name = "Ivan Solakov", City = "Varna", Address = " \"Bulgaria\" 16", PhoneNumber = "+359876972542", UserId = "2", CreatedOn = DateTime.UtcNow },
+             new Distributor { Name = "Kamelia Ilieva", City = "Sofia", Address = " \"Vita\" 6", PhoneNumber = "+359884454546", UserId = "2", CreatedOn = DateTime.UtcNow },
+             new Distributor { Name = "Angel Cvetkov", City = "Plovdiv", Address = " \"Nikola Kozlev\" 6", PhoneNumber = "+359876972542", UserId = "2", CreatedOn = DateTime.UtcNow },
+             new Distributor { Name = "Yana Dimitrova", City = "V. Turnovo", Address = " \"Marno pole\" 23", PhoneNumber = "+359876972542", UserId = "2", CreatedOn = DateTime.UtcNow },
 
             };
 
@@ -160,43 +160,43 @@ namespace SweetShop.Seeders
 
             var clients = new List<Client>()
             {
-                new Client {FirstName = "Георги",
-                    LastName="Иванов",
-                    City="Велико Търново",
-                    Address ="ул. \"Полтава\" 3",
+                new Client {FirstName = "Georgi",
+                    LastName="Ivanov",
+                    City="V. Turnovo",
+                    Address ="\"Poltava\" 3",
                     PhoneNumber ="+359878888888",
-                    PersonEntity=PersonEntity.Частно,
+                    PersonEntity=PersonEntity.Private,
                     Distributor=distributors[3],
                     UserId="3",
                     CreatedOn = DateTime.UtcNow},
 
-                new Client {FirstName = "Петя",
-                    LastName="Тодорова",
-                    City="София",
-                    Address ="ул. \"Димитър Моллов",
+                new Client {FirstName = "Petya",
+                    LastName="Todorova",
+                    City="Sofia",
+                    Address ="\"Dimitar Molov 2",
                     PhoneNumber ="+359884375662",
-                    PersonEntity=PersonEntity.Частно,
+                    PersonEntity=PersonEntity.Private,
                    Distributor=distributors[1],
                     UserId="3",
                     CreatedOn = DateTime.UtcNow},
 
-                new Client {FirstName = "Лене EOOD",
+                new Client {FirstName = "Holding",
                     LastName="EOOD",
-                    City="Варна",
-                    Address ="ул. \"Елица\" 4",
+                    City="Varna",
+                    Address ="\"Elitsa\" 4",
                     PhoneNumber ="+359876315465",
-                    PersonEntity= PersonEntity.Юридическо,
+                    PersonEntity= PersonEntity.Legal,
                     Distributor=distributors[0],
                     UserId="3",
                     CreatedOn = DateTime.UtcNow},
 
                 new Client {
-                    FirstName = "Арина",
-                    LastName="Димова",
-                    City="Пловдив",
-                    Address ="ул. \"Младежка\" 17",
+                    FirstName = "Arina",
+                    LastName="Dimova",
+                    City="Plovdiv",
+                    Address =" \"Младежка\" 17",
                     PhoneNumber ="+359887933345",
-                    PersonEntity=PersonEntity.Частно,
+                    PersonEntity=PersonEntity.Private,
                     Distributor=distributors[2],
                     UserId="3",
                     CreatedOn = DateTime.UtcNow},
@@ -211,62 +211,62 @@ namespace SweetShop.Seeders
 
             var orders = new List<Order>()
             {
-                new Order{OrderedOn= new DateTime(2023,04,02),
+                new Order{OrderedOn= DateTime.UtcNow.AddDays(-2),
                 Quantity=3,
                 Client=clients[2],
                 Product=products[0],
                 CreatedOn= DateTime.UtcNow},
 
-                new Order{OrderedOn= new DateTime(2023,04,02),
+                new Order{OrderedOn= DateTime.UtcNow.AddDays(+1),
                 Quantity=5,
                 Client=clients[3],
                 Product=products[3],
                 CreatedOn= DateTime.UtcNow},
 
-                new Order{OrderedOn= new DateTime(2023,04,06),
+                new Order{OrderedOn=DateTime.UtcNow.AddDays(+2),
                 Quantity=1,
                 Client=clients[0],
                 Product=products[5],
                 CreatedOn= DateTime.UtcNow},
 
-                new Order{OrderedOn= new DateTime(2023,04,07),
+                new Order{OrderedOn= DateTime.UtcNow,
                 Quantity=1,
                 Client=clients[0],
                 Product=products[1],
                 CreatedOn= DateTime.UtcNow},
 
-                new Order{OrderedOn= new DateTime(2023,04,03),
+                new Order{OrderedOn= DateTime.UtcNow,
                 Quantity=2,
                 Client=clients[1],
                 Product=products[2],
                 CreatedOn= DateTime.UtcNow},
 
-                new Order{OrderedOn= new DateTime(2023,04,08),
+                new Order{OrderedOn= DateTime.UtcNow.AddDays(-1),
                 Quantity=4,
                 Client=clients[2],
                 Product=products[1],
                 CreatedOn= DateTime.UtcNow},
 
-                new Order{OrderedOn= new DateTime(2023,04,11),
+                new Order{OrderedOn= DateTime.UtcNow.AddDays(-1),
                 Quantity=1,
                Client=clients[3],
                 Product=products[4],
                 CreatedOn= DateTime.UtcNow},
 
-                new Order{OrderedOn= new DateTime(2023,04,05),
+                new Order{OrderedOn= DateTime.UtcNow.AddDays(-2),
                 Quantity=1,
                 Client=clients[2],
                 Product=products[2],
                 CreatedOn= DateTime.UtcNow},
 
-                new Order{OrderedOn= new DateTime(2023,04,01),
+                new Order{OrderedOn=DateTime.UtcNow.AddDays(+1),
                 Quantity=1,
                 Client=clients[1],
                 Product=products[5],
                 CreatedOn= DateTime.UtcNow},
 
                 new Order{
-                OrderedOn= new DateTime(2023,04,04),
+                OrderedOn= DateTime.UtcNow,
                 Quantity=2,
                 Client=clients[0],
                 Product=products[0],
@@ -286,35 +286,35 @@ namespace SweetShop.Seeders
                 new Review{
                 Client=clients[3],
                 Product=products[3],
-                Description="Ако сте любител на сладкото, определено бих препоръчала да опитате френските макарони и да се насладите на тяхната изискана вкусова комбинация.",
+                Description="If you have a sweet tooth, I would definitely recommend trying the French macarons and enjoying their exquisite flavor combination.",
                 Rating=10,
                 CreatedOn= DateTime.UtcNow,},
 
                 new Review{
                 Client=clients[0],
                 Product=products[0],
-                Description="Направо ще кажа, че тортата беше изключително вкусна и възхитителна. Приятно изненадана бях от мекотата на тестото и свежестта на крема. Декорацията беше изработена майсторски и беше удоволствие да я гледам.\r\n\r\nС увереност мога да кажа, че тази торта е една от най-добрите, които съм опитал в последно време.",
+                Description="\r\nI will say straight away that the cake was extremely tasty and delightful. I was pleasantly surprised by the softness of the dough and the freshness of the cream. The decoration was masterfully done and a joy to look at.I can confidently say that this cake is one of the best I have tried in recent times.",
                 Rating=9,
                 CreatedOn= DateTime.UtcNow,},
 
                 new Review{
                 Client=clients[1],
                 Product=products[5],
-                Description="Като изкушен сладкохапващ човек, аз мога да кажа, че тази торта е просто вълшебна! Текстурата й е мека и въздушна, а вкусът е перфектно балансиран между сладост и пикантност. Направо може да се усети, че са използвани само най-качествени продукти при приготвянето й.",
+                Description="As a sophisticated sweet tooth, I can say that this cake is simply magical! Its texture is soft and airy, and the taste is perfectly balanced between sweetness and spiciness. You can directly feel that only the best quality products were used in its preparation.",
                 Rating=7,
                 CreatedOn= DateTime.UtcNow,},
 
                 new Review{
                 Client=clients[2],
                 Product=products[2],
-                Description="За съжаление, тази торта беше много разочароваща. Текстурата й беше тежка и неприятна на вкус, като че ли е била изпечена прекалено дълго време. Вкусът й беше изкуствен и безличен, а нито един от съставките не можеше да се усети.",
+                Description="Unfortunately, this cake was very disappointing. Its texture was heavy and it tasted unpleasant, as if it had been baked for too long. It tasted artificial and impersonal, and none of the ingredients could be felt.",
                 Rating=3,
                 CreatedOn= DateTime.UtcNow,},
 
                 new Review{
                 Client=clients[3],
                 Product=products[0],
-                Description="Съжалявам, но трябва да напиша отзив за тази торта, който не е толкова положителен. Може би е просто нещастна случайност, но тортата, която получих, беше малко изсъхнала и без вкус. Текстурата й беше твърда и не особено приятна за ядене.",
+                Description="Sorry, but I have to write a review for this cake that is not so positive. Maybe it's just a fluke, but the cake I received was a bit dry and tasteless. Its texture was hard and not very pleasant to eat.",
                 Rating=4,
                 CreatedOn= DateTime.UtcNow,},
             };

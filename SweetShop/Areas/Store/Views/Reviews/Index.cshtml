@@ -10,7 +10,7 @@
 
 
 <div class="wrapper">
-    <h1 class="text-center">Отзиви</h1>
+    <h1 class="text-center">Reviews</h1>
 
     @if (User.IsInRole(RolesConstants.CLIENT_ROLE))
     {
@@ -19,8 +19,8 @@
         </p>
     }
     <div class="mb-3">
-    <a asp-action="Index" asp-route-sort="@ViewData["HighestRated"]" class="btn btn-primary">Най-високи оценки</a>
-    <a asp-action="Index" asp-route-sort="@ViewData["LowestRated"]" class="btn btn-primary">Оценки под 5</a>
+    <a asp-action="Index" asp-route-sort="@ViewData["HighestRated"]" class="btn btn-primary">Highest rated reviews</a>
+    <a asp-action="Index" asp-route-sort="@ViewData["LowestRated"]" class="btn btn-primary">Rated below 5</a>
     </div>
 
     <div class="row row-cols-md-3 g-4">
@@ -29,7 +29,7 @@
         {
             <div class="card mb-5 col-4 p-1 m-1" style="max-width:22rem;">
                 <div class="card-header">
-                    <p class="card-text"> @item.Product  <span class="float-right">Оценка: @item.Rating</span></p>
+                    <p class="card-text"> @item.Product  <span class="float-right">Rating: @item.Rating</span></p>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">@item.Client</h5>
@@ -37,10 +37,10 @@
 
                 </div>
                 <div class="card-footer text-muted">
-                    <p class="card-text">Дата: @item.CreatedOn</p>
+                    <p class="card-text">Date: @item.CreatedOn</p>
                     @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
                     {
-                        <p class="card-tex"><a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger w-50 mx-auto p-2"> Изтрий</a></p>
+                        <p class="card-tex"><a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger w-50 mx-auto p-2"> Delete</a></p>
                     }
 
 

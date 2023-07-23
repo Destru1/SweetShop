@@ -6,18 +6,16 @@ namespace SweetShop.ViewModels.Product
     {
         public int Id { get; set; }
 
-        [DisplayName("Име")]
         public string Name { get; set; }
 
-        [DisplayName("Снимка")]
+        [DisplayName("Image")]
         public string ImageURL { get; set; }
 
-        [DisplayName("Цена")]
         public decimal Price { get; set; }
 
         public string Description { get; set; }
 
-        [DisplayName("Продажби")]
+        [DisplayName("Sales")]
         public int TimesSold { get; set; }
     }
 }

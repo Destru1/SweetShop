@@ -14,18 +14,17 @@ namespace SweetShop.DTOs
         [Required]
         [MinLength(ProductConstants.NAME_MIN_VALUE)]
         [MaxLength(ProductConstants.NAME_MAX_VALUE)]
-        [DisplayName("Име")]
         public string Name { get; set; }
 
         [Required]
         [MinLength(ProductConstants.DESCRIPTION_MIN_VALUE)]
         [MaxLength(ProductConstants.DESCRIPTION_MAX_VALUE)]
-        [DisplayName("Описание")]
+        
         public string Description { get; set; }
 
         [Required]
         [Url]
-        [DisplayName("Снимка (URL)")]
+        [DisplayName("Image")]
         public string ImageURL { get; set; }
 
 
@@ -34,11 +33,11 @@ namespace SweetShop.DTOs
         [Range(ProductConstants.PRICE_MIN_VALUE,ProductConstants.PRICE_MAX_VALUE)]
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
-        [DisplayName("Цена")]
+       
         public decimal Price { get; set; }
 
         [Required]
-        [DisplayName("Алергени")]
+        [DisplayName("Allergens")]
         public int[] AllergensIds { get; set; }
 
         public ICollection<AllAllergensViewModel> Allergens { get; set; }

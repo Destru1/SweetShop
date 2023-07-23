@@ -10,20 +10,20 @@ namespace SweetShop.DTOs
         public int Id { get; set; }
 
         [Required]
-        [DisplayName("Дата на поръчката")]
+        [DisplayName("Ordered on")]
         public DateTime OrderedOn { get; set; }
 
         [Required]
         [Range(OrderConstants.QUANTITY_MIN_VALUE, OrderConstants.QUANTITY_MAX_VALUE)]
-        [DisplayName("Количество")]
+       
         public int Quantity { get; set; }
 
         [Required]
-        [DisplayName("Име на клиента")]
+        [DisplayName("Client")]
         public int ClientId { get; set; }
 
         [Required]
-        [DisplayName("Име на продукта")]
+        [DisplayName("Product")]
         public int ProductId { get; set; }
     }
 }

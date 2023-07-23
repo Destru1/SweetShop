@@ -8,34 +8,34 @@ namespace SweetShop.ViewModels.Client
     {
         public int Id { get; set; }
 
-        [DisplayName("Име")]
+        [DisplayName("First name")]
         public string FirstName { get; set; }
 
-        [DisplayName("Презиме")]
+        [DisplayName("Last name")]
         public string LastName { get; set; }
 
-        [DisplayName("Град")]
+         
         public string City { get; set; }
 
-        [DisplayName("Адрес")]
+       
         public string Address { get; set; }
 
-        [DisplayName("Телефонен номер")]
+        [DisplayName("Phone number")]
         public string PhoneNumber { get; set; }
 
-        [DisplayName("Лице")]
+        [DisplayName("Entity")]
         public PersonEntity PersonEntity { get; set; }
 
-        [DisplayName("Дистрибутор")]
+        [DisplayName("Distributor")]
         public string DistributorId { get; set; }
 
-        [DisplayName("Потребителско име")]
+        [DisplayName("User")]
         public string UserId { get; set; }
 
-        [DisplayName("Създадено")]
+        [DisplayName("Created on")]
         public DateTime CreatedOn { get; set; }
 
-        [DisplayName("Променено")]
+        [DisplayName("Updated on")]
         public DateTime? ModifiedOn { get; set; }
     }
 }

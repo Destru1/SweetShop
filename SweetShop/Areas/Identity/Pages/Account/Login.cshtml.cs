@@ -48,10 +48,10 @@ namespace SweetShop.Areas.Identity.Pages.Account
 
             [Required]
             [DataType(DataType.Password)]
-            [DisplayName("Парола")]
+            [DisplayName("Password")]
             public string Password { get; set; }
 
-            [Display(Name = "Запомни ме")]
+            [Display(Name = "Remember me")]
             public bool RememberMe { get; set; }
         }
 

@@ -10,7 +10,7 @@
 }
 
 <div class="wrapper w-50 mx-auto">
-    <h1>Детайли</h1>
+    <h1>Details</h1>
 
     <div>
         <hr />
@@ -43,7 +43,7 @@
         </dl>
 
 
-        <p class="font-weight-bold">Използван в продукти:</p>
+        <p class="font-weight-bold">Used in:</p>
     <div class="list-group col-sm-2">
 
         @foreach (var product in Model.Products)
@@ -61,13 +61,13 @@
     <div>
         @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
         {
-            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Промяна</a>
+            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>
             <span>|</span>
-            <a asp-action="Index" class="btn btn-primary">Обратно към алергени</a>
+            <a asp-action="Index" class="btn btn-primary">Back to allergens</a>
         }
         else
         {
-            <a asp-action="Index" class="btn btn-primary">Обратно към алергени</a>
+            <a asp-action="Index" class="btn btn-primary">Back to allergens</a>
         }
 
     </div>

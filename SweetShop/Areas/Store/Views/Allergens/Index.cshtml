@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="~/css/alergen.css" />
 }
 <div class="wrapper">
-    <h1 class="text-center">Алергени</h1>
+    <h1 class="text-center">Allergens</h1>
     @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
     {
         <p>
-            <a asp-action="Create" class="btn btn-success">Добавяне</a>
+            <a asp-action="Create" class="btn btn-success">Create</a>
         </p>
 
     }
@@ -23,11 +23,11 @@
     </form>
     <div class="dropdown m-1 float-right">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-            Сортиране по
+            Order by
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">Име</a>
-            <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["DescriptionSort"]">Описание</a>
+            <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">Name</a>
+            <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["DescriptionSort"]">Description</a>
 
         </div>
     </div>
@@ -61,13 +61,13 @@
                     <td>
                         @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
                         {
-                            <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Детайли</a>
-                            <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-pill badge-warning p-2 m-2">Промяна</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger  p-2 m-2"> Изтрий</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="badge badge-pill badge-info p-2 m-2">Details</a>
+                            <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-pill badge-warning p-2 m-2">Update</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-pill badge-danger  p-2 m-2"> Delete</a>
                         }
                         else
                         {
-                            <a asp-action="Details" asp-route-id="@item.Id" class="badge  badge-pill badge-info p-2 m-2">Детайли</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="badge  badge-pill badge-info p-2 m-2">Details</a>
                         }
 
                     </td>

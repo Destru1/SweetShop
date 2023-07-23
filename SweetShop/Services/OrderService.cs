@@ -104,11 +104,10 @@ namespace SweetShop.Services
             {
                 return false;
             }
-            if (oldProductId != order.ProductId)
-            {
 
-                oldProduct.TimesSold -= orderToUpdate.Quantity;
-            }
+
+            oldProduct.TimesSold -= orderToUpdate.Quantity;
+
 
             orderToUpdate.OrderedOn = order.OrderedOn;
             orderToUpdate.Quantity = order.Quantity;

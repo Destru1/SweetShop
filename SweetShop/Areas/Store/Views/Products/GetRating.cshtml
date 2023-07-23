@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="~/css/product.css" />
 
 <div class="wrapper">
-    <h1 class="text-center">Оценка за @Html.DisplayFor(model => model.Name)</h1>
+    <h1 class="text-center">Rating for @Html.DisplayFor(model => model.Name)</h1>
     <hr />
 
 
@@ -17,27 +17,27 @@
             <p class="card-text">
                 @if (Model.AverageRating == 0)
                 {
-                    <span>Няма</span>
+                    <span>Not rated</span>
                 }
                 else if (Model.AverageRating < 5)
                 {
-                    <span>Ниско</span>
+                    <span>Low</span>
                 }
                 else if (Model.AverageRating >= 5 && Model.AverageRating < 8)
                 {
-                    <span>Средно</span>
+                    <span>Average</span>
                 }
                 else if (Model.AverageRating >= 8)
                 {
-                    <span>Добро</span>
+                    <span>Good</span>
                 }
                 else
                 {
                     <span>@Html.DisplayFor(model => model.AverageRating)</span>
                 }
             </p>
-            <p>Средна оценка: @Model.AverageRating</p>
-            <a asp-action="Index" class="btn btn-primary">Обратно към протукти</a>
+            <p>Average rating: @Model.AverageRating</p>
+            <a asp-action="Index" class="btn btn-primary">Back to product</a>
         </div>
     </div>
 </div>

@@ -9,16 +9,14 @@ namespace SweetShop.ViewModels
     {
         public int Id { get; set; }
 
-        [DisplayName("Име")]
         public string Name { get; set; }
 
-        [DisplayName("Описание")]
         public string Description { get; set; }
 
-        [DisplayName("Създаден")]
+        [DisplayName("Created on")]
         public DateTime CreatedOn { get; set; }
 
-        [DisplayName("Променен")]
+        [DisplayName("Updated on")]
         public DateTime? ModifiedOn { get; set; }
 
         public int ProductId { get; set; }

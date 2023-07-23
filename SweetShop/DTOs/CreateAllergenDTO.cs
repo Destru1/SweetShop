@@ -11,13 +11,13 @@ namespace SweetShop.DTOs
         [Required]
         [MinLength(AllergenConstants.NAME_MIN_VALUE)]
         [MaxLength(AllergenConstants.NAME_MAX_VALUE)]
-        [DisplayName("Име")]
+       
         public string Name { get; set; }
 
         [Required]
         [MinLength(AllergenConstants.DESCRIPTION_MIN_VALUE)]
         [MaxLength(AllergenConstants.DESCRIPTION_MAX_VALUE)]
-        [DisplayName("Описание")]
+       
         public string Description { get; set; }
 
 

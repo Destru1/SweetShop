@@ -11,7 +11,7 @@
 
 <div class="wrapper w-75 mx-auto">
     <div>
-        <h4>Дистрибутор</h4>
+        <h4>Distributor</h4>
         <hr />
         <dl class="row">
             <dt class="col-sm-2">
@@ -59,7 +59,7 @@
 
 
         </dl>
-        <p class="font-weight-bold">Клиенти на дистрибутора:</p>
+        <p class="font-weight-bold">@Model.Name clients </p>
         <div class="list-group col-sm-2">
             @foreach (var client in Model.Clients)
             {
@@ -74,13 +74,13 @@
         <br />
         @if (User.IsInRole(RolesConstants.ADMIN_ROLE))
         {
-            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Промяна</a>
+            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>
             <span>|</span>
-            <a asp-action="Index" class="btn btn-primary">Обратно към дистрибутори</a>
+            <a asp-action="Index" class="btn btn-primary">Back to distributors</a>
         }
         else
         {
-            <a asp-action="Index" class="btn btn-primary">Обратно към дистрибутори</a>
+            <a asp-action="Index" class="btn btn-primary">Back to distributors</a>
         }
 
     </div>

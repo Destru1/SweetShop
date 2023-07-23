@@ -7,19 +7,16 @@ namespace SweetShop.ViewModels.Order
     {
         public int Id { get; set; }
 
-        [DisplayName("Клиент")]
+        [DisplayName("Client")]
         public string ClientId { get; set; }
 
-        [DisplayName("Продукт")]
         public string ProductId { get; set; }
 
-        [DisplayName("Количество")]
         public int Quantity { get; set; }
 
-        [DisplayName("Общо")]
         public decimal Total { get; set; }
 
-        [DisplayName("Дата на порърката")]
+        [DisplayName("Ordered on")]
         public DateTime OrderedOn { get; set; }
     }
 }

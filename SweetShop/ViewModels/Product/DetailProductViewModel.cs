@@ -8,27 +8,25 @@ namespace SweetShop.ViewModels.Product
     {
         public int Id { get; set; }
 
-        [DisplayName("Име")]
         public string Name { get; set; }
 
-        [DisplayName("Описание")]
+      
         public string Description { get; set; }
 
-        [DisplayName("Снимка")]
+        [DisplayName("Image")]
         public string ImageURL { get; set; }
 
-        [DisplayName("Цена")]
+       
         public decimal Price { get; set; }
 
-        [DisplayName("Алергени")]
         public string Allergen { get; set; }
 
         public double AverageRating { get; set; }
 
-        [DisplayName("Създадено на")]
+        [DisplayName("Created on")]
         public DateTime CreatedOn { get; set; }
 
-        [DisplayName("Променено на")]
+        [DisplayName("Updated on")]
         public DateTime? ModifiedOn { get; set; }
 
         

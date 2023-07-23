@@ -6,10 +6,9 @@ namespace SweetShop.ViewModels.Product
     {
         public int Id { get; set; }
 
-        [DisplayName("Име")]
         public string Name { get; set; }
 
-        [DisplayName("Средна оценка")]
+        [DisplayName("Average rating")]
         public double AverageRating { get; set; }
     }
 }

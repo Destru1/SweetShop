@@ -6,7 +6,6 @@ namespace SweetShop.ViewModels.Product
     {
         public int Id { get; set; }
 
-        [DisplayName("Име")]
         public string Name { get; set; }
     }
 }

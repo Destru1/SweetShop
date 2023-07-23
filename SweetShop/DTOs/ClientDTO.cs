@@ -12,43 +12,43 @@ namespace SweetShop.DTOs
         [Required]
         [MinLength(ClientConstants.NAME_MIN_VALUE)]
         [MaxLength(ClientConstants.NAME_MAX_VALUE)]
-        [DisplayName("Име")]
+        [DisplayName("First name")]
         public string FirstName { get; set; }
 
         [Required]
         [MinLength(ClientConstants.NAME_MIN_VALUE)]
         [MaxLength(ClientConstants.NAME_MAX_VALUE)]
-        [DisplayName("Презиме")]
+        [DisplayName("Last name")]
         public string LastName { get; set; }
 
         [Required]
         [MinLength(ClientConstants.CITY_MIN_VALUE)]
         [MaxLength(ClientConstants.CITY_MAX_VALUE)]
-        [DisplayName("Град")]
+        [DisplayName("City")]
         public string City { get; set; }
 
         [Required]
         [MinLength(ClientConstants.ADDRESS_MIN_VALUE)]
         [MaxLength(ClientConstants.ADDRESS_MAX_VALUE)]
-        [DisplayName("Адрес")]
+        [DisplayName("Address")]
         public string Address { get; set; }
 
         [Required]
         [MinLength(ClientConstants.PHONE_NUMBER_MIN_VALUE)]
         [MaxLength(ClientConstants.PHONE_NUMBER_MAX_VALUE)]
-        [DisplayName("Телефонен номер")]
+        [DisplayName("Phone number")]
         public string PhoneNumber { get; set; }
 
         [Required]
-        [DisplayName("Лице")]
+        [DisplayName("Person entity")]
         public PersonEntity PersonEntity { get; set; }
 
         [Required]
-        [DisplayName("Дистрибутор")]
+        [DisplayName("Distributor")]
         public int DistributorId { get; set; }
 
         [Required]
-        [DisplayName("Потребителско име")]
+        [DisplayName("User")]
         public string UserId { get; set; }
     }
 }
